@@ -21,15 +21,40 @@
 						<td>Mitspieler 4</td>#}
 					</th>
 				{% for res in reservierungen %}
-					{% if res == 'begin' %}
+				{# {% if res == 'begin' %}
 						<tr>
 					{% elseif res == 'end' %}
+					<td>
+						 <form id= "loeschen" method="post" action="../php/reservierungloeschen.php">
+							<input type="hidden" name="{{ benID }}">
+							<input type="submit" value="Loeschen">
+						</form>
+					</td> 
 						</tr>
 					{% else %}
             			<td> {{ res }} </td>
-            		{% endif %}
+            		{% endif %} #}
+            		<tr>
+            			<td>{{ '' }}</td>
+            			<td>{{ res.datum }}</td>
+            			<td>{{ res.ReservierungVon }}</td>
+            			<td>{{ res.ReservierungBis }}</td>
+            			{% for pla in plaetze %}
+            				{% if pla.platz_ID == res.fk_Platz_ID %}
+            					<td>{{ pla.platzNr }}</td>
+            				{% endif %}
+            			{% endfor %}
+            			
+            			{% for mit in mitglieder %}
+            				{% if mit.mitglied_ID == res.fk_Mitglied_ID %}
+            					<td>{{ mit.platzNr }}</td>
+            				{% endif %}
+            			
+            			{% endfor %}
+            			
+            		</tr>
         		{% endfor %}
-        		</tr>
+        		{#}</tr>#}
         		</table>
         	{% else %}
         		{{ 'Keine Reservierungen vorhanden' }}

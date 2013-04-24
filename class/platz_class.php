@@ -3,7 +3,7 @@
 
 class Platz
 {
-	public $platzID;
+	public $platz_ID;
 	public $platzNr;
 	public $gesperrt;
 	public $gesperrtVon;

@@ -29,34 +29,25 @@
 		foreach($result as $reserve)
 		{
 			$platz = new Platz($reserve->getFk_Platz_ID());
-			$uebergabe[] = 'begin';
-			$uebergabe[] = $count . '.';
-			$uebergabe[] = $reserve->getDatum();
-			$uebergabe[] = $reserve->getReservierungVon();
-			$uebergabe[] = $reserve->getReservierungBis();
-			$uebergabe[] = $platz->getPlatzNr();
+			$uebergabe[] = $reserve;
+			$plaetze[] = $platz;
 			if($benutzerrecht == 1)
 			{
+				
+				
 				foreach($mitglieder as $m)
 				{
 					if($m->getID() == $reserve->getFk_Mitglied_ID())
 					{
-						$uebergabe[] = $m->getVorname() . " " . $m->getNachname();
+						$members[] = $m->getVorname() . " " . $m->getNachname();
 					}
 				}
 			}
-			
-			
-			//$uebergabe[] = $reserve->getFk_S1_ID();
-			//$uebergabe[] = $reserve->getFk_S2_ID();
-			//$uebergabe[] = $reserve->getFk_S3_ID();
-			//$uebergabe[] = $reserve->getFk_S4_ID();
-			$uebergabe[] = 'end';
-			
-			$count++;
 		}
 		
 		$daten["reservierungen"]=$uebergabe;
+		$daten["plaetze"]=$plaetze;
+		$daten["mitglieder"]=$members;
 		
 		
 		
