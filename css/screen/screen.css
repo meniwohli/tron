@@ -1,0 +1,70 @@
+/** Project: tennis
+ *  Description: 
+ *
+ *  @creator       Thinkin' Tags v0.2 alpha
+ *  @framework     YAML v4.02
+ *  @file          screen.css
+ */
+
+@media screen, projection {
+
+	#header {
+		background: rgb(115,105,76) ;
+		min-width: 700px;
+		color: rgb(0,0,0);
+	}
+
+	.ym-wrapper {
+		margin: 0 auto;
+		max-width: 95%;
+		min-width: 700px;
+		width: auto;
+	}
+
+	.ym-wbox {
+	}
+
+	#main {
+		color: rgb(0,0,0);
+		overflow: auto;
+	}
+
+	#footer {
+		background: rgb(115,105,76);
+		bottom: 0;
+		color: rgb(0,0,0);
+		height: 100px;;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+
+	#index {
+	}
+
+	.ym-col1 {
+	}
+
+	.ym-cbox-left {
+	}
+
+	.ym-col2 {
+	}
+
+	.ym-cbox-right {
+	}
+
+	.ym-col3 {
+	}
+
+	.ym-cbox {
+	}
+
+	.ym-gbox-left {
+	}
+
+	.ym-gbox-right {
+	}
+
+}
+

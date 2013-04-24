@@ -1,0 +1,174 @@
+{% extends "layout.twig" %}
+
+        {% block body %}
+			{{ parent() }}
+			
+			
+			<form method="post" action="../php/rechte.php">
+			
+				{# Recht auswählen #}
+				{% if aendern != 1 %}
+				 Recht ausw&auml;hlen: 
+				 <select name="recht" >
+				 	{% for key,value in rechtarray %}
+				 	
+				    	<option {% if recht == key %}selected="selected"{% endif %} >{{ key }}</option>
+				 		
+				 		
+				 	{% endfor %}
+				 </select>
+				 {% else %}
+				 Recht: {{ gewaehltesrecht.rechtName }}
+				 {% endif %}
+				 </br>
+				 </br>
+				 {{ testen }}
+				 {# Stunden auswählen/anzeigen #}
+				 Anzahl Stunden: 
+				 {% if aendern == 1 %}
+		
+					 <select name="anzh" >
+					 
+					 {% for x in 1..4 %}
+					 	
+					     <option {% if gewaehltesrecht.anzahlStunden == x %}selected="selected"{% endif %} >{{ x }}</option>
+					 
+					 {% endfor %}
+					 
+					 <option {% if gewaehltesrecht.anzahlStunden == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+					 </select>
+					 
+				{% elseif gewaehltesrecht.anzahlStunden == 99 %}
+				
+					unbegrenzt
+					
+				{% else %}
+				
+					{{ gewaehltesrecht.anzahlStunden }}
+					
+				{% endif %}
+				</br>
+				
+				
+				{# Plaetze auswählen/anzeigen #}
+				
+				 Anzahl Pl&auml;tze: 
+				 {% if aendern == 1 %}
+		
+					 <select name="anzp" >
+					 
+					 {% for x in 1..4 %}
+					 	
+					     <option {% if gewaehltesrecht.anzahlPlaetze == x %}selected="selected"{% endif %} >{{ x }}</option>
+					 
+					 {% endfor %}
+					 
+					 <option {% if gewaehltesrecht.anzahlPlaetze == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+					 </select>
+					 
+				{% elseif gewaehltesrecht.anzahlPlaetze == 99 %}
+				
+					unbegrenzt
+					
+				{% else %}
+				
+					{{ gewaehltesrecht.anzahlPlaetze }}
+					</br>
+					
+				{% endif %}
+				</br>
+				
+				
+				{# Anzahl Reservierungen auswählen/anzeigen #}
+				
+				 Anzahl Reservierungen: 
+				 {% if aendern == 1 %}
+		
+					 <select name="anzr" >
+					 
+					 {% for x in 1..4 %}
+					 	
+					     <option {% if gewaehltesrecht.anzahlReservierungen == x %}selected="selected"{% endif %} >{{ x }}</option>
+					 
+					 {% endfor %}
+					 
+					 <option {% if gewaehltesrecht.anzahlReservierungen == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+					 </select>
+					 
+				{% elseif gewaehltesrecht.anzahlReservierungen == 99 %}
+				
+					unbegrenzt
+					
+				{% else %}
+				
+					{{ gewaehltesrecht.anzahlReservierungen }}
+					</br>
+					
+				{% endif %}
+				</br>
+				
+				
+				{# Anzahl der Tage, die man im Voraus reservieren kann auswählen/anzeigen #}
+				
+				 Anzahl Tage im Voraus: 
+				 {% if aendern == 1 %}
+		
+					 <select name="tage" >
+					 
+					 {% for x in 1..7 %}
+					 	
+					     <option {% if gewaehltesrecht.tageVoraus == x %}selected="selected"{% endif %} >{{ x }}</option>
+					 
+					 {% endfor %}
+					 
+					 <option {% if gewaehltesrecht.tageVoraus == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+					 </select>
+					 
+				{% elseif gewaehltesrecht.tageVoraus == 99 %}
+				
+					unbegrenzt
+					
+				{% else %}
+				
+					{{ gewaehltesrecht.tageVoraus }}
+					</br>
+					
+				{% endif %}
+				</br>
+				
+				
+				
+				
+				{# Änderungen bestätigen Button #}	
+				{% if aendern == 1 %}
+					<input type="submit" value="Speichern">
+				{% endif %}
+				 
+			 </form>
+			 
+			 </br>
+			 </br>
+			  
+				 
+			{# Recht anlegen Button #}
+			{% if benutzerrecht == 1 %}
+	    
+	   		    <form method="post" action="../php/rechtanlegen.php">
+	   		    	<input type="hidden" name="first">
+					<input type="submit" value="Recht anlegen">
+				</form> 
+		
+			{% endif %}	
+			
+			
+			{# Recht ändern Button #}
+			{% if aendern != 1 %}
+	    
+	   		    <form method="post" action="../php/rechte.php">
+	   		    	<input type="hidden" name="aendern">
+					<input type="submit" value="&Auml;ndern">
+				</form> 
+		
+			{% endif %}	
+	
+		{% endblock %}

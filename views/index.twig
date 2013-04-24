@@ -1,0 +1,62 @@
+
+
+	{# Wenn Login gegeben ist #}
+	{% if login %}
+		
+		{#<div id="datepicker">#}
+			
+			</br>
+			<p>Datum ausw&auml;hlen:</p>
+			</br>
+			<form method="post" action="../php/first.php">
+			<input id="datepicker"  type="text" value="zum Ausw&auml;hlen klicken"/>
+			</br>
+			<input type="submit" id="button" value="Best&auml;tigen" />
+			</form>
+		</div>
+		</br>
+		
+		
+    	
+		<ul class="menu">
+			
+			<li><a href="../php/first.php">Home</a></li>
+			<li><a href="../php/meinereservierungen.php">Meine Reservierungen</a></li>
+			<li><a href="../php/benutzereinstellungen.php">Benutzereinstellungen</a></li>
+			
+		
+	{% endif %}
+    
+    
+    
+    {# Wenn rechtrecht = 1 #}
+    {% if rechtrecht == 1 %}
+    
+			<li><a href="../php/rechte.php">Rechte Verwalten</a></li>
+		     
+	{% endif %}
+    
+    {% if recht %}
+    
+   		      
+			<li><a href="#">Pl&auml;tze</a></li>
+			<li><a href="#">Farben</a></li>
+		       
+			
+	{% endif %}
+    
+    
+    
+    {% if login %}
+    	
+    	
+		  <li><a href="../php/logout.php">Logout</a></li>
+		</ul>
+    	
+    	
+	{% endif %}
+    
+    </br>
+    </br>
+
+    	

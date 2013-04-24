@@ -1,0 +1,41 @@
+{% extends "layout.twig" %}
+
+        {% block body %}
+			  {{ parent() }}
+			 
+			
+			</br>
+			
+			<div>
+			{% if res == null %}
+				<table>
+					<th>
+						<td>Datum</td>
+						<td>von</td>
+						<td>bis</td>
+						<td>Platz</td>
+						<td>Reserviert von</td>
+						{#<td>Mitspieler 1</td>
+						<td>Mitspieler 2</td>
+						<td>Mitspieler 3</td>
+						<td>Mitspieler 4</td>#}
+					</th>
+				{% for res in reservierungen %}
+					{% if res == 'begin' %}
+						<tr>
+					{% elseif res == 'end' %}
+						</tr>
+					{% else %}
+            			<td> {{ res }} </td>
+            		{% endif %}
+        		{% endfor %}
+        		</tr>
+        		</table>
+        	{% else %}
+        		{{ 'Keine Reservierungen vorhanden' }}
+        	{% endif %}
+			</div>
+			
+			
+			
+		{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.twig" %}
+
+        {% block body %}
+			  {{ parent() }}
+			 
+			
+			{% if sperrfehler == 1 %}
+				<div id="fehler">
+					Der User, mit dem Sie sich anmelden m&ouml;chten, ist gesperrt,</br>
+					bitte wenden Sie sich an Ihren Administrator. </br>
+				</div>
+			{% endif %}
+			{% if pasfalsch %}
+				<div id="fehler">
+					Username oder Passwort falsch! </br>
+				</div>
+			{% endif %}
+			</br>
+			
+			<div>
+				Bitte geben Sie Ihre Login-Daten ein:
+				</br>
+				<form method="post" action="../php/LogIn.php">
+				Username: <br />
+				<input type="text" name="email" size="20" />
+				<br />
+				Passwort: <br />
+				<input type="password" name="passwort" size="20" /><br />
+				<input type="submit" value="Login" />
+				</form>
+			</div>
+		{% endblock %}

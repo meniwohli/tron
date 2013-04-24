@@ -1,0 +1,263 @@
+{% extends "layout.twig" %}
+
+	{% block body %}
+		{{ parent() }}
+		
+		
+		<div>Mitgliedsdaten:</div>
+		</br>
+		
+		
+		{# Wenn ändern auf 1, wird Formular aktiviert #}
+		{% if aendern == 1 %}
+		
+			<form method="post" action="../php/benutzereinstellungen.php">
+			
+			 <select name="geschlecht" >
+			     <option {% if geschlecht == 'Herr' %}selected="selected"{% endif %} >Herr</option>
+			     <option {% if geschlecht == 'Frau' %}selected="selected"{% endif %} >Frau</option>
+			 </select>
+			 </br>
+			 
+		{% else %}
+		
+			{% if geschlecht == "Herr" %}
+				Herr
+				</br>
+			{% elseif geschlecht == "Frau" %}
+				Frau
+				</br>
+			{% endif %}
+			
+		{% endif %}
+		
+		
+		
+		{% if aendern == 1 %}
+			Titel: <input type="text" name="titel" value="{{ titel }}" />
+			</br>
+		{% elseif titel %}
+			Titel: {{ titel }}
+			</br>
+		{% endif %} 
+		
+		
+		
+		Vorname: 
+		{% if aendern == 1 %}
+			<input type="text" name="vorname" value="{{ vorname }}" />
+		{% else %}
+			{{ vorname }}
+		{% endif %}
+		</br>
+		
+		Nachname: 
+		{% if aendern == 1 %}
+			<input type="text" name="nachname" value="{{ nachname }}" />
+		{% else %}
+			{{ nachname }}
+		{% endif %}
+		</br>
+		
+		
+		{# Geburtsdatum abfragen und formatieren #}
+		{% if aendern == 1 %}
+			Geburtsdatum: (TT)<input type="text" name="geburtstag" value="{{ geburtstag }}" />
+						  (MM)<input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" />
+						  (JJJJ)<input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" />
+			</br>
+		{% elseif geburtstag %}
+			Geburtstag: {{ geburtstag }}.{{ geburtsmonat }}.{{ geburtsjahr }}
+			</br>
+		{% endif %} 
+		
+		
+		</br>
+		Plz: 
+		{% if aendern == 1 %}
+			<input type="text" name="plz" value="{{ plz }}" />
+		{% else %}
+			{{ plz }}
+		{% endif %}
+		</br>
+		
+		Ort: 
+		{% if aendern == 1 %}
+			<input type="text" name="ort" value="{{ ort }}" />
+		{% else %}
+			{{ ort }}
+		{% endif %}
+		
+		</br>
+		Stra&szlig;e: 
+		{% if aendern == 1 %}
+			<input type="text" name="strasse" value="{{ strasse }}" />
+		{% else %}
+			{{ strasse }}
+		{% endif %}
+		
+		</br>
+		Hausnummer: 
+		{% if aendern == 1 %}
+			<input type="text" name="hausnummer" value="{{ hausnummer }}" />
+		{% else %}
+			{{ hausnummer }}
+		{% endif %}
+		
+		</br>
+		</br>
+		E-Mail:
+		{% if aendern == 1 %}
+			<input type="text" name="useremail" value="{{ emailuser }}" />
+		{% else %}
+			{{ emailuser }}
+		{% endif %}
+		</br>
+		
+		{% if aendern == 1 %}
+			Telefon: <input type="text" name="telefon" value="{{ telefon }}" />
+			</br>
+		{% elseif telefon %}
+			Telefon: {{ telefon }}
+			</br>
+		{% endif %} 
+		
+		</br>
+		</br>
+		
+		{% if aendern == 1 %}
+			Passwort &auml;ndern:
+			</br>
+			
+			{# Wenn Administrator angemeldet, wird "Altes Passwort" nicht angezeigt #}
+			{% if benutzerrecht == 1 %}Administratorpasswort: {% else %}Altes Passwort: {% endif %}<input type="password" name="pas" /> </br>
+			Neues Passwort: <input type="password" name="pasneu" /> </br>
+			Neues Passwort wiederholen: <input type="password" name="pastest" /> </br>
+			
+			</br>
+			</br>
+		{% endif %}
+		
+		
+		{# Benutzer sperren #}
+		{% if benutzerrecht == 1 and aendern == 1 %}
+			
+			 Benutzer sperren: 
+			 <select name="gesperrt" >
+			     <option {% if gesperrt == 1 %}selected="selected"{% endif %} >JA</option>
+			     <option {% if gesperrt == 0 %}selected="selected"{% endif %} >NEIN</option>
+			 </select>
+			 </br>
+			 
+		{% elseif gesperrt == 1 %}
+		
+			<div id = "fehler">Benutzer gesperrt!</div>
+			</br>
+			
+		{% endif %}
+		
+		
+			 
+		
+		{# Drop Down für Rechte bei Administratoren#}
+		Recht: 
+		{% if aendern == 1 and benutzerrecht == 1 %}
+		
+			<select name="rechtuser" value='{{ rechtuser }}' >			
+			{% for item in rechtliste %}
+				<option {% if rechtuser == item %}selected="selected"{% endif %}>
+					{{ item }}
+				</option>
+			{% endfor %}
+			 </select>
+			 
+		{% else %}
+			{{ rechtuser }}
+		{% endif %}
+		</br>
+		</br>
+		
+	
+	
+	
+	
+	
+		{# Änderung bestätigen Button #}
+		{% if aendern == 1 %}
+			
+			{% if changeuser %}
+   		   		<input type="hidden" name="{{ changeuser }}" />
+   		    {% endif %}
+   		    
+			<input type="submit" value="OK"> 
+		
+		{% else %}
+		
+			<form method="post" action="../php/benutzereinstellungen.php">
+			
+				{% if changeuser %}
+   		   			<input type="hidden" name="{{ changeuser }}" />
+   		    	{% endif %}
+   		    	
+				<input type="hidden" name="aendern">
+				<input type="submit" value="&Auml;ndern">
+			</form> 
+		
+		{% endif %}
+		
+		
+		
+		
+		{# Benutzer anlegen Button #}
+		{% if benutzerrecht == 1 %}
+    
+   		    <form method="post" action="../php/benutzeranlegen.php">
+   		    	<input type="hidden" name="first">
+				<input type="submit" value="Benutzer anlegen">
+			</form> 
+
+		{% endif %}	
+		
+		
+		{# Benutzer löschen Button #}
+		{% if benutzerrecht == 1 and aendern == 1 %}
+    
+   		    <form id= "loeschen" method="post" action="../php/benutzerloeschen.php">
+   		    	<input type="hidden" name="{{ uid }}">
+				<input type="submit" value="Benutzer loeschen">
+			</form> 
+
+		{% endif %}	
+		</br>
+		
+		{# Wenn ändern auf 1, wird Formular aktiviert #}
+		{% if aendern == 1 %}
+			<form method="post" action="../php/benutzereinstellungen.php">
+		{% endif %}
+		
+		
+		{# Wenn Recht für änderung des Benutzers vorhanden ist #}
+		{% if benutzerrecht == 1 %}
+    
+   		      
+			<div>Benutzer ausw&auml;hlen: </br></div>
+
+   		    
+   		    <ul>
+	   			{% for key,value in mitglieder %}
+	   				<li> 
+	   				<form method="post" action="../php/benutzereinstellungen.php">
+						<input type="hidden" name="{{ value }}">
+						<input type="submit" value="{{ key }}">
+					</form> 
+	   				</li>
+	   			{% endfor %}    
+	   		</ul>
+	   		
+   		    
+   		    </br>
+   		    </br>
+   		    
+		{% endif %}	
+		
+	{% endblock %}
