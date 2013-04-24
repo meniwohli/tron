@@ -3,7 +3,7 @@
 	
 	include "includeup.php";
 	
-	//Wenn eingeloggt, weiter..
+	//Wenn eingeloggt, weiter....
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok" && $recht->getRechteVerteilen() == 1) { 
 	
 		
@@ -12,7 +12,7 @@
 		$cache = $sql->arrayCall("SELECT Recht_ID, RechtName FROM tb_recht");
 		$gewaehltesrecht = $recht;
 		
-		
+		// hallo das ist ein test
 		foreach($cache as $x)
 		{
 			$rechtarray[$x['RechtName']] = $x["Recht_ID"];
