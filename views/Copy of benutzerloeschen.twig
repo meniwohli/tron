@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+	{% block body %}
+		{{ parent() }}
+		
+		{# Aufforderung löschen bestätigen #}
+		{% if benutzerrecht == 1 %}
+		
+		{% if geloescht %}
+			{{ name }} wurde aus der Datenbank gel&ouml;scht.
+		{% else %}
+			<div>
+				Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Benutzer ({{ name }}) unwiederruflich gel&ouml;scht!
+				</br>
+				Sind Sie sicher?
+				</br>
+				</br>
+				<form method="post" action="../php/benutzerloeschen.php">
+   		    		<input type="hidden" name="{{ uid }}">
+   		    		<input type="hidden" name="bestaetigt">
+					<input type="submit" value="Benutzer l&ouml;schen">
+				</form>
+			</div>
+		{% endif %}
+		
+		{# Wenn User gelöscht wurde #}
+		{% elseif benutzerrecht == 1 %}
+    
+   		    
+		{% endif %}	
+	{% endblock %}
