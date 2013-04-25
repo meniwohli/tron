@@ -31,19 +31,21 @@
 			$platz = new Platz($reserve->getFk_Platz_ID());
 			$uebergabe[] = $reserve;
 			$plaetze[] = $platz;
-			if($benutzerrecht == 1)
+		}
+		
+		if($benutzerrecht == 1)
+		{
+			foreach($mitglieder as $m)
 			{
+				$members[] = $m;
 				
-				
-				foreach($mitglieder as $m)
+				/*if($m->getID() == $reserve->getFk_Mitglied_ID())
 				{
-					if($m->getID() == $reserve->getFk_Mitglied_ID())
-					{
-						$members[] = $m->getVorname() . " " . $m->getNachname();
-					}
-				}
+					$members[] = $m->getVorname() . " " . $m->getNachname();
+				}*/
 			}
 		}
+		
 		
 		$daten["reservierungen"]=$uebergabe;
 		$daten["plaetze"]=$plaetze;
