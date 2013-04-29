@@ -16,19 +16,19 @@ class Sql
 			
 			if ($this->mysqli->connect_error != null || !$this->mysqli->set_charset("utf8"))
 			{
-				throw new Exception();
+				throw new OwnException();
 			}
 		}
 
-		catch(Exception $E)
+		catch(OwnException $e)
 		{
 			if ($this->mysqli->connect_error) {
 				echo "<b>Fehler bei der Verbindung:</b> " . mysqli_connect_error();
 				exit();
-			}elseif (!$this->mysqli->set_charset("utf8")) {
+			}
+			
+			if (!$this->mysqli->set_charset("utf8")) {
 				echo "Fehler beim Laden von UTF8 ". $this->mysqli->error;
-			}else{
-				echo "Fehler bei der Verbindung!";
 			}
 		}
 	}

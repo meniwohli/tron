@@ -2,7 +2,7 @@
 
 
 
-class loginException extends Exception
+class OwnException extends Exception
 {
 	public function errorMessage()
 	{
