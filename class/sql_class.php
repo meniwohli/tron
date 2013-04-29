@@ -1,5 +1,7 @@
 <?php
 
+require_once "loginException_class.php";
+
 class Sql
 {
 	
