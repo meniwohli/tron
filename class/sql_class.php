@@ -1,6 +1,6 @@
 <?php
 
-require_once "loginException_class.php";
+require_once "exception_class.php";
 
 class Sql
 {

@@ -17,6 +17,7 @@ if (isset($_POST["email"]))
 	//Klasse aufrufen, passwort testen
 	require_once "../class/sql_class.php";
 	require_once "../class/mitglied_class.php";
+	require_once "../class/exception_class.php";
 	
 	$log = new Sql;
 	$login =  $log->logTest($user, $passwd);
