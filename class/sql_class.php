@@ -22,14 +22,7 @@ class Sql
 
 		catch(OwnException $e)
 		{
-			if ($this->mysqli->connect_error) {
-				echo "<b>Fehler bei der Verbindung:</b> " . mysqli_connect_error();
-				exit();
-			}
-			
-			if (!$this->mysqli->set_charset("utf8")) {
-				echo "Fehler beim Laden von UTF8 ". $this->mysqli->error;
-			}
+			$e->loginMessage($this->mysqli);
 		}
 	}
 	

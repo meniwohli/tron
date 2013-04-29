@@ -4,10 +4,17 @@
 
 class OwnException extends Exception
 {
-	public function errorMessage()
+	public function loginMessage($mysqli)
 	{
-		//Nachricht auswerfen
-		$errorMsg = 'Test-Nachricht';
-		return $errorMsg;
+		if ($mysqli->connect_error)
+			{
+				echo "<b>Fehler bei der Verbindung:</b> " . mysqli_connect_error();
+				exit();
+			}
+				
+			if (!$mysqli->set_charset("utf8"))
+			{
+				echo "Fehler beim Laden von UTF8 ". $this->mysqli->error;
+			}
 	}
 }
