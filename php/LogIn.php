@@ -54,7 +54,8 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 		//wenn login = korrekt
 		$_SESSION["email"] = $user;
 		$_SESSION["login"] = "ok";
-		$daten["login"] = 1;	
+		
+		include "allgemein.php";	
 		
 		$template = $twig->loadTemplate('home.twig');
 		
