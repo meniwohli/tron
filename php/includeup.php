@@ -29,6 +29,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	require_once '../class/sql_class.php';
 	require_once '../class/platz_class.php';
 	require_once '../class/res_verarbeitung_class.php';
+	require_once "../class/exception_class.php";
 	
 	//Klassen erzeugen
 	$sql = new Sql;
@@ -41,6 +42,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	
 	//Mitglied und login übergeben
 	$email = $_SESSION["email"];
+	$daten["email"] = $email;
 	$daten["login"] = true;
 	
 	

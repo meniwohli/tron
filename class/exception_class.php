@@ -17,4 +17,9 @@ class OwnException extends Exception
 				echo "Fehler beim Laden von UTF8 ". $this->mysqli->error;
 			}
 	}
+	
+	public function emptyFill ()
+	{
+		echo "Sie haben nicht alle benötigten Daten eingegeben!";
+	}
 }
