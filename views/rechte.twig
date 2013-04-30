@@ -3,26 +3,31 @@
         {% block body %}
 			{{ parent() }}
 			
-			
+			{{ test }}
+				
 			<form method="post" action="../php/rechte.php">
 			
 				{# Recht auswählen #}
 				{% if aendern != 1 %}
-				 Recht ausw&auml;hlen: 
-				 <select name="recht" >
-				 	{% for key,value in rechtarray %}
-				 	
-				    	<option {% if recht == key %}selected="selected"{% endif %} >{{ key }}</option>
-				 		
-				 		
-				 	{% endfor %}
-				 </select>
+				
+					 Recht ausw&auml;hlen: 
+					 
+					 <select name="rechtnamen" >
+					 	{% for key, value in rechtarray %}
+					 	
+					    	<option {% if recht == key %}selected="selected"{% endif %} value="{{ value }}">{{ key }}</option>
+					 		
+					 	{% endfor %}
+					 </select>
+					 
 				 {% else %}
-				 Recht: {{ gewaehltesrecht.rechtName }}
+					 Recht: {{ gewaehltesrecht.rechtName }}
 				 {% endif %}
+				 
 				 </br>
 				 </br>
-				 {{ testen }}
+				 
+				 				 
 				 {# Stunden auswählen/anzeigen #}
 				 Anzahl Stunden: 
 				 {% if aendern == 1 %}
@@ -144,6 +149,14 @@
 					<input type="submit" value="Speichern">
 				{% endif %}
 				 
+				 
+				 {# Recht ändern Button #}
+				{% if aendern != 1 %}
+	    
+	   	   		 	<input type="hidden" name="aendern">
+					<input type="submit" value="&Auml;ndern">
+		
+				{% endif %}	
 			 </form>
 			 
 			 </br>
@@ -161,14 +174,6 @@
 			{% endif %}	
 			
 			
-			{# Recht ändern Button #}
-			{% if aendern != 1 %}
-	    
-	   		    <form method="post" action="../php/rechte.php">
-	   		    	<input type="hidden" name="aendern">
-					<input type="submit" value="&Auml;ndern">
-				</form> 
-		
-			{% endif %}	
+			
 	
 		{% endblock %}

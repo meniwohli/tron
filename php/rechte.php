@@ -11,27 +11,20 @@
 		$rechtarray = array();
 		$cache = $sql->arrayCall("SELECT Recht_ID, RechtName FROM tb_recht");
 		$gewaehltesrecht = $recht;
+
 		
 		// hallo das ist ein test
 		foreach($cache as $x)
 		{
-			$rechtarray[$x['RechtName']] = $x["Recht_ID"];
-			$rname = $x['RechtName'];
+			$rechtarray[$x["RechtName"]] = $x["Recht_ID"];
+			$rname = $x["RechtName"];
 			$rid = $x["Recht_ID"];
 			
-			if(isset($_POST["$rname"]))
+			if(isset($_POST["rechtnamen"]) && $_POST["rechtnamen"] == $rid)
 			{
 				$gewaehltesrecht = new Recht($rid);
-				
-				if(isset($_POST["$rname"]))
-				{
-					$daten["testen"] = "halloo";
-				}
-				
-				
 			}
 		}
-		
 		
 		//Kontrolle, ob änderungen vorgenommen wurden
 		// anzahlStunden
