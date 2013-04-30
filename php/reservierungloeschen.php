@@ -40,6 +40,10 @@
 		$template = $twig->loadTemplate('reservierungloeschen.twig');
 		
 	//sonst auf anmeldeseite
+	}else{
+
+		$template = $twig->loadTemplate('anmelde.twig');
+		
 	}
 	
 	
