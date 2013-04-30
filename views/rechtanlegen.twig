@@ -7,7 +7,7 @@
 		{% if angelegt %}
 		
 			<div>
-				Der Benutzer wurde angelegt.
+				Das Recht wurde angelegt.
 				</br>
 				</br>
 				<form method="post" action="../php/rechtanlegen.php">
@@ -27,10 +27,141 @@
 			<form method="post" action="../php/rechtanlegen.php">
 					
 				
+				Rechtname: <input type="text" name="rechtname" value="{{ rechtname }}" /> 
+				</br>
+					
+					 				 
+				{# Stunden auswählen/anzeigen #}
+				Anzahl Stunden: 
+				<select name="anzh" >
+						 
+					{% for x in 1..4 %}
+						 	
+						 <option>{{ x }} </option>
+						 
+					{% endfor %}
+					<option>unbegrenzt</option>
+					
+				</select>
+				</br>
+					
+					
+				{# Plaetze auswählen/anzeigen #}
+				Anzahl Pl&auml;tze: 
+				<select name="anzp" >
+						 
+					{% for x in 1..4 %}
+						 	
+						<option>{{ x }}</option>
+						 
+					{% endfor %}
+					<option>unbegrenzt</option>
+				</select>
+				</br>
+					
+					
+				{# Anzahl Reservierungen auswählen/anzeigen #}
+				Anzahl Reservierungen: 
 				
+				<select name="anzr" >
+						 
+					{% for x in 1..4 %}
+						 	
+						 <option>{{ x }}</option>
+						 
+					{% endfor %}
+					<option>unbegrenzt</option>
+				</select>
+				</br>
+					
+					
+				{# Anzahl der Tage, die man im Voraus reservieren kann auswählen/anzeigen #}
+				Anzahl Tage im Voraus: 
+				<select name="tage" >
+						 
+					{% for x in 1..7 %}
+						 	
+						<option>{{ x }}</option>
+						 
+					{% endfor %}
+					<option>unbegrenzt</option>
+				</select>
+				</br>
+					
+					
+				{# Können Reservierungen gelöscht werden? #}
+				Reservierungen L&ouml;schen: 
+				<select name="resloeschen" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
+					
+				{# Können Reservierungen verschoben werden? #}
+				Reservierungen verschieben: 
+				<select name="resverschieben" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
+					
+				{# Können Benutzer verwaltet werden? #}
+				Benutzer verwalten: 
+				<select name="benverwalten" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
+					
+				{# Können Benutzer Rechte verwalten? #}
+				Rechte verwalten: 
+				<select name="rechteverteilen" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
 				
+				{# Können Benutzer Plätze verwalten? #}
+				Pl&auml;tze verwalten: 
+				<select name="platzverwalten" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
 				
+				{# Kann Saison/Öffnungszeiten festgelegt werden? #}
+				Zeiten verwalten: 
+				<select name="saisonfestlegen" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
+					
+				{# Können Serien reserviert werden? #}
+				Serien reservieren: 
+				<select name="serienreservieren" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
 				
+				{# Können Farben ausgewählt werden? #}
+				Design &auml;ndern: 
+				<select name="farbefestlegen" >
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</select>
+				</br>
+					
+					
+					
 				
 				</br>
 				</br>
