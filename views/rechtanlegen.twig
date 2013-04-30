@@ -1,0 +1,42 @@
+{% extends "layout.twig" %}
+
+	{% block body %}
+		{{ parent() }}
+		
+		{# Wenn der Benutzer angelegt wurde: #}
+		{% if angelegt %}
+		
+			<div>
+				Der Benutzer wurde angelegt.
+				</br>
+				</br>
+				<form method="post" action="../php/rechtanlegen.php">
+   		    		<input type="hidden" name="first">
+					<input type="submit" value="Recht anlegen">
+				</form>
+			</div>
+		
+		{# Wenn Recht für änderung des Benutzers vorhanden ist #}
+		{% elseif rechtrecht == 1 %}
+   		    
+   		      
+			<div>Recht anlegen:</div>
+			</br>
+			</br>
+   		    
+			<form method="post" action="../php/rechtanlegen.php">
+					
+				
+				
+				
+				
+				
+				
+				</br>
+				</br>
+				<input type="submit" value="OK"> 
+			</form> 
+				
+			
+		{% endif %}	
+	{% endblock %}

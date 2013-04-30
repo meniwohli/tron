@@ -5,21 +5,8 @@
 	
 	
 	//Wenn eingeloggt und Benutzerrecht weiter..
-	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok" && $recht->getBenutzerVerwalten() == 1) 
+	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok" && $recht->getRechteVerteilen() == 1) 
 	{
-		
-		
-		//alle rechte für administrator auslesen
-		$rechte = $sql->arrayCall("SELECT Recht_ID FROM tb_recht");
-		$rechtliste = array();
-		
-		foreach($rechte as $x)
-		{
-			$y = new Recht($x['Recht_ID']);
-			$rechtliste[] = $y->getRechtName();
-		}
-		
-		$daten["rechtliste"] = $rechtliste;
 				
 		
 		
