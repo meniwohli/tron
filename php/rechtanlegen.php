@@ -10,187 +10,109 @@
 				
 		
 		
-		$geschlecht = null;
-		$titel = null;
-		$vorname = null;
-		$nachname = null;
-		$geburtsdatum = null;
-		$geburtstag = null;
-		$geburtsmonat = null;
-		$geburtsjahr = null;
-		$plz = null;
-		$ort = null;
-		$strasse = null;
-		$hausnummer = null;
-		$useremail = null;
-		$telefon = null;
-		$rechtid = null;
-		$namerecht = null;
-		$passwort = null;
-		$gesperrt = 0;
-		
+		$rechtname = null;
+		$anzh = null;
+		$anzp = null;
+		$anzr = null;
+		$tage = null;
+		$resloeschen = null;
+		$resverschieben = null;
+		$benverwalten = null;
+		$rechteverteilen = null;
+		$platzverwalten = null;
+		$saisonfestlegen = null;
+		$serienreservieren = null;
+		$farbefestlegen = null;
 		
 		
 		//Änderungen ausführen und in DB schreiben
-		if (isset($_POST['geschlecht']))
+		if (isset($_POST['rechtname']))
 		{
-			$geschlecht = $_POST['geschlecht'];
-		}
+			$rechtname = $_POST['rechtname'];
+			$rechtname = htmlspecialchars($rechtname);
 		
-		if (isset($_POST['titel']))
-		{
-			$titel = $_POST['titel'];
-		}
 		
-		if (isset($_POST['vorname']))
-		{
-			$vorname = $_POST['vorname'];
-		}
-		
-		if (isset($_POST['nachname']))
-		{
-			$nachname = $_POST['nachname'];
-		}
-		
-		//kontrolle ob name in datenbank bereits vorhanden ist
-		if (isset($_POST['vorname']) && isset($_POST['nachname']))
-		{
-			$namentest = $nachname . " " . $vorname;
-			
-			$namentest2 = $sql->ArrayCall("SELECT Nachname, Vorname FROM tb_mitglied");
-			
-			foreach($namentest2 as $x)
+			//Anzahl Stunden
+			if (isset($_POST['anzh']))
 			{
-				$y = $x["Nachname"] . " " . $x["Vorname"];
-				
-				if($namentest == $y)
-				{
-					$daten["fehleruser"] = 1;
-					$nachname = false;
-					$vorname = false;
-				}
+				$anzh = $_POST['anzh'];
 			}
 			
-		}
-		
-		
-		//geburtsdatum  einfügen
-		if (isset($_POST['geburtstag']) && isset($_POST['geburtsmonat']) && isset($_POST['geburtsjahr']))
-		{
-			if(($_POST['geburtstag'] > 0) && ($_POST['geburtstag'] < 32))
+			//Anzahl Plätze
+			if (isset($_POST['anzp']))
 			{
-				$geburtstag = $_POST['geburtstag'];
-				
-			}
-		
-			if(($_POST['geburtsmonat'] > 0) && ($_POST['geburtsmonat'] < 13))
-			{
-				$geburtsmonat = $_POST['geburtsmonat'];
-			}
-				
-			if(($_POST['geburtsjahr'] > 1920))
-			{
-				$geburtsjahr = $_POST['geburtsjahr'];
-			}
-				
-			$geburtsdatum = $geburtsjahr . "-" . $geburtsmonat . "-" . $geburtstag;
-				
-			if(strlen($geburtsdatum) != 10)
-			{
-				$geburtsdatum = null;
-			}
-		}
-		
-		
-		if (isset($_POST['plz']))
-		{
-			$plz = $_POST['plz'];
-		}
-		
-		if (isset($_POST['ort']))
-		{
-			$ort = $_POST['ort'];
-		}
-		
-		if (isset($_POST['strasse']))
-		{
-			$strasse = $_POST['strasse'];
-		}
-		
-		if (isset($_POST['hausnummer']))
-		{
-			$hausnummer = $_POST['hausnummer'];
-		}
-		
-		if (isset($_POST['useremail']))
-		{
-			$mailcheck = $_POST['useremail'];
-			$mailcheck = $sql->call("SELECT EMail FROM tb_mitglied WHERE EMail = '$mailcheck'");
-			if($mailcheck == null)
-			{
-				$useremail = $_POST['useremail'];
-			}else{
-				$daten['fehlermail'] = true;
-			}
-		}
-		
-		if (isset($_POST['telefon']))
-		{
-			$telefon = $_POST['telefon'];
-		}
-		
-		
-		if (isset($_POST['rechtuser']))
-		{
-			$namerecht = $_POST['rechtuser'];
-			$nummerrecht = $sql->call("SELECT Recht_ID FROM tb_recht WHERE RechtName = '$namerecht'");
-			$rechtid = $nummerrecht['Recht_ID'];
-		}
-		
-		
-		//Passwörter vergleichen und verschlüsseln
-		if(isset($_POST['pas1']) && isset($_POST['pas2']))
-		{
-			$pastest = $_POST['pas1'];
-			if($_POST['pas1'] == $_POST['pas2'] && strlen($pastest) >= 6)
-			{
-				$passwort = md5($_POST['pas1']);
-			}else{
-				$daten["fehlerpas"] = true;
-			}
-				
-		}
-		
-		
-		if($vorname == null || $nachname == null || $useremail == null || $rechtid == null || $passwort == null)
-		{
-			//wenn nicht zum ersten mal bearbeitet wird, fehler weiterleiten
-			if(!isset($_POST['first']))
-			{
-				$daten["fehler"] = true;
+				$anzp = $_POST['anzp'];
 			}
 			
-			$daten["geschlecht"] = $geschlecht;
-			$daten["titel"] = $titel;
-			$daten["vorname"] = $vorname;
-			$daten["nachname"] = $nachname;
-			$daten["geburtstag"] = $geburtstag;
-			$daten["geburtsmonat"] = $geburtsmonat;
-			$daten["geburtsjahr"] = $geburtsjahr;
-			$daten["plz"] = $plz;
-			$daten["ort"] = $ort;
-			$daten["strasse"] = $strasse;
-			$daten["hausnummer"] = $hausnummer;
-			$daten["useremail"] = $useremail;
-			$daten["telefon"] = $telefon;
-			$daten["rechtuser"] = $namerecht;
-			$daten["gesperrt"] = $gesperrt;
+			//Anzahl Reservierungen
+			if (isset($_POST['anzr']))
+			{
+				$anzr = $_POST['anzr'];
+			}
 			
-		}else{
-			$sql->change(" INSERT INTO tb_mitglied(Geschlecht, Titel, Vorname, Nachname, Strasse, HNr, PLZ, Ort, 
-						Geburtsdatum, EMail, Telefon, Passwort, Gesperrt, fk_Recht_ID)
-						VALUES ('$geschlecht', '$titel', '$vorname', '$nachname', '$strasse', '$hausnummer', '$plz', 
-						'$ort', '$geburtsdatum', '$useremail', '$telefon', '$passwort', '$gesperrt', '$rechtid')");
+			//Tage Voraus
+			if (isset($_POST['tage']))
+			{
+				$tage = $_POST['tage'];
+			}
+		
+			//Reservierungen löschen
+			if (isset($_POST['resloeschen']))
+			{
+				$resloeschen = $_POST['resloeschen'];
+			}
+			
+			//Reservierungen verschieben
+			if (isset($_POST['resverschieben']))
+			{
+				$resverschieben = $_POST['resverschieben'];
+			}
+			
+			//Benutzer verwalten
+			if (isset($_POST['benverwalten']))
+			{
+				$benverwalten = $_POST['benverwalten'];
+			}
+			
+			//Rechte verteilen
+			if (isset($_POST['rechteverteilen']))
+			{
+				$rechteverteilen = $_POST['rechteverteilen'];
+			}
+			
+			//Plätze verwalten
+			if (isset($_POST['platzverwalten']))
+			{
+				$platzverwalten = $_POST['platzverwalten'];
+			}
+			
+			//Saison verwalten
+			if (isset($_POST['saisonfestlegen']))
+			{
+				$saisonfestlegen = $_POST['saisonfestlegen'];
+			}
+			
+			//Serien reservieren
+			if (isset($_POST['serienreservieren']))
+			{
+				$serienreservieren = $_POST['serienreservieren'];
+			}
+			
+			//Farben festlegen
+			if (isset($_POST['farbefestlegen']))
+			{
+				$farbefestlegen = $_POST['farbefestlegen'];
+			}
+		}
+		
+		
+		if($rechtname != null || $rechtname != "")
+		{
+			
+			$sql->change("INSERT INTO tb_recht(RechtName, AnzahlStunden, AnzahlPlaetze, AnzahlReservierungen, TageVoraus, ReservierungLoeschen, ReservierungVerschieben,
+						BenutzerVerwalten, RechteVerteilen, PlatzVerwalten, SaisonFestlegen, SerienReservieren, FarbeFestlegen)
+						VALUES ('$rechtname', '$anzh', '$anzp', '$anzr', '$tage', '$resloeschen', '$resverschieben', '$benverwalten', '$rechteverteilen', '$platzverwalten', 
+						'$saisonfestlegen', '$serienreservieren', '$farbefestlegen')");
 			
 			
 			$daten["angelegt"] = true;
@@ -200,7 +122,7 @@
 		
 		
 		//auf Template verweisen
-		$template = $twig->loadTemplate('benutzeranlegen.twig');
+		$template = $twig->loadTemplate('rechtanlegen.twig');
 		
 	//sonst auf anmeldeseite
 	}else{
