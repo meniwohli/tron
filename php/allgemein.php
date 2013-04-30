@@ -33,5 +33,11 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	$daten["benutzerrecht"] = $benutzerrecht;
 	$rechtrecht = $recht->getRechteVerteilen();
 	$daten["rechtrecht"] = $rechtrecht;
+	$platzrecht = $recht->getPlatzVerwalten();
+	$daten["platzrecht"] = $platzrecht;
+	$farbrecht = $recht->getFarbeFestlegen();
+	$daten["farbrecht"] = $farbrecht;
+	$allgemeinrecht = $recht->getSaisonFestlegen();
+	$daten["allgemeinrecht"] = $allgemeinrecht;
 }
 ?>
