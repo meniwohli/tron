@@ -2,8 +2,7 @@
 
         {% block body %}
 			{{ parent() }}
-			
-			{{ test }}
+
 				
 			<form method="post" action="../php/rechte.php">
 			
@@ -15,13 +14,14 @@
 					 <select name="rechtnamen" >
 					 	{% for key, value in rechtarray %}
 					 	
-					    	<option {% if recht == key %}selected="selected"{% endif %} value="{{ value }}">{{ key }}</option>
+					    	<option {% if gewaehltesrecht.rechtName == key %}selected="selected"{% endif %} value="{{ value }}">{{ key }}</option>
 					 		
 					 	{% endfor %}
 					 </select>
 					 
 				 {% else %}
 					 Recht: {{ gewaehltesrecht.rechtName }}
+					 <input type="hidden" name="{{ gewaehltesrecht.rechtName }}">
 				 {% endif %}
 				 
 				 </br>
@@ -53,6 +53,7 @@
 					
 				{% endif %}
 				</br>
+				</br>
 				
 				
 				{# Plaetze auswählen/anzeigen #}
@@ -78,9 +79,9 @@
 				{% else %}
 				
 					{{ gewaehltesrecht.anzahlPlaetze }}
-					</br>
 					
 				{% endif %}
+				</br>
 				</br>
 				
 				
@@ -107,9 +108,9 @@
 				{% else %}
 				
 					{{ gewaehltesrecht.anzahlReservierungen }}
-					</br>
 					
 				{% endif %}
+				</br>
 				</br>
 				
 				
@@ -136,12 +137,206 @@
 				{% else %}
 				
 					{{ gewaehltesrecht.tageVoraus }}
-					</br>
 					
 				{% endif %}
 				</br>
+				</br>
 				
 				
+				{# Können Reservierungen gelöscht werden? #}
+				
+				 Reservierungen L&ouml;schen: 
+				 {% if aendern == 1 %}
+		
+					 <select name="resloeschen" >
+					 
+					     <option {% if gewaehltesrecht.reservierungLoeschen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.reservierungLoeschen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.reservierungLoeschen == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.reservierungLoeschen == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				
+				{# Können Reservierungen verschoben werden? #}
+				
+				 Reservierungen verschieben: 
+				 {% if aendern == 1 %}
+		
+					 <select name="resverschieben" >
+					 
+					     <option {% if gewaehltesrecht.reservierungVerschieben == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.reservierungVerschieben == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.reservierungVerschieben == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.reservierungVerschieben == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				
+				{# Können Benutzer verwaltet werden? #}
+				
+				 Benutzer verwalten: 
+				 {% if aendern == 1 %}
+		
+					 <select name="benverwalten" >
+					 
+					     <option {% if gewaehltesrecht.benutzerVerwalten == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.benutzerVerwalten == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.benutzerVerwalten == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.benutzerVerwalten == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				
+				{# Können Benutzer Rechte verwalten? #}
+				
+				 Rechte verwalten: 
+				 {% if aendern == 1 %}
+		
+					 <select name="rechteverteilen" >
+					 
+					     <option {% if gewaehltesrecht.rechteVerteilen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.rechteVerteilen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.rechteVerteilen == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.rechteVerteilen == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				{# Können Benutzer Plätze verwalten? #}
+				
+				 Pl&auml;tze verwalten: 
+				 {% if aendern == 1 %}
+		
+					 <select name="platzverwalten" >
+					 
+					     <option {% if gewaehltesrecht.platzVerwalten == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.platzVerwalten == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.platzVerwalten == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.platzVerwalten == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				{# Kann Saison/Öffnungszeiten festgelegt werden? #}
+				
+				 Zeiten verwalten: 
+				 {% if aendern == 1 %}
+		
+					 <select name="saisonfestlegen" >
+					 
+					     <option {% if gewaehltesrecht.saisonFestlegen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.saisonFestlegen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.saisonFestlegen == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.saisonFestlegen == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				{# Können Serien reserviert werden? #}
+				
+				 Serien reservieren: 
+				 {% if aendern == 1 %}
+		
+					 <select name="serienreservieren" >
+					 
+					     <option {% if gewaehltesrecht.serienReservieren == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.serienReservieren == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.serienReservieren == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.serienReservieren == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
+				
+				{# Können Farben ausgewählt werden? #}
+				
+				 Design &auml;ndern: 
+				 {% if aendern == 1 %}
+		
+					 <select name="farbefestlegen" >
+					 
+					     <option {% if gewaehltesrecht.farbeFestlegen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+					     <option {% if gewaehltesrecht.farbeFestlegen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+					 
+					 </select>
+					 
+				{% else %}
+				
+					{% if gewaehltesrecht.farbeFestlegen == 0 %}
+						Nein
+					{% elseif gewaehltesrecht.farbeFestlegen == 1 %}
+						Ja
+					{% endif %}
+					
+				{% endif %}
+				</br>
+				</br>
 				
 				
 				{# Änderungen bestätigen Button #}	
@@ -174,6 +369,17 @@
 			{% endif %}	
 			
 			
+			{# Recht löschen Button #}
+			{% if aendern == 1 %}
+	    
+	   		    <form id= "loeschen" method="post" action="../php/rechtloeschen.php">
+	   		    	<input type="hidden" name="{{ gewaehltesrecht.recht_ID }}">
+					<input type="submit" value="Recht loeschen">
+				</form> 
+	
+			{% endif %}	
+			
+			
 			
 	
-		{% endblock %}
+	{% endblock %}

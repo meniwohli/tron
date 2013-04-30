@@ -11,6 +11,9 @@
 		$rechtarray = array();
 		$cache = $sql->arrayCall("SELECT Recht_ID, RechtName FROM tb_recht");
 		$gewaehltesrecht = $recht;
+		
+		
+		
 
 		
 		// hallo das ist ein test
@@ -22,6 +25,10 @@
 			
 			if(isset($_POST["rechtnamen"]) && $_POST["rechtnamen"] == $rid)
 			{
+				$gewaehltesrecht = new Recht($rid);
+			}elseif(isset($_POST["$rname"]))
+			{
+				//wenn rechtname bei ändern übergeben wird
 				$gewaehltesrecht = new Recht($rid);
 			}
 		}
@@ -76,7 +83,53 @@
 			}
 		}
 		
+		// Reservierungen löschen
+		if (isset($_POST['resloeschen']) && $gewaehltesrecht->getReservierungLoeschen() != $_POST['resloeschen'])
+		{
+			$gewaehltesrecht->setReservierungLoeschen($_POST["resloeschen"]);
+		}
 		
+		// Reservierungen löschen
+		if (isset($_POST['resverschieben']) && $gewaehltesrecht->getReservierungVerschieben() != $_POST['resverschieben'])
+		{
+			$gewaehltesrecht->setReservierungVerschieben($_POST["resverschieben"]);
+		}
+		
+		// Benutzer verwalten
+		if (isset($_POST['benverwalten']) && $gewaehltesrecht->getBenutzerVerwalten() != $_POST['benverwalten'])
+		{
+			$gewaehltesrecht->setBenutzerVerwalten($_POST["benverwalten"]);
+		}
+		
+		// Benutzer verwalten
+		if (isset($_POST['rechteverteilen']) && $gewaehltesrecht->getRechteVerteilen() != $_POST['rechteverteilen'])
+		{
+			$gewaehltesrecht->setRechteVerteilen($_POST["rechteverteilen"]);
+		}
+		
+		// Plätze verwalten
+		if (isset($_POST['platzverwalten']) && $gewaehltesrecht->getPlatzVerwalten() != $_POST['platzverwalten'])
+		{
+			$gewaehltesrecht->setPlatzVerwalten($_POST["platzverwalten"]);
+		}
+		
+		// Zeiten verwalten
+		if (isset($_POST['saisonfestlegen']) && $gewaehltesrecht->getSaisonFestlegen() != $_POST['saisonfestlegen'])
+		{
+			$gewaehltesrecht->setSaisonFestlegen($_POST["saisonfestlegen"]);
+		}
+		
+		// Serien reservieren
+		if (isset($_POST['serienreservieren']) && $gewaehltesrecht->getSerienReservieren() != $_POST['serienreservieren'])
+		{
+			$gewaehltesrecht->setSerienReservieren($_POST["serienreservieren"]);
+		}
+		
+		// Design bestimmen
+		if (isset($_POST['farbefestlegen']) && $gewaehltesrecht->getFarbeFestlegen() != $_POST['farbefestlegen'])
+		{
+			$gewaehltesrecht->setFarbeFestlegen($_POST["farbefestlegen"]);
+		}
 		
 		//Daten übergeben
 		// Wenn ändern mitgegeben wird, leite weiter auf Rechte ändern

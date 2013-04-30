@@ -36,12 +36,6 @@
 		$daten["uid"] = $uid;
 		
 		
-		if (isset($_POST["bestaetigt"]))
-		{
-			
-		}
-		
-		
 		
 		
 		

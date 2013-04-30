@@ -1,0 +1,28 @@
+{% extends "layout.twig" %}
+
+	{% block body %}
+		{{ parent() }}
+		
+		{# Aufforderung löschen bestätigen #}
+		{% if rechtrecht == 1 %}
+		
+			{% if geloescht %}
+				{{ rechtname }}-Recht wurde aus der Datenbank gel&ouml;scht.
+			{% else %}
+				<div>
+					Wenn Sie mit l&ouml;schen best&auml;tigen, wird das Recht ({{ rechtname }}) unwiederruflich gel&ouml;scht!
+					</br>
+					Sind Sie sicher?
+					</br>
+					</br>
+					<form method="post" action="../php/rechtloeschen.php">
+	   		    		<input type="hidden" name="{{ rid }}">
+	   		    		<input type="hidden" name="bestaetigt">
+						<input type="submit" value="Recht l&ouml;schen">
+					</form>
+				</div>
+			{% endif %}
+		
+		{% endif %}
+		
+	{% endblock %}
