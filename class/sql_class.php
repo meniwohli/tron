@@ -12,21 +12,26 @@ class Sql
 	*/
 	public function logIn()
 	{
+		error_reporting(0);
 		try
 		{
 			$this->mysqli = new mysqli("localhost", "root", "", "tennisdb");
 			
+			
+		
 			if ($this->mysqli->connect_error != null || !$this->mysqli->set_charset("utf8"))
 			{
 				throw new OwnException();
 			}
+		
+			
 		}
-
 		catch(OwnException $e)
 		{
 			$e->loginMessage($this->mysqli);
 		}
 	}
+	
 	
 	/*
 		Überprüft, ob User mit Passwort überein stimmt
