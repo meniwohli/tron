@@ -5,6 +5,8 @@
 
 	$result = array();
 	$uebergabe = array();
+	$members = array();
+	$plaetze = array();
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
@@ -13,14 +15,8 @@
 		//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
 		if($benutzerrecht == 1)
 		{
-			try{
 			$result = $reservierungen->getAllRes();
-			$mitglieder = $reservierungen->getMitglieddMail();
-			}
-			catch(Exception $e)
-			{
-				echo "test";
-			}
+			$mitglieder = $reservierungen->getMitgliedMail();
 		}
 		//ruft nur Reservierungen des aktuellen Benutzers auf
 		else
@@ -34,10 +30,15 @@
 		
 		foreach($result as $reserve)
 		{
+			if($reserve->getFk_Platz_ID() != null)
+			{
 			$platz = new Platz($reserve->getFk_Platz_ID());
-			$uebergabe[] = $reserve;
 			$plaetze[] = $platz;
+			}
+			$uebergabe[] = $reserve;
+			
 		}
+		
 		
 		if($benutzerrecht == 1)
 		{
