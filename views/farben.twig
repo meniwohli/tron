@@ -57,6 +57,33 @@
 			</select>
 			</br>
 			</br>
+			<input type="submit" value="Speichern">
+			</br>
+			</br>
+		</form>
+		
+		{# Farben löschen #}
+		<form method="post" action="../php/farben.php">
+			Farbe l&ouml;schen:
+			<select name="loeschen" >
+				{% for key, value in farbarray %}
+				<option style="background-color:#{{ key }}">{{ value }}</option>
+				{% endfor %}
+				
+				<input type="submit" value="L&ouml;schen">
+			</select>
+			</br>
+			</br>
+		</form>
+		
+		{# Farben hinzufügen #}
+		<form method="post" action="../php/farben.php">
+			Farbe hinzuf&uuml;gen:
+				<input type="text" name="farbeneu" />
+				<input type="submit" value="Einf&uuml;gen">
+			</select>
+			</br>
+			</br>
 		</form>
 		
 		
