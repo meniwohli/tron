@@ -14,21 +14,6 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	$sql = new Sql;
 	
 	
-	
-	$daten["lala"] = "lala";
-	try
-	{
-		if(!isset($_POST["passwort"]))
-		{
-			throw new OwnException();
-		}
-	}
-	catch(OwnException $e)
-	{
-		$e->emptyFill();
-		
-	}
-	
 	//daten übergeben
 	$user = htmlspecialchars(strtolower($_POST["email"]));
 	$passwd = htmlspecialchars(md5($_POST["passwort"]));
@@ -41,12 +26,16 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	
 	if($mitglied == 1)
 	{
-		$_SESSION["gesperrt"] = true;
+		$daten["sperrfehler"] = true;
 	}
 	
-	if($login == 0)
+	if(empty($_POST["email"]))
 	{
-		$_SESSION["pasfalsch"] = true;
+		$daten["keinemail"] = true;
+		
+	}elseif($login == 0)
+	{
+		$daten["pasfalsch"] = true;
 	}
 	
 	if($login == 1 && $mitglied != 1)
@@ -63,12 +52,6 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 		
 		$template = $twig->loadTemplate('anmelde.twig');
 	}
-	
-}elseif(isset($_SESSION["gesperrt"]) && $_SESSION["gesperrt"] == true)
-{
-	$daten["sperrfehler"] = 1;
-	$template = $twig->loadTemplate('anmelde.twig');
-	
 	
 }else{
 	

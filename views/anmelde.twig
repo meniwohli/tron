@@ -10,13 +10,20 @@
 					bitte wenden Sie sich an Ihren Administrator. </br>
 				</div>
 			{% endif %}
+			
 			{% if pasfalsch %}
 				<div id="fehler">
 					Username oder Passwort falsch! </br>
 				</div>
 			{% endif %}
+			
+			{% if keinemail %}
+				<div class="ym-error">
+					Bitte Daten vollst&auml;ndig ausf&uuml;llen! </br>
+				</div>
+			{% endif %}
 			</br>
-			{{ lala }}
+			
 			
 			<div>
 				Bitte geben Sie Ihre Login-Daten ein:

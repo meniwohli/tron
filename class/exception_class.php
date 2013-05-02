@@ -18,7 +18,7 @@ class OwnException extends Exception
 			}
 	}
 	
-	public function emptyFill ()
+	public function emptyFill()
 	{
 		echo "Sie haben nicht alle benötigten Daten eingegeben!";
 	}
