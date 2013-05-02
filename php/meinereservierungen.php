@@ -13,8 +13,14 @@
 		//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
 		if($benutzerrecht == 1)
 		{
+			try{
 			$result = $reservierungen->getAllRes();
 			$mitglieder = $reservierungen->getMitgliedMail();
+			}
+			catch(Exception $e)
+			{
+				echo "test";
+			}
 		}
 		//ruft nur Reservierungen des aktuellen Benutzers auf
 		else
