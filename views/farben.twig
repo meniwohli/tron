@@ -12,51 +12,93 @@
 		Sie k&ouml;nnen folgende Farben ausw&auml;hlen:
 		</br>
 		
+		
 		<form method="post" action="../php/farben.php">
 			Platz frei:
 			<select name="frei" >
 				{% for key, value in farbarray %}
-				<option style="background-color:#{{ key }}">{{ value }}</option>
+				
+					<option 
+						{% for key1, value1 in farbenaktuell %}
+							{% if key1 == "frei" %} selected="selected" {% endif %}
+						{% endfor %} 
+						style="background-color:#{{ key }}">{{ value }}
+					</option>
+				
 				{% endfor %}
 			</select>
 			</br>
 			</br>
+			
 			
 			Platz besetzt:
 			<select name="besetzt" >
 				{% for key, value in farbarray %}
-				<option style="background-color:#{{ key }}">{{ value }}</option>
+						
+						<option 
+							{% for key1, value1 in farbenaktuell %}
+								{% if key1 == "besetzt" %} selected="selected" {% endif %}
+							{% endfor %} 
+							style="background-color:#{{ key }}">{{ value }}
+						</option>
+						
 				{% endfor %}
 			</select>
 			</br>
 			</br>
+			
 			
 			Platz gesperrt/geschlossen:
 			<select name="zu" >
 				{% for key, value in farbarray %}
-				<option style="background-color:#{{ key }}">{{ value }}</option>
+				
+					<option 
+						{% for key1, value1 in farbenaktuell %}
+							{% if key1 == "zu" %} selected="selected" {% endif %}
+						{% endfor %} 
+						style="background-color:#{{ key }}">{{ value }}
+					</option>
+					
 				{% endfor %}
 			</select>
 			</br>
 			</br>
+			
 			
 			Serien:
-			<select name="geschlossen" >
+			<select name="serie" >
 				{% for key, value in farbarray %}
-				<option style="background-color:#{{ key }}">{{ value }}</option>
+				
+					<option 
+						{% for key1, value1 in farbenaktuell %}
+							{% if key1 == "serie" %} selected="selected" {% endif %}
+						{% endfor %} 
+						style="background-color:#{{ key }}">{{ value }}
+					</option>
+					
 				{% endfor %}
 			</select>
 			</br>
 			</br>
 			
+			
 			Turnier:
-			<select name="geschlossen" >
+			<select name="turnier" >
 				{% for key, value in farbarray %}
-				<option style="background-color:#{{ key }}">{{ value }}</option>
+						
+					<option 
+						{% for key1, value1 in farbenaktuell %}
+							{% if key1 == "zu" %} selected="selected" {% endif %}
+						{% endfor %} 
+						style="background-color:#{{ key }}">{{ value }}
+					</option>
+				
 				{% endfor %}
 			</select>
 			</br>
 			</br>
+			
+			
 			<input type="submit" value="Speichern">
 			</br>
 			</br>
