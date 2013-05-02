@@ -5,6 +5,8 @@
 		
 		<div>Farben</div>
 		
+		
+		{# Farben auswählen #}
 		</br>
 		</br>
 		Sie k&ouml;nnen folgende Farben ausw&auml;hlen:
@@ -17,10 +19,44 @@
 				<option style="background-color:#{{ key }}">{{ value }}</option>
 				{% endfor %}
 			</select>
-			
 			</br>
 			</br>
 			
+			Platz besetzt:
+			<select name="besetzt" >
+				{% for key, value in farbarray %}
+				<option style="background-color:#{{ key }}">{{ value }}</option>
+				{% endfor %}
+			</select>
+			</br>
+			</br>
+			
+			Platz gesperrt/geschlossen:
+			<select name="zu" >
+				{% for key, value in farbarray %}
+				<option style="background-color:#{{ key }}">{{ value }}</option>
+				{% endfor %}
+			</select>
+			</br>
+			</br>
+			
+			Serien:
+			<select name="geschlossen" >
+				{% for key, value in farbarray %}
+				<option style="background-color:#{{ key }}">{{ value }}</option>
+				{% endfor %}
+			</select>
+			</br>
+			</br>
+			
+			Turnier:
+			<select name="geschlossen" >
+				{% for key, value in farbarray %}
+				<option style="background-color:#{{ key }}">{{ value }}</option>
+				{% endfor %}
+			</select>
+			</br>
+			</br>
 		</form>
 		
 		
