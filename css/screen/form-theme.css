@@ -79,7 +79,7 @@
 	.ym-form .ym-form div.ym-fbox-check:focus + label {
 		color: #000;
 	}
-
+	
 	.ym-form div.ym-fbox-text,
 	.ym-form div.ym-fbox-select,
 	.ym-form div.ym-fbox-check,
@@ -158,7 +158,7 @@
 	.ym-form textarea:invalid {
 		background-color: #fdd;
 	}
-
+	.fehler {color:red}
 	.ym-form .ym-error label {
 		color: #800;
 		font-weight: normal;

@@ -20,17 +20,17 @@
 		{% elseif benutzerrecht == 1 %}
     
    		    {% if fehler %}
-	   		    <div id='fehler'>
+	   		    <div class='fehler'>
 	   		    	{% if fehlermail %}
-	   		    		<div id="fehler">E-Mail Adresse existiert bereits!</div> </br>
+	   		    		<div class="fehler">E-Mail Adresse existiert bereits!</div> </br>
 	   		    	{% endif %}
 	   		    	
 	   		    	{% if fehlerpas %}
-	   		    		<div id="fehler">Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</div></br>
+	   		    		<div class="fehler">Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</div></br>
 	   		    	{% endif %}
 	   		    	
 	   		    	{% if fehleruser %}
-	   		    		<div id="fehler">Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</div></br>
+	   		    		<div class="fehler">Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</div></br>
 	   		    	{% endif %}
 	   		    		
 	   		    	</br>

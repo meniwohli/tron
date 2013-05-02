@@ -5,23 +5,23 @@
 			 
 			
 			{% if sperrfehler == 1 %}
-				<div id="fehler">
+				<div class="fehler">
 					Der User, mit dem Sie sich anmelden m&ouml;chten, ist gesperrt,</br>
 					bitte wenden Sie sich an Ihren Administrator. </br>
 				</div>
 			{% endif %}
 			
 			{% if pasfalsch %}
-				<div id="fehler">
+				<div class="fehler">
 					Username oder Passwort falsch! </br>
 				</div>
 			{% endif %}
 			
 			{% if keinemail %}
 				<div class="ym-form">
-				<div class="ym-error">
-					Bitte Daten vollst&auml;ndig ausf&uuml;llen! </br>
-				</div>
+					<div class="fehler">
+						Bitte Daten vollst&auml;ndig ausf&uuml;llen! </br>
+					</div>
 				</div>
 			{% endif %}
 			</br>
