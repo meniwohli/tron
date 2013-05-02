@@ -9,7 +9,7 @@
 
 @import url(../yaml/core/base.css);
 @import url(./screen/screen.css);
-@import url("../css/screen/form-theme.css");
+@import url(./screen/form-theme.css);
 @import url(./screen/hlist.css);
 @import url(./screen/vlist.css);
 @import url(./screen/typography.css);
