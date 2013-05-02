@@ -5,6 +5,8 @@
  *  @framework     YAML v4.02
  *  @file          form-theme.css
  */
+ 
+
 
 @media screen, projection {
 
@@ -18,7 +20,7 @@
 		box-sizing: border-box;
 		width: 60%;
 	}
-
+	
 	.ym-columnar label {
 		-moz-box-sizing: border-box;
 		-ms-box-sizing: border-box;

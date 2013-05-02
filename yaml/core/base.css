@@ -5,7 +5,7 @@
  *  @framework     YAML v4.02
  *  @file          base.css
  */
-
+.halloo {color:red};
 @media all {
 
 	* {
