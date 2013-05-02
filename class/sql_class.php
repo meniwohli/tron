@@ -12,10 +12,10 @@ class Sql
 	*/
 	public function logIn()
 	{
-		error_reporting(0);
+		
 		try
 		{
-			$this->mysqli = new mysqli("localhost", "root", "", "tennisdb");
+			$this->mysqli = @new mysqli("localhost", "root", "", "tennisdb");
 			
 			
 		
