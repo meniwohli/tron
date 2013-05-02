@@ -5,41 +5,14 @@
 		 <meta charset="UTF-8" />
          <title>{% block title %}TRON{% endblock %}</title>
          
-         {# Einbindung Jquery #}
-         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-         <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+         {#Scripte und importe ausgelagert#}
+		 {% block script %}
+         	{% include 'script.twig' %}
+		 {% endblock %}
          
-         {# Einbindung YAML/ CSS #}
-         <link rel="stylesheet" href="../css/central.css" type="text/css"/>
-    	
-    	<script>
-
-    		// Einstellungen Minikallender
-		 	 $(document).ready(function() {
-		    	$( "#datepicker" ).datepicker({
-			    		dateFormat : "dd-mm-yy",
-			    		firstDay: 1,
-			    		maxDate: "",
-			    		minDate: "-0d",
-			    		dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
-			    		monthNamesShort: [ "Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez" ],
-			    		monthNames: [ "Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
-			    		showAnim: "slideDown",
-			    		duration: "slow",
-			    		hideIfNoPrevNext: true,
-			    		buttonImageOnly: true,
-			    		
-			    	}).show();
-		 	});
-			
-		 	
-			// Indexeinstellungen
-		 	$(function() {
-		 	    $( ".menu" ).menu();
-		 	  });
-
-		 </script>
+         <style>
+         	rot {color:red}
+         </style>
     	
     </head>
     <body>
