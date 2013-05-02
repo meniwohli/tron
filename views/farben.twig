@@ -3,15 +3,24 @@
 	{% block body %}
 		{{ parent() }}
 		
-		Farben
+		<div>Farben</div>
+		
 		</br>
+		</br>
+		Sie k&ouml;nnen folgende Farben ausw&auml;hlen:
 		</br>
 		
-		<form method="post" action="../php/benutzeranlegen.php">
-			<select name="geschlecht" >
-				<option id="rot">Herr</option>
-				<option >Frau</option>
+		<form method="post" action="../php/farben.php">
+			Platz frei:
+			<select name="frei" >
+				{% for key, value in farbarray %}
+				<option style="background-color:#{{ key }}">{{ value }}</option>
+				{% endfor %}
 			</select>
+			
+			</br>
+			</br>
+			
 		</form>
 		
 		
