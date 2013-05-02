@@ -15,7 +15,7 @@
 		{
 			try{
 			$result = $reservierungen->getAllRes();
-			$mitglieder = $reservierungen->getMitgliedMail();
+			$mitglieder = $reservierungen->getMitglieddMail();
 			}
 			catch(Exception $e)
 			{
