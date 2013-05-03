@@ -11,6 +11,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	require_once '../class/platz_class.php';
 	require_once '../class/res_verarbeitung_class.php';
 	require_once "../class/exception_class.php";
+	require_once '../class/farbzuweisung_class.php';
 	
 	//Klassen erzeugen
 	$sql = new Sql;

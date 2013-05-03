@@ -5,7 +5,7 @@
 		
 		<div>Farben</div>
 		
-		
+		{{ test.fk_Farbe_ID }}
 		{# Farben auswählen #}
 		</br>
 		</br>
@@ -20,9 +20,9 @@
 				
 					<option 
 						{% for key1, value1 in farbenaktuell %}
-							{% if key1 == "frei" %} selected="selected" {% endif %}
+							{% if key1 == "frei" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}">{{ value }}
+						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
 					</option>
 				
 				{% endfor %}
@@ -37,9 +37,9 @@
 						
 						<option 
 							{% for key1, value1 in farbenaktuell %}
-								{% if key1 == "besetzt" %} selected="selected" {% endif %}
+								{% if key1 == "besetzt" and value1 == key %} selected="selected" {% endif %}
 							{% endfor %} 
-							style="background-color:#{{ key }}">{{ value }}
+							style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
 						</option>
 						
 				{% endfor %}
@@ -54,9 +54,9 @@
 				
 					<option 
 						{% for key1, value1 in farbenaktuell %}
-							{% if key1 == "zu" %} selected="selected" {% endif %}
+							{% if key1 == "zu" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}">{{ value }}
+						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
 					</option>
 					
 				{% endfor %}
@@ -71,9 +71,9 @@
 				
 					<option 
 						{% for key1, value1 in farbenaktuell %}
-							{% if key1 == "serie" %} selected="selected" {% endif %}
+							{% if key1 == "serie" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}">{{ value }}
+						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
 					</option>
 					
 				{% endfor %}
@@ -88,9 +88,9 @@
 						
 					<option 
 						{% for key1, value1 in farbenaktuell %}
-							{% if key1 == "zu" %} selected="selected" {% endif %}
+							{% if key1 == "turnier" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}">{{ value }}
+						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
 					</option>
 				
 				{% endfor %}

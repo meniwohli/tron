@@ -20,8 +20,8 @@ class Farben
 		$call = "Select * From tb_farben Where Farbe_ID = '$id'";
 		$ergebnis = $this->sql->call($call);
 		
-		$this->farbName = $call['FarbName'];
-		$this->farbCode = $call['FarbCode'];
+		$this->farbName = $ergebnis['FarbName'];
+		$this->farbCode = $ergebnis['FarbCode'];
 	}
 	
 	

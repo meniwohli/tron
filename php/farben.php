@@ -15,16 +15,33 @@
 			$farben[$x['FarbCode']] = $x['FarbName'];
 		}
 		
+		
+		
+		
 		//farbzuweisung auslesen und übergeben
-		$speicher = $sql->arrayCall("SELECT f.FarbCode, f.FarbName, fz.Reservierungsart FROM tb_farben as f, 
+		$speicher = $sql->arrayCall("SELECT f.FarbCode, f.FarbName, fz.Reservierungsart, f.Farbe_ID FROM tb_farben as f, 
 									tb_farbzuweisung as fz WHERE f.Farbe_ID = fz.fk_Farbe_ID");
 		//array durchlaufen und einzelne werte zuweisen
 		$farbenaktuell;
+		$test = false;
 		foreach($speicher as $x)
 		{
 			if($x["Reservierungsart"] == "frei")
 			{
 				$farbenaktuell[$x["Reservierungsart"]] = $x["FarbCode"];
+				
+				//neue Farben auslesen/zuweisen
+				if(isset($_POST["frei"]) && $_POST["frei"] != $x["FarbCode"])
+				{
+					$farbzuweisung = new Farbzuweisung("frei");
+					
+					$farbcodeneu = $_POST["frei"];
+					$test = $farbzuweisung;
+					//$idneu = $sql->call("SELECT Farbe_ID FROM tb_farben WHERE FarbCode = $farbcodeneu");
+					
+					//$farbzuweisung->setFk_Farbe_ID(7);
+					
+				}
 			}
 			
 			if($x["Reservierungsart"] == "besetzt")
@@ -52,6 +69,7 @@
 		//übergabe
 		$daten["farbarray"] = $farben;
 		$daten["farbenaktuell"] = $farbenaktuell;
+		$daten["test"] = $test;
 		
 		
 		//auf Template verweisen
