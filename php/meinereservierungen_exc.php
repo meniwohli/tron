@@ -7,24 +7,34 @@
 	$uebergabe = array();
 	$members = array();
 	$plaetze = array();
-	$result;
-	$mitglieder;
-	
+
+	try {
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
-		
 		
 		//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
 		if($benutzerrecht == 1)
 		{
-			$result = $reservierungen->getAllRes();
-			$mitglieder = $reservierungen->getMitgliedMail();
+			if(!method_exists($reservierungen, 'getAdllRes') or !method_exists($reservierungen, 'getMitgliedMail'))
+			{
+				throw new BadMethodCallException('Methode existiert nicht');
+			}
+			else {
+				$result = $reservierungen->getAllRes();
+				$mitglieder = $reservierungen->getMitgliedMail();
+			}
 		}
 		//ruft nur Reservierungen des aktuellen Benutzers auf
 		else
 		{
-			$benID = $mitglied->getID();
-			$result = $reservierungen->getResID($benID);
+			if(!method_exists($mitglied, 'getID') or !method_exists($reservierungen, 'getResID'))
+			{
+				throw new BadMethodCallException('Methode existiert nicht');
+			}
+			else {
+				$benID = $mitglied->getID();
+				$result = $reservierungen->getResID($benID);
+			}
 		}
 		
 		//Variable für fortlaufende Reservierungs-Nummer bei der Ausgabe
@@ -72,10 +82,16 @@
 	}else{
 
 		$template = $twig->loadTemplate('anmelde.twig');
+
 		
 	}
 		
 	include 'includedown.php';
+	}
+	catch (Exception $e)
+	{
+		echo $e->getMessage();
+	}
 	
 
 ?>
