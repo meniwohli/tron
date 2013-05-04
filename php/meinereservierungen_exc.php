@@ -9,88 +9,122 @@
 	$plaetze = array();
 
 	try {
-	//Wenn eingeloggt, weiter..
-	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
-		
-		//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
-		if($benutzerrecht == 1)
-		{
-			if(!method_exists($reservierungen, 'getAdllRes') or !method_exists($reservierungen, 'getMitgliedMail'))
+		//Wenn eingeloggt, weiter..
+		if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
+			
+			//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
+			if($benutzerrecht == 1)
 			{
-				throw new BadMethodCallException('Methode existiert nicht');
+				if(!method_exists($reservierungen, 'getAllRes') or !method_exists($reservierungen, 'getMitgliedMail'))
+				{
+					throw new BadMethodCallException('Methode im Administratorbereich existiert nicht');
+				}
+				else {
+					$result = $reservierungen->getAllRes();
+					$mitglieder = $reservierungen->getMitgliedMail();
+				}
+			}
+			//ruft nur Reservierungen des aktuellen Benutzers auf
+			else
+			{
+				if(!method_exists($mitglied, 'getID') or !method_exists($reservierungen, 'getResID'))
+				{
+					throw new BadMethodCallException('Methode im Benutzerbereich existiert nicht');
+				}
+				else {
+					$benID = $mitglied->getID();
+					$result = $reservierungen->getResID($benID);
+				}
+			}
+			
+			//Variable für fortlaufende Reservierungs-Nummer bei der Ausgabe
+			$count = 1;
+			
+			foreach($result as $reserve)
+			{
+				if(!method_exists($reserve, 'getFk_Platz_ID'))
+				{
+					throw new BadMethodCallException('Methode im Aufrufbereich existiert nicht');
+				}
+				else {
+					if($reserve->getFk_Platz_ID() != null)
+					{
+					$platz = new Platz($reserve->getFk_Platz_ID());
+					$plaetze[] = $platz;
+					}
+					$uebergabe[] = $reserve;
+				}
+			}
+			
+			
+			if($benutzerrecht == 1)
+			{
+				foreach($mitglieder as $m)
+				{
+					$members[] = $m;
+					
+					/*if($m->getID() == $reserve->getFk_Mitglied_ID())
+					{
+						$members[] = $m->getVorname() . " " . $m->getNachname();
+					}*/
+				}
+			}
+			
+			
+			$daten["reservierungen"]=$uebergabe;
+			$daten["plaetze"]=$plaetze;
+			$daten["mitglieder"]=$members;
+			
+			
+			
+			
+			
+			
+			//auf Template verweisen
+			$filename = 'meinereservierungen.twig';
+			if (!file_exists($filename)) //FEHLER!!!
+			{
+				throw new FileException($filename);
 			}
 			else {
-				$result = $reservierungen->getAllRes();
-				$mitglieder = $reservierungen->getMitgliedMail();
+				$template = $twig->loadTemplate($filename);
 			}
-		}
-		//ruft nur Reservierungen des aktuellen Benutzers auf
-		else
-		{
-			if(!method_exists($mitglied, 'getID') or !method_exists($reservierungen, 'getResID'))
+			//
+			
+		//sonst auf anmeldeseite
+		}else{
+			$filename = 'anmelde.twig';
+			if (!file_exists($filename))
 			{
-				throw new BadMethodCallException('Methode existiert nicht');
+				throw new FileException($filename);
 			}
 			else {
-				$benID = $mitglied->getID();
-				$result = $reservierungen->getResID($benID);
+				$template = $twig->loadTemplate('$filename');
 			}
-		}
-		
-		//Variable für fortlaufende Reservierungs-Nummer bei der Ausgabe
-		$count = 1;
-		
-		foreach($result as $reserve)
-		{
-			if($reserve->getFk_Platz_ID() != null)
-			{
-			$platz = new Platz($reserve->getFk_Platz_ID());
-			$plaetze[] = $platz;
-			}
-			$uebergabe[] = $reserve;
+	
 			
 		}
-		
-		
-		if($benutzerrecht == 1)
+		$filename = 'includedown.php';
+		if (!file_exists($filename))
 		{
-			foreach($mitglieder as $m)
-			{
-				$members[] = $m;
-				
-				/*if($m->getID() == $reserve->getFk_Mitglied_ID())
-				{
-					$members[] = $m->getVorname() . " " . $m->getNachname();
-				}*/
-			}
+			throw new FileException($filename);
 		}
-		
-		
-		$daten["reservierungen"]=$uebergabe;
-		$daten["plaetze"]=$plaetze;
-		$daten["mitglieder"]=$members;
-		
-		
-		
-		
-		
-		
-		//auf Template verweisen
-		$template = $twig->loadTemplate('meinereservierungen.twig');
-		
-	//sonst auf anmeldeseite
-	}else{
-
-		$template = $twig->loadTemplate('anmelde.twig');
-
-		
+		else {	
+			include $filename;
+		}
+	
 	}
-		
-	include 'includedown.php';
+	catch (BadMethodCallException $e)
+	{
+		echo $e->getMessage();
+	}
+	catch (FileException $e)
+	{
+		$e->toString();
 	}
 	catch (Exception $e)
 	{
-		echo $e->getMessage();
+		echo "Fehler bei der Ausführung der Datei";
 	}
 	
 
