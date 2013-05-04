@@ -7,6 +7,8 @@
 	$uebergabe = array();
 	$members = array();
 	$plaetze = array();
+	$result;
+	$mitglieder;
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
