@@ -26,11 +26,36 @@
 			    		
 			    	}).show();
 		 	});
+
+			//slideToggle Funktion für Farben-Infofeld
+			$(document).ready(function() {
+				$( "#info" ).click(function() {
+					$( "#infofeld" ).slideToggle( "slow" );
+					});
+				});
 			
-		 	
+			 	
 			// Indexeinstellungen
 		 	$(function() {
 		 	    $( ".menu" ).menu();
 		 	  });
 
 		 </script>
+		 
+		{# Style für Infofeld in Farben #}
+		 <style type="text/css">
+		 	#info, #infofeld {
+		 		width:400px;
+		 		background-color:yellow;
+		 	}
+		 	
+		 	#info {
+		 		height:20px;
+		 		cursor:pointer;
+		 		font-weight:bold;
+		 	}
+		 	
+			#infofeld {
+				display:none;
+			}
+		 </style>

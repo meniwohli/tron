@@ -5,7 +5,7 @@
 		
 		<div>Farben</div>
 		
-		{{ test.fk_Farbe_ID }}
+		{{ test }}
 		{# Farben auswählen #}
 		</br>
 		</br>
@@ -17,16 +17,19 @@
 			Platz frei:
 			<select name="frei" >
 				{% for key, value in farbarray %}
-				
+					
 					<option 
 						{% for key1, value1 in farbenaktuell %}
 							{% if key1 == "frei" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
+						style="background-color:{{ key }}" value="{{ key }}">{{ value }}
 					</option>
-				
+					
 				{% endfor %}
 			</select>
+			{% for key, value in farbenaktuell %}
+				{% if key == "frei" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
+			{% endfor %} 
 			</br>
 			</br>
 			
@@ -39,11 +42,14 @@
 							{% for key1, value1 in farbenaktuell %}
 								{% if key1 == "besetzt" and value1 == key %} selected="selected" {% endif %}
 							{% endfor %} 
-							style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
+							style="background-color:{{ key }}" value="{{ key }}">{{ value }}
 						</option>
 						
 				{% endfor %}
 			</select>
+			{% for key, value in farbenaktuell %}
+				{% if key == "besetzt" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
+			{% endfor %} 
 			</br>
 			</br>
 			
@@ -56,11 +62,14 @@
 						{% for key1, value1 in farbenaktuell %}
 							{% if key1 == "zu" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
+						style="background-color:{{ key }}" value="{{ key }}">{{ value }}
 					</option>
 					
 				{% endfor %}
 			</select>
+			{% for key, value in farbenaktuell %}
+				{% if key == "zu" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
+			{% endfor %} 
 			</br>
 			</br>
 			
@@ -68,16 +77,19 @@
 			Serien:
 			<select name="serie" >
 				{% for key, value in farbarray %}
-				
+						
 					<option 
 						{% for key1, value1 in farbenaktuell %}
 							{% if key1 == "serie" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
+						style="background-color:{{ key }}" value="{{ key }}">{{ value }}
 					</option>
-					
+				
 				{% endfor %}
 			</select>
+			{% for key, value in farbenaktuell %}
+				{% if key == "serie" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
+			{% endfor %} 
 			</br>
 			</br>
 			
@@ -90,11 +102,14 @@
 						{% for key1, value1 in farbenaktuell %}
 							{% if key1 == "turnier" and value1 == key %} selected="selected" {% endif %}
 						{% endfor %} 
-						style="background-color:#{{ key }}" value="{{ key }}">{{ value }}
+						style="background-color:{{ key }}" value="{{ key }}">{{ value }}
 					</option>
 				
 				{% endfor %}
 			</select>
+			{% for key, value in farbenaktuell %}
+				{% if key == "turnier" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
+			{% endfor %} 
 			</br>
 			</br>
 			
@@ -105,11 +120,14 @@
 		</form>
 		
 		{# Farben löschen #}
+		{% if farbegeloescht %}
+			<div class="">Die Farbe wurde gel&ouml;scht</div>
+		{% endif %}
 		<form method="post" action="../php/farben.php">
 			Farbe l&ouml;schen:
 			<select name="loeschen" >
 				{% for key, value in farbarray %}
-				<option style="background-color:#{{ key }}">{{ value }}</option>
+				<option style="background-color:{{ key }}" value="{{ key }}">{{ value }}</option>
 				{% endfor %}
 				
 				<input type="submit" value="L&ouml;schen">
@@ -118,12 +136,46 @@
 			</br>
 		</form>
 		
+		
 		{# Farben hinzufügen #}
+		
+		{# Fehler/Infos #}
+		{% if fehlercode %}
+			<div class="fehler">Der von Ihnen eingegebene Code ist kein g&uuml;ltiger Farbcode!</div>
+		{% endif %}
+			
+		{% if fehlerlaenge %}
+			<div class="fehler">Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!</div>
+		{% endif %}
+		
+		{% if fehlereingabe %}
+			<div class="fehler">Bitte f&uuml;llen Sie beide Felder!</div>
+		{% endif %}
+		
+		{% if farbeaufgenommen %}
+			<div class="">Die Farbe wurde ins System aufgenommen.</div>
+		{% endif %}
+		
 		<form method="post" action="../php/farben.php">
 			Farbe hinzuf&uuml;gen:
-				<input type="text" name="farbeneu" />
-				<input type="submit" value="Einf&uuml;gen">
-			</select>
+			
+			<div id="info">Info</div>
+			<div id="infofeld">
+				Der Farbcode besteht aus einer Raute (#) und vier Hexadezimalwerten. (z.B. #0099FF)
+				</br>
+				Hexadezimalwerte k&ouml;nnen Zahlen von 0-9 oder Buchstaben von A-F enthalten.
+				</br>
+				Die sechs Hexadezimalstellen setzen sich aus RGB (rot gr&uuml;n blau) zusammen, womit man alle Farben mischen kann.
+				</br>
+				Passende Farbtabellen sind einfach auf Google zu finden. Dazu einfach als Suchwort "HTML Farbtabelle" eingeben.
+			</div>
+			
+			</br>
+			Farbcode: <input type="text" name="farbeneu" />
+			</br>
+			Farbname: <input type="text" name="farbeneuname" />
+			</br>
+			<input type="submit" value="Einf&uuml;gen">
 			</br>
 			</br>
 		</form>

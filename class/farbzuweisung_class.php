@@ -32,7 +32,7 @@ class Farbzuweisung
 	*/
 	public function sqlString($zeile, $daten)
 	{
-		$return = "UPDATE tb_farbzuweisung SET " .$zeile . "= '" . $daten ."' WHERE Reservierungsart = " . $this->reservierungsart;
+		$return = "UPDATE tb_farbzuweisung SET " . $zeile . " = '" . $daten ."' WHERE Reservierungsart = '" . $this->reservierungsart . "'";
 		return $return;
 	}
 	
