@@ -81,13 +81,14 @@
 			
 			
 			//auf Template verweisen
-			$filename = 'meinereservierungen.twig';
-			if (!file_exists($filename)) //FEHLER!!!
+			$filename1 = '../views/meinereservierungen.twig';
+			$filename2 = 'meinereservierungen.twig';
+			if (!file_exists($filename1))
 			{
-				throw new FileException($filename);
+				throw new FileException($filename1);
 			}
 			else {
-				$template = $twig->loadTemplate($filename);
+				$template = $twig->loadTemplate($filename2);
 			}
 			//
 			
@@ -110,7 +111,7 @@
 			throw new FileException($filename);
 		}
 		else {	
-			include $filename;
+			include 'includedown.php';
 		}
 	
 	}
@@ -122,10 +123,10 @@
 	{
 		$e->toString();
 	}
-	catch (Exception $e)
+	/*catch (Exception $e)
 	{
 		echo "Fehler bei der Ausführung der Datei";
-	}
+	}*/
 	
 
 ?>
