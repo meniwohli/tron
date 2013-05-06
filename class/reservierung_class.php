@@ -33,7 +33,6 @@ class Reservierung
 		$this->datum = $call['Datum'];
 		$this->reservierungVon = $call['ReservierungVon'];
 		$this->reservierungBis = $call['ReservierungBis'];
-		$this->fk_Farbe_ID = $call['fk_Farbe_ID'];
 		$this->fk_S1_ID = $call['fk_S1_ID'];
 		$this->fk_S2_ID = $call['fk_S2_ID'];
 		$this->fk_S3_ID = $call['fk_S3_ID'];
@@ -120,15 +119,6 @@ class Reservierung
 		$this->sql->change($update);
 	}
 	
-	
-	
-	
-	
-	public function getFk_Farbe_ID()
-	{
-		return $this->fk_Farbe_ID;
-			
-	}
 	
 	
 	
