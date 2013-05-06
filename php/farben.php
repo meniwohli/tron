@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <?php
 	
+	/**
+	 * farben.php regelt die Farbeinstellungen der Website:
+	 * Es werden verschiedene Farben für verschiedene Zustände vergeben (z.B. Platz frei, besetzt,...)
+	 * 
+	 * @author Michael Menhard <m.meni90@gmail.com>
+	 * @version 1.0 05.05.2013
+	 */
+	
 	include "includeup.php";
 	
 	//Wenn eingeloggt, weiter..
