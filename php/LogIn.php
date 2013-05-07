@@ -44,7 +44,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 		$_SESSION["email"] = $user;
 		$_SESSION["login"] = "ok";
 		
-		include "allgemein.php";	
+		include "import.php";	
 		
 		$template = $twig->loadTemplate('home.twig');
 		

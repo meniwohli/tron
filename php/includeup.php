@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <?php
 	
+
+/**
+ * 
+ * 
+ * @author Michael Menhard <m.meni90@gmail.com>
+ * @version 1.0 01.03.2013
+ */
+
 //Session starten
 session_start();
 
@@ -19,6 +27,6 @@ $twig = new Twig_Environment($loader); /* , array(
 //Daten array initialisieren
 $daten = array();
 
-include "allgemein.php";
+include "import.php";
 
 ?>
