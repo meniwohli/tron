@@ -2,11 +2,17 @@
 <?php
 	
 	/**
-	 * farben.php regelt die Farbeinstellungen der Website:
+	 * Farbeinstellungen der Website
+	 * 
+	 * regelt die Farbeinstellungen der Website:
 	 * Es werden verschiedene Farben für verschiedene Zustände vergeben (z.B. Platz frei, besetzt,...)
 	 * 
 	 * @author Michael Menhard <m.meni90@gmail.com>
 	 * @version 1.0 05.05.2013
+	 */
+
+	/**
+	 * includeup.php beinhaltet allgemeines über Twig etc.
 	 */
 	
 	include "includeup.php";
@@ -46,6 +52,9 @@
 		
 		
 		//alle Farben übergeben
+		/**
+		 * @var array Alle Farben aus tb_farben
+		 */
 		$speicher = $sql->arrayCall("SELECT * FROM tb_farben");
 		$farben = array();
 		
@@ -80,7 +89,11 @@
 		//array durchlaufen und einzelne werte zuweisen
 		$farbenaktuell;
 		
-		//function für farbe auslesen und ändern wenn nötig
+		/**
+		* function für farbe auslesen und ändern wenn nötig
+		* 
+		* @param string Reservierungsart
+		*/
 		function readwrite($resart)
 		{
 			global $x, $sql, $farbenaktuell;
