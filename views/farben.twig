@@ -15,6 +15,7 @@
 		
 		<form method="post" action="../php/farben.php">
 			Platz frei:
+			<div>
 			<select name="frei" >
 				{% for key, value in farbarray %}
 					
@@ -27,6 +28,7 @@
 					
 				{% endfor %}
 			</select>
+			</div>
 			{% for key, value in farbenaktuell %}
 				{% if key == "frei" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
 			{% endfor %} 
@@ -114,7 +116,7 @@
 			</br>
 			
 			
-			<input type="submit" value="Speichern">
+			<input class="ym-button ym-save" type="submit" value="Speichern">
 			</br>
 			</br>
 		</form>
@@ -130,7 +132,7 @@
 				<option style="background-color:{{ key }}" value="{{ key }}">{{ value }}</option>
 				{% endfor %}
 				
-				<input type="submit" value="L&ouml;schen">
+				<input class="ym-button ym-add" type="submit" value="L&ouml;schen">
 			</select>
 			</br>
 			</br>
@@ -145,7 +147,7 @@
 		{% endif %}
 			
 		{% if fehlerlaenge %}
-			<div class="fehler">Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!</div>
+			<p class="box error">Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!</p>
 		{% endif %}
 		
 		{% if fehlereingabe %}
@@ -175,7 +177,7 @@
 			</br>
 			Farbname: <input type="text" name="farbeneuname" />
 			</br>
-			<input type="submit" value="Einf&uuml;gen">
+			<input class="ym-button ym-save" type="submit" value="Einf&uuml;gen">
 			</br>
 			</br>
 		</form>
