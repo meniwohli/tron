@@ -9,12 +9,18 @@
 			Platz wurde erfolgreich gesperrt.
 		{% else %}
 			<div>
-				Bitte Grund angeben, warum der Platz gesperrt werden soll.
+				Bitte geben Sie einen Grund an, warum der Platz gesperrt werden soll.
 				</br>
 				</br>
+				
+				
+				
 				<form method="post" action="../php/platzsperren.php">
-   		    		<input type="hidden" name="{{ pid }}">
-   		    		<input type="hidden" name="bestaetigt">
+					<input type="text" name="grund" />
+					</br>
+					</br>
+					<input type="hidden" name="{{ pid }}">
+	   		    	<input type="hidden" name="bestaetigt">
 					<input type="submit" value="Platz sperren">
 				</form>
 			</div>

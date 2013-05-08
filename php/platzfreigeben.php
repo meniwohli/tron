@@ -30,9 +30,9 @@
 		
 		
 		
-		//auf Template verweisen
-		$template = $twig->loadTemplate('plaetze.twig');
-		
+		//Aufrufen der plaetze.php
+		header('Location: plaetze.php');
+				
 	//sonst auf anmeldeseite
 	}else{
 

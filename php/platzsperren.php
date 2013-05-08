@@ -26,13 +26,21 @@
 		
 		if(isset($_POST["bestaetigt"]))
 			{
+				$grund = 'NULL';
+				if (isset($_POST['grund']))
+				{
+					$grund = $_POST['grund'];
+				}
+				
 				$sql->change("UPDATE tb_platz SET Gesperrt = '1' WHERE Platz_ID = '$pid'");
+				$sql->change("UPDATE tb_platz SET Kommentar = '$grund' WHERE Platz_ID = '$pid'");
 				$daten["gesperrt"] = true;
+				
+				//Aufrufen der plaetze.php
+				header('Location: plaetze.php');
 			}
 		
 		$daten["pid"] = $pid;
-		
-		
 		
 		
 		
