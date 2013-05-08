@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Sql regelt den gesamten Zugriff auf die Datenbank
+ * 
+ * @author Michael Menhard <m.meni90@gmail.com
+ * @version 1.0 01.02.2013
+ */
+
 require_once "exception_class.php";
 
 class Sql
@@ -7,8 +14,8 @@ class Sql
 	
 	public $mysqli;
 	
-	/*
-		login in db
+	/**
+	 * login in db
 	*/
 	public function logIn()
 	{
@@ -33,8 +40,11 @@ class Sql
 	}
 	
 	
-	/*
-		Überprüft, ob User mit Passwort überein stimmt
+	/**
+	 * Überprüft, ob User mit Passwort überein stimmt
+	 * @param string $user User-Email
+	 * @param string $passwort Md5 Verschlüsseltes Passwort
+	 * @return boolean True bei eingeloggt, false bei fehler
 	*/
 	public function logTest($user, $passwort)
 	{
