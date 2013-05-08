@@ -5,6 +5,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 {
 		
 	//Klassen importieren
+	require_once '../class/reservierung_class.php';
 	require_once '../class/mitglied_class.php';
 	require_once '../class/recht_class.php';
 	require_once '../class/sql_class.php';

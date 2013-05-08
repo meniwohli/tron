@@ -1,0 +1,55 @@
+{% extends "layout.twig" %}
+
+        {% block body %}
+			  {{ parent() }}
+			
+			</br>
+			
+			<div>
+			{% if plaetze != null %}
+				<table>
+					<th>
+						<td>Platz-Nr</td>
+						<td>Offen/Gesperrt</td>
+						<td>Kommentar</td>
+						<td></td>
+						<td></td>
+					</th>
+				{% for pla in plaetze %}
+            		<tr>
+            			<td>{{ '' }}</td>
+            			<td>{{ pla.platzNr }}</td>
+            			{% if pla.gesperrt == 0 %}
+            				<td>Ge&ouml;ffnet</td>
+            				<td></td>
+            			{% elseif pla.gesperrt == 1 %}
+            				<td>Geschlossen</td>
+            				<td>{{ pla.kommentar }}</td>
+            			{% endif %}
+            			
+            			
+            			
+            			
+            			<td>
+							 <form id= "sperren" method="post" action="../php/platzsperren.php">
+								<input type="hidden" name="{{ res.reservierung_ID }}">
+								<input type="submit" value="Sperren">
+							</form>
+						</td> 
+						<td>
+							 <form id= "loeschen" method="post" action="../php/platzloeschen.php">
+								<input type="hidden" name="{{ res.reservierung_ID }}">
+								<input type="submit" value="Loeschen">
+							</form>
+						</td> 
+            			
+            		</tr>
+        		{% endfor %}
+        		</table>
+        	{% else %}
+        		{{ 'Keine Reservierungen vorhanden' }}
+        	{% endif %}
+			</div>
+			
+	
+		{% endblock %}

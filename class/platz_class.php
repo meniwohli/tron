@@ -6,8 +6,6 @@ class Platz
 	public $platz_ID;
 	public $platzNr;
 	public $gesperrt;
-	public $gesperrtVon;
-	public $gesperrtBis;
 	public $kommentar;
 	public $sql;
 	
