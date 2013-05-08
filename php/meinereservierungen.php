@@ -10,6 +10,7 @@
 	$result;
 	$mitglieder;
 	
+	//Test-Kommentar
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 		
