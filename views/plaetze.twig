@@ -22,24 +22,31 @@
             			{% if pla.gesperrt == 0 %}
             				<td>Ge&ouml;ffnet</td>
             				<td></td>
+            				<td>
+							 	<form id= "sperren" method="post" action="../php/platzsperren.php">
+									<input type="hidden" name="{{ pla.platz_ID }}">
+									<input type="submit" value="Sperren">
+								</form>
+							</td>
             			{% elseif pla.gesperrt == 1 %}
             				<td>Geschlossen</td>
             				<td>{{ pla.kommentar }}</td>
+            				<td>
+							 	<form id= "oeffnen" method="post" action="../php/platzsperren.php">
+									<input type="hidden" name="{{ pla.platz_ID }}">
+									<input type="submit" value="Freigeben">
+								</form>
+							</td>
             			{% endif %}
             			
             			
             			
             			
-            			<td>
-							 <form id= "sperren" method="post" action="../php/platzsperren.php">
-								<input type="hidden" name="{{ res.reservierung_ID }}">
-								<input type="submit" value="Sperren">
-							</form>
-						</td> 
+            			 
 						<td>
 							 <form id= "loeschen" method="post" action="../php/platzloeschen.php">
-								<input type="hidden" name="{{ res.reservierung_ID }}">
-								<input type="submit" value="Loeschen">
+								<input type="hidden" name="{{ pla.platz_ID }}">
+								<input type="submit" value="L&ouml;schen">
 							</form>
 						</td> 
             			
@@ -47,7 +54,7 @@
         		{% endfor %}
         		</table>
         	{% else %}
-        		{{ 'Keine Reservierungen vorhanden' }}
+        		{{ 'Keine Pl&auml;tze vorhanden' }}
         	{% endif %}
 			</div>
 			
