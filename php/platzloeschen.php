@@ -10,34 +10,34 @@
 		
 		
 		//Reservierung ID's mit POST vergleichen
-		$reservierungen = $sql->arrayCall("SELECT Reservierung_ID FROM tb_reservierung");
+		$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
 		
-		$rid = true;
+		$pid = true;
 		
-		foreach($reservierungen as $r)
+		foreach($plaetze as $p)
 		{
-			$id = $r["Reservierung_ID"];
+			$id = $p["Platz_ID"];
 			
 			if(isset($_POST["$id"]))
 			{
-				$rid = $id;
+				$pid = $id;
 			}
 		}
 		
 		if(isset($_POST["bestaetigt"]))
 			{
-				$sql->change("DELETE FROM tb_reservierung WHERE Reservierung_ID = $rid");
+				$sql->change("DELETE FROM tb_platz WHERE Platz_ID = $pid");
 				$daten["geloescht"] = true;
 			}
 		
-		$daten["rid"] = $rid;
+		$daten["pid"] = $pid;
 		
 		
 		
 		
 		
 		//auf Template verweisen
-		$template = $twig->loadTemplate('reservierungloeschen.twig');
+		$template = $twig->loadTemplate('platzloeschen.twig');
 		
 	//sonst auf anmeldeseite
 	}else{

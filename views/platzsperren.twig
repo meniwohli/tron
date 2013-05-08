@@ -5,19 +5,17 @@
 		
 		{# Aufforderung löschen bestätigen #}
 		
-		{% if geloescht %}
-			Reservierung wurde aus der Datenbank gel&ouml;scht.
+		{% if gesperrt %}
+			Platz wurde erfolgreich gesperrt.
 		{% else %}
 			<div>
-				Wenn Sie mit l&ouml;schen best&auml;tigen, wird die Reservierung unwiederruflich gel&ouml;scht!
-				</br>
-				Sind Sie sicher?
+				Bitte Grund angeben, warum der Platz gesperrt werden soll.
 				</br>
 				</br>
-				<form method="post" action="../php/reservierungloeschen.php">
-   		    		<input type="hidden" name="{{ rid }}">
+				<form method="post" action="../php/platzsperren.php">
+   		    		<input type="hidden" name="{{ pid }}">
    		    		<input type="hidden" name="bestaetigt">
-					<input type="submit" value="Reservierung l&ouml;schen">
+					<input type="submit" value="Platz sperren">
 				</form>
 			</div>
 		{% endif %}
