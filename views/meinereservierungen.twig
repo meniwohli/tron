@@ -14,7 +14,9 @@
 						<td>von</td>
 						<td>bis</td>
 						<td>Platz</td>
+						{% if benutzerrecht == 1 %}
 						<td>Reserviert von</td>
+						{% endif %}
 						<td></td>
 					</th>
 				{% for res in reservierungen %}

@@ -10,7 +10,20 @@
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 	
-
+		
+		if(isset($_POST["neubestaetigt"]))
+		{
+			$platznr = 'NULL';
+			if (isset($_POST['platznr']))
+			{
+				$platznr = $_POST['platznr'];
+			}
+			if($platznr >= 1 && $platznr <= 99)
+			{
+				$sql->change("INSERT INTO `tb_platz` (`PlatzNr`, `Gesperrt`, `Kommentar`) VALUES ('$platznr', '0', 'Null')");
+			}
+		}
+		
 		
 		$call = "Select * From tb_platz";
 		$ergebnis = $sql->arrayCall($call);
@@ -23,7 +36,6 @@
 		
 		
 		$daten["plaetze"]=$plaetze;
-		
 		
 		
 		

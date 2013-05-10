@@ -29,7 +29,7 @@
 								</form>
 							</td>
             			{% elseif pla.gesperrt == 1 %}
-            				<td>Geschlossen</td>
+            				<td>Gesperrt</td>
             				<td>{{ pla.kommentar }}</td>
             				<td>
 							 	<form id= "oeffnen" method="post" action="../php/platzfreigeben.php">
@@ -53,6 +53,34 @@
             		</tr>
         		{% endfor %}
         		</table>
+        		
+        		
+        		<form id= "allessperren" method="post" action="../php/platzsperren.php">
+        			<input type="hidden" name="allessperren">
+					<input type="submit" value="Alle Pl&auml;tze sperren">
+				</form>
+				
+				<form id= "allesfreigeben" method="post" action="../php/platzfreigeben.php">
+        			<input type="hidden" name="allesfreigeben">
+					<input type="submit" value="Alle Pl&auml;tze freigeben">
+				</form>
+        		
+        		
+        		
+        		
+        		</br>
+        		<b>Neuen Platz anlegen</b>
+        		</br>
+        		</br>
+        		
+        		<form method="post" action="../php/plaetze.php">
+        			Platz-Nummer:
+					<input type="text" name="platznr" />
+					</br>
+					</br>
+	   		    	<input type="hidden" name="neubestaetigt">
+					<input type="submit" value="Platz anlegen">
+				</form>
         	{% else %}
         		{{ 'Keine Pl&auml;tze vorhanden' }}
         	{% endif %}
