@@ -36,6 +36,29 @@
 			</br>
 			
 			
+			
+			Platz von User besetzt:
+			<div>
+			<select name="meins" >
+				{% for key, value in farbarray %}
+					
+					<option 
+						{% for key1, value1 in farbenaktuell %}
+							{% if key1 == "meins" and value1 == key %} selected="selected" {% endif %}
+						{% endfor %} 
+						style="background-color:{{ key }}" value="{{ key }}">{{ value }}
+					</option>
+					
+				{% endfor %}
+			</select>
+			</div>
+			{% for key, value in farbenaktuell %}
+				{% if key == "meins" %} <div style="background-color:{{ value }}">TESTSTREIFEN</div> {% endif %}
+			{% endfor %} 
+			</br>
+			</br>
+			
+			
 			Platz besetzt:
 			<select name="besetzt" >
 				{% for key, value in farbarray %}

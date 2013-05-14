@@ -129,6 +129,7 @@
 			readwrite("zu");
 			readwrite("serie");
 			readwrite("turnier");
+			readwrite("meins");
 		}
 		
 		
