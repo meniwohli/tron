@@ -18,7 +18,7 @@
 			{
 				$platznr = $_POST['platznr'];
 			}
-			if($platznr >= 1 && $platznr <= 99)
+			if($platznr >= 1 && $platznr <= 99 && is_int($platznr))
 			{
 				$sql->change("INSERT INTO `tb_platz` (`PlatzNr`, `Gesperrt`, `Kommentar`) VALUES ('$platznr', '0', 'Null')");
 			}
