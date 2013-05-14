@@ -3,9 +3,53 @@
         {% block body %}
 			  {{ parent() }}
 			
-			<p> Angemeldet</p>
+			<p> &Ouml;ffnungszeiten:</p>
 			</br>
 			</br>
+			
+			<table>
+			
+				<tr>
+			    	<td>
+			    		Ge&ouml;ffnet von:
+			    	</td>
+			    	
+			    	<td>
+			    		<select name="offenvon" >
+							
+							{% for i in 6..22 %}
+							<option {% if zeit.offenVon == i %} selected="selected" {% endif %} value="{{ i }}">
+								{{ i }} Uhr
+							</option>
+							{% endfor %}
+					
+						</select>
+			    	</td>
+			  	</tr>
+			  	
+			  	
+			  	
+			  	
+			  	<tr>
+			    	<td>
+			    		Ge&ouml;ffnet bis:
+			    	</td>
+			    	
+			    	<td>
+			    		<select name="offenbis" >
+							
+							{% for i in 6..22 %}
+							<option {% if zeit.offenBis == i %} selected="selected" {% endif %} value="{{ i }}">
+								{{ i }} Uhr
+							</option>
+							{% endfor %}
+					
+						</select>
+			    	</td>
+			  	</tr>
+			  	
+			</table>
+
 			
 	
 		{% endblock %}
