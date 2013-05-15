@@ -12,7 +12,8 @@
 		$speicher = $sql->call("SELECT * FROM tb_zeiten");
 		$zeit["offenVon"] = $speicher["OffenVon"];
 		$zeit["offenBis"] = $speicher["OffenBis"];
-		
+		$zeit["saisonvon"] = $speicher["SaisonVon"];
+		$zeit["saisonbis"] = $speicher["SaisonBis"];
 		
 		
 		

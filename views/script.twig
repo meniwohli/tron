@@ -9,7 +9,7 @@
     	
     	<script>
 
-    		// Einstellungen Minikallender
+    		// Einstellungen Minikallender index.twig
 		 	 $(document).ready(function() {
 		    	$( "#datepicker" ).datepicker({
 			    		dateFormat : "dd-mm-yy",
@@ -27,6 +27,26 @@
 			    	}).show();
 		 	});
 
+
+		 	// Einstellungen Minikallender für allgemeines
+		 	 $(document).ready(function() {
+		    	$( ".datepicker2" ).datepicker({
+			    		dateFormat : "yy-mm-dd",
+			    		firstDay: 1,
+			    		maxDate: "",
+			    		minDate: "-0d",
+			    		dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+			    		monthNamesShort: [ "Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez" ],
+			    		monthNames: [ "Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+			    		showAnim: "slideDown",
+			    		duration: "slow",
+			    		hideIfNoPrevNext: true,
+			    		buttonImageOnly: true,
+			    		
+			    	}).show();
+		 	});
+
+	    		
 			//slideToggle Funktion für Farben-Infofeld
 			$(document).ready(function() {
 				$( "#info" ).click(function() {
