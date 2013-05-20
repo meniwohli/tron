@@ -25,7 +25,7 @@
 		}
 		
 		
-		$call = "Select * From tb_platz";
+		$call = "Select * From tb_platz ORDER BY PlatzNr";
 		$ergebnis = $sql->arrayCall($call);
 		
 		foreach($ergebnis as $id)
