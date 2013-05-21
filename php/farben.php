@@ -75,8 +75,8 @@
 				$farbzuweisungneu = $farbzuweisungneu["Farbe_ID"];
 				$sql->change("UPDATE tb_farbzuweisung SET fk_Farbe_ID = $farbzuweisungneu WHERE fk_Farbe_ID = $farbchange");
 				
-				//$sql->change("DELETE FROM tb_farben WHERE FarbCode = '$fc'");
-				//$daten["farbegeloescht"] = true;
+				$sql->change("DELETE FROM tb_farben WHERE FarbCode = '$fc'");
+				$daten["farbegeloescht"] = true;
 				
 			}else{
 				$farben[$x['FarbCode']] = $x['FarbName'];
