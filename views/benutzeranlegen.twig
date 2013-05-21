@@ -3,111 +3,227 @@
 	{% block body %}
 		{{ parent() }}
 		
-		{# Wenn der Benutzer angelegt wurde: #}
-		{% if angelegt %}
+		<table>
 		
-			<div>
-				Der Benutzer wurde angelegt.
-				</br>
-				</br>
-				<form method="post" action="../php/benutzeranlegen.php">
-   		    		<input type="hidden" name="first">
-					<input type="submit" value="Benutzer anlegen">
-				</form>
-			</div>
-		
-		{# Wenn Recht für änderung des Benutzers vorhanden ist #}
-		{% elseif benutzerrecht == 1 %}
-    
-   		    {% if fehler %}
-	   		    <div class='fehler'>
-	   		    	{% if fehlermail %}
-	   		    		<div class="fehler">E-Mail Adresse existiert bereits!</div> </br>
-	   		    	{% endif %}
-	   		    	
-	   		    	{% if fehlerpas %}
-	   		    		<div class="fehler">Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</div></br>
-	   		    	{% endif %}
-	   		    	
-	   		    	{% if fehleruser %}
-	   		    		<div class="fehler">Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</div></br>
-	   		    	{% endif %}
-	   		    		
-	   		    	</br>
-	   		    	Bitte f&uuml;llen Sie alle Felder die mit einem * markiert sind!</br>
-	   		    	
-	   		    	</br>
-	   		    	</br>
-	   		    </div> 
-   		    {% endif %}
-   		    
-   		      
-			<div>Benutzer anlegen:</div>
-			</br>
-			</br>
-   		    
-			<form method="post" action="../php/benutzeranlegen.php">
-					
-				Geschlecht: 
-				<select name="geschlecht" >
-					<option {% if geschlecht == 'Herr' %}selected="selected"{% endif %} >Herr</option>
-					<option {% if geschlecht == 'Frau' %}selected="selected"{% endif %} >Frau</option>
-				</select>
-				</br>
-				
-				Titel: <input type="text" name="titel" value="{{ titel }}" />
-				</br>
-				
-				Vorname: *<input type="text" name="vorname" value="{{ vorname }}" />
-				</br>
-				
-				Nachname: *<input type="text" name="nachname" value="{{ nachname }}" />
-				</br>
-				
-				{# Geburtsdatum abfragen und formatieren #}
-				Geburtsdatum: (TT)<input type="text" name="geburtstag" value="{{ geburtstag }}" />
-							  (MM)<input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" />
-							  (JJJJ)<input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" />
-				</br>
-				</br>
-				
-				Plz: <input type="text" name="plz" value="{{ plz }}" />
-				</br>
-				
-				Ort: <input type="text" name="ort" value="{{ ort }}" />
-				</br>
-				
-				Stra&szlig;e: <input type="text" name="strasse" value="{{ strasse }}" />
-				</br>
-				
-				Hausnummer: <input type="text" name="hausnummer" value="{{ hausnummer }}" />
-				</br>
-				</br>
-				
-				E-Mail: *<input type="text" name="useremail" value="{{ useremail }}" />
-				</br>
-				
-				Telefon: <input type="text" name="telefon" value="{{ telefon }}" />
-				</br>
-				</br>
-				
-				Recht: *<select name="rechtuser" value='{{ rechtuser }}' >			
-						{% for item in rechtliste %}
-							<option {% if rechtuser == item %}selected="selected"{% endif %}>
-							{{ item }}
-							</option>
-						{% endfor %}
-					   </select>
-				</br>
-				</br>
-				Passwort: *<input type="password" name="pas1" />
-				</br>
-				Passwort wiederholen: *<input type="password" name="pas2" />
-				</br>
-				</br>
-				<input type="submit" value="OK"> 
-			</form> 
-				
+			{# Wenn der Benutzer angelegt wurde: #}
+			{% if angelegt %}
 			
-		{% endif %}	
+				<tr>
+					<td>
+						Der Benutzer wurde angelegt.
+					</td>
+					
+					<td>
+						<form method="post" action="../php/benutzeranlegen.php">
+	   		    			<input type="hidden" name="first">
+							<input class="ym-button ym-save" type="submit" value="Benutzer anlegen">
+						</form>
+					</td>
+				</tr>
+			
+			{# Wenn Recht für änderung des Benutzers vorhanden ist #}
+			{% elseif benutzerrecht == 1 %}
+	    
+	   		    {% if fehler %}
+	   		    	<tr>
+	   		    		<td>
+	   		    			
+	   		    		</td>
+	   		    		
+	   		    		<td>
+				   		    <div class='fehler'>
+				   		    	{% if fehlermail %}
+				   		    		<div class="fehler">E-Mail Adresse existiert bereits!</div> </br>
+				   		    	{% endif %}
+				   		    	
+				   		    	{% if fehlerpas %}
+				   		    		<div class="fehler">Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</div></br>
+				   		    	{% endif %}
+				   		    	
+				   		    	{% if fehleruser %}
+				   		    		<div class="fehler">Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</div></br>
+				   		    	{% endif %}
+				   		    		
+				   		    	Bitte f&uuml;llen Sie alle Felder die mit einem * markiert sind!</br>
+				   		    	
+				   		    </div> 
+		   		    	</td>
+		   		    </tr>
+	   		    {% endif %}
+	   		    
+	   		    </br>
+				Benutzer anlegen:
+				</br>
+				</br>
+	   		    
+				<form method="post" action="../php/benutzeranlegen.php">
+					
+					<tr>
+						<td>	
+							Geschlecht:
+						</td>
+						
+						<td> 
+							<select name="geschlecht" >
+								<option {% if geschlecht == 'Herr' %}selected="selected"{% endif %} >Herr</option>
+								<option {% if geschlecht == 'Frau' %}selected="selected"{% endif %} >Frau</option>
+							</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Titel:
+						</td>
+					
+						<td>
+							<input type="text" name="titel" value="{{ titel }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Vorname:
+						</td>
+						
+						<td>
+							*<input type="text" name="vorname" value="{{ vorname }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>					
+							Nachname:
+						</td>
+						
+						<td>
+							*<input type="text" name="nachname" value="{{ nachname }}" />
+						</td>
+					</tr>
+					
+					
+					{# Geburtsdatum abfragen und formatieren #}
+					<tr>
+						<td>
+							Geburtsdatum:
+						</td>
+						
+						<td>
+							(TT)<input type="text" name="geburtstag" value="{{ geburtstag }}" />
+						
+							(MM)<input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" />
+											
+							(JJJJ)<input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Plz:
+						</td>
+						
+						<td>
+							<input type="text" name="plz" value="{{ plz }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Ort:
+						</td>
+						
+						<td>
+							<input type="text" name="ort" value="{{ ort }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Stra&szlig;e:
+						</td>
+						
+						<td>
+							<input type="text" name="strasse" value="{{ strasse }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Hausnummer:
+						</td>
+						
+						<td>
+							<input type="text" name="hausnummer" value="{{ hausnummer }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							E-Mail:
+						</td>
+						
+						<td>
+							*<input type="text" name="useremail" value="{{ useremail }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Telefon:
+						</td>
+						
+						<td>
+							<input type="text" name="telefon" value="{{ telefon }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Recht:
+						</td>
+						
+						<td>
+							*<select name="rechtuser" value='{{ rechtuser }}' >			
+								{% for item in rechtliste %}
+									<option {% if rechtuser == item %}selected="selected"{% endif %}>
+										{{ item }}
+									</option>
+								{% endfor %}
+						   </select>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Passwort:
+						</td>
+						
+						<td>
+							*<input type="password" name="pas1" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Passwort wiederholen:
+						</td>
+						
+						<td>
+							*<input type="password" name="pas2" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<input  class="ym-button ym-save" type="submit" value="OK" /> 
+						</td>
+					</tr>
+					
+				</form> 
+					
+				
+			{% endif %}
+			
+		</table>
+		
 	{% endblock %}
