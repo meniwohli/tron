@@ -6,23 +6,32 @@
 		{# Aufforderung löschen bestätigen #}
 		{% if rechtrecht == 1 %}
 		
-			{% if geloescht %}
-				{{ rechtname }}-Recht wurde aus der Datenbank gel&ouml;scht.
-			{% else %}
-				<div>
-					Wenn Sie mit l&ouml;schen best&auml;tigen, wird das Recht ({{ rechtname }}) unwiederruflich gel&ouml;scht!
-					</br>
-					Sind Sie sicher?
-					</br>
-					</br>
-					<form method="post" action="../php/rechtloeschen.php">
-	   		    		<input type="hidden" name="{{ rid }}">
-	   		    		<input type="hidden" name="bestaetigt">
-						<input type="submit" value="Recht l&ouml;schen">
-					</form>
-				</div>
-			{% endif %}
-		
+			<table>
+				<form method="post" action="../php/rechtloeschen.php">
+				
+				<tr>
+					<td>
+						<input type="hidden" name="{{ rid }}">
+				   		<input type="hidden" name="bestaetigt">
+						<input class="ym-button ym-save" type="submit" value="Recht l&ouml;schen">
+					</td>
+					
+					<td>
+						{% if geloescht %}
+							{{ rechtname }}-Recht wurde aus der Datenbank gel&ouml;scht.
+						{% else %}
+							<div class="fehler">
+								Wenn Sie mit l&ouml;schen best&auml;tigen, wird das Recht ({{ rechtname }}) unwiederruflich gel&ouml;scht!
+								</br>
+								Sind Sie sicher?
+							</div>
+							
+						{% endif %}
+					</td>
+				</tr>
+				</form>
+			</table>
+			
 		{% endif %}
 		
 	{% endblock %}

@@ -1,8 +1,6 @@
 {% extends "layout.twig" %}
 
 	{% block body %}
-		{{ parent() }}
-		
 		{# Wenn der Benutzer angelegt wurde: #}
 		{% if angelegt %}
 		
@@ -12,7 +10,7 @@
 				</br>
 				<form method="post" action="../php/rechtanlegen.php">
    		    		<input type="hidden" name="first">
-					<input type="submit" value="Recht anlegen">
+					<input class="ym-button ym-save" type="submit" value="Recht anlegen">
 				</form>
 			</div>
 		
@@ -23,151 +21,236 @@
 			<div>Recht anlegen:</div>
 			</br>
 			</br>
-   		    
-			<form method="post" action="../php/rechtanlegen.php">
+			
+			
+   		    <table>
+				<form method="post" action="../php/rechtanlegen.php">
+						
+					<tr>
+						<td>
+							Rechtname:
+						</td>
+						
+						<td>
+							<input type="text" name="rechtname" value="{{ rechtname }}" /> 
+						</td>
+					</tr>
+						 				 
+					{# Stunden auswählen/anzeigen #}
+					<tr>
+						<td>
+							Anzahl Stunden:
+						</td>
+						
+						<td> 
+							<select name="anzh" >
+							 
+								{% for x in 1..4 %}
+									 	
+									 <option>{{ x }} </option>
+									 
+								{% endfor %}
+								<option>unbegrenzt</option>
+								
+							</select>
+						</td>
+					</tr>
 					
+						
+						
+					{# Plaetze auswählen/anzeigen #}
+					<tr>
+						<td>
+							Anzahl Pl&auml;tze:
+						</td>
+						
+						<td> 
+							<select name="anzp" >
+									 
+								{% for x in 1..4 %}
+									 	
+									<option>{{ x }}</option>
+									 
+								{% endfor %}
+								<option>unbegrenzt</option>
+							</select>
+						</td>
+					</tr>
+						
+						
+					{# Anzahl Reservierungen auswählen/anzeigen #}
+					<tr>
+						<td>
+							Anzahl Reservierungen: 
+						</td>
+						
+						<td>
+							<select name="anzr" >
+									 
+								{% for x in 1..4 %}
+									 	
+									 <option>{{ x }}</option>
+									 
+								{% endfor %}
+								<option>unbegrenzt</option>
+							</select>
+						</td>
+					</tr>
+						
+						
+					{# Anzahl der Tage, die man im Voraus reservieren kann auswählen/anzeigen #}
+					<tr>
+						<td>
+							Anzahl Tage im Voraus:
+						</td>
+						
+						<td> 
+							<select name="tage" >
+									 
+								{% for x in 1..7 %}
+									 	
+									<option>{{ x }}</option>
+									 
+								{% endfor %}
+								<option>unbegrenzt</option>
+							</select>
+						</td>
+						
+						
+					{# Können Reservierungen gelöscht werden? #}
+					<tr>
+						<td>
+							Reservierungen L&ouml;schen: 
+						</td>
+						
+						<td>
+							<select name="resloeschen" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+						
+						
+					{# Können Reservierungen verschoben werden? #}
+					<tr>
+						<td>
+							Reservierungen verschieben:
+						</td>
+						
+						<td> 
+							<select name="resverschieben" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+					
+						
+						
+					{# Können Benutzer verwaltet werden? #}
+					<tr>
+						<td>
+							Benutzer verwalten:
+						</td>
+						
+						<td> 
+							<select name="benverwalten" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+					
+						
+						
+					{# Können Benutzer Rechte verwalten? #}
+					<tr>
+						<td>
+							Rechte verwalten: 
+						</td>
+						
+						<td>
+							<select name="rechteverteilen" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+						
+					
+					{# Können Benutzer Plätze verwalten? #}
+					<tr>
+						<td>
+							Pl&auml;tze verwalten: 
+						</td>
+						
+						<td>
+							<select name="platzverwalten" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+						
+					
+					{# Kann Saison/Öffnungszeiten festgelegt werden? #}
+					<tr>
+						<td>
+							Zeiten verwalten: 
+						</td>
+						
+						<td>
+							<select name="saisonfestlegen" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+						
+						
+					{# Können Serien reserviert werden? #}
+					<tr>
+						<td>
+						Serien reservieren: 
+						</td>
+						
+						<td>
+							<select name="serienreservieren" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+						
+					
+					{# Können Farben ausgewählt werden? #}
+					<tr>
+						<td>
+							Design &auml;ndern: 
+						</td>
+						
+						<td>
+							<select name="farbefestlegen" >
+								<option value="0">Nein</option>
+								<option value="1">Ja</option>
+							</select>
+						</td>
+					</tr>
+						
+						
+					<tr>
+						<td>
+							 
+						</td>
+						
+						<td>
+							<input class="ym-button ym-save" type="submit" value="OK"> 
+						</td>
+					</tr>
 				
-				Rechtname: <input type="text" name="rechtname" value="{{ rechtname }}" /> 
-				</br>
-					
-					 				 
-				{# Stunden auswählen/anzeigen #}
-				Anzahl Stunden: 
-				<select name="anzh" >
-						 
-					{% for x in 1..4 %}
-						 	
-						 <option>{{ x }} </option>
-						 
-					{% endfor %}
-					<option>unbegrenzt</option>
-					
-				</select>
-				</br>
-					
-					
-				{# Plaetze auswählen/anzeigen #}
-				Anzahl Pl&auml;tze: 
-				<select name="anzp" >
-						 
-					{% for x in 1..4 %}
-						 	
-						<option>{{ x }}</option>
-						 
-					{% endfor %}
-					<option>unbegrenzt</option>
-				</select>
-				</br>
-					
-					
-				{# Anzahl Reservierungen auswählen/anzeigen #}
-				Anzahl Reservierungen: 
-				
-				<select name="anzr" >
-						 
-					{% for x in 1..4 %}
-						 	
-						 <option>{{ x }}</option>
-						 
-					{% endfor %}
-					<option>unbegrenzt</option>
-				</select>
-				</br>
-					
-					
-				{# Anzahl der Tage, die man im Voraus reservieren kann auswählen/anzeigen #}
-				Anzahl Tage im Voraus: 
-				<select name="tage" >
-						 
-					{% for x in 1..7 %}
-						 	
-						<option>{{ x }}</option>
-						 
-					{% endfor %}
-					<option>unbegrenzt</option>
-				</select>
-				</br>
-					
-					
-				{# Können Reservierungen gelöscht werden? #}
-				Reservierungen L&ouml;schen: 
-				<select name="resloeschen" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-					
-				{# Können Reservierungen verschoben werden? #}
-				Reservierungen verschieben: 
-				<select name="resverschieben" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-					
-				{# Können Benutzer verwaltet werden? #}
-				Benutzer verwalten: 
-				<select name="benverwalten" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-					
-				{# Können Benutzer Rechte verwalten? #}
-				Rechte verwalten: 
-				<select name="rechteverteilen" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-				
-				{# Können Benutzer Plätze verwalten? #}
-				Pl&auml;tze verwalten: 
-				<select name="platzverwalten" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-				
-				{# Kann Saison/Öffnungszeiten festgelegt werden? #}
-				Zeiten verwalten: 
-				<select name="saisonfestlegen" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-					
-				{# Können Serien reserviert werden? #}
-				Serien reservieren: 
-				<select name="serienreservieren" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-				
-				{# Können Farben ausgewählt werden? #}
-				Design &auml;ndern: 
-				<select name="farbefestlegen" >
-					<option value="0">Nein</option>
-					<option value="1">Ja</option>
-				</select>
-				</br>
-					
-					
-					
-				
-				</br>
-				</br>
-				<input type="submit" value="OK"> 
-			</form> 
-				
+				</form> 
+			</table>	
 			
 		{% endif %}	
 	{% endblock %}
