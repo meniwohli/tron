@@ -3,9 +3,36 @@
         {% block body %}
 			  {{ parent() }}
 			
-			<p> Angemeldet</p>
-			</br>
-			</br>
+			<table>
+				<th>
+					<td></td>
+					
+					{{ zeit.OffenVon }}
+					{% for i in zeit.offenVon..zeit.offenBis %}
+						{{ i }}
+					{% endfor %}
+					
+					{% for p in platz %}
+						{{ p.Platz_ID }}
+					{% endfor %}
+				</th>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</table>
+			
+			
+			
+			
 			
 	
 		{% endblock %}
