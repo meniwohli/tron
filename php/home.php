@@ -3,12 +3,16 @@
 	
 	include "includeup.php";
 	
+	$datum = '2013-05-22';
+	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 	
 		$zeit = $sql->call("SELECT * FROM tb_zeiten");
 				
-		$platz = $sql->call("SELECT * FROM tb_platz");
+		$platz = $sql->arrayCall("SELECT * FROM tb_platz ORDER BY PlatzNr");
+		
+		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$datum'");
 		
 		
 		
@@ -25,6 +29,7 @@
 		
 		$daten["zeit"]=$zeit;
 		$daten["platz"]=$platz;
+		$daten["reservierungen"]=$reservierung;
 		
 		
 		//auf Template verweisen
