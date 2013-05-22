@@ -11,8 +11,9 @@
 	#header {
 		background: rgb(115,105,76) ;
 		min-width: 700px;
-		height: 150px;
+		height: 130px;
 		color: rgb(255,255,255);
+		padding: 5px;
 	}
 
 	.ym-wrapper {
