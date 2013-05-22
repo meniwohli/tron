@@ -7,15 +7,12 @@
 				<th>
 					<td></td>
 					
-					{{ zeit.OffenVon }}
-					{% for i in zeit.offenVon..zeit.offenBis %}
-						{{ i }}
-					{% endfor %}
 					
-					{% for p in platz %}
-						{{ p.Platz_ID }}
+					{% for i in zeit.OffenVon..zeit.OffenBis %}
+						<td>{{ i }}</td>
 					{% endfor %}
 				</th>
+				
 			
 			
 			

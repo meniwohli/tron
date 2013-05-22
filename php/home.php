@@ -6,12 +6,8 @@
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 	
-		$speicher = $sql->call("SELECT * FROM tb_zeiten");
-		/*$zeit["offenVon"] = $speicher["OffenVon"];
-		$zeit["offenBis"] = $speicher["OffenBis"];
-		$zeit["saisonvon"] = $speicher["SaisonVon"];
-		$zeit["saisonbis"] = $speicher["SaisonBis"];*/
-		
+		$zeit = $sql->call("SELECT * FROM tb_zeiten");
+				
 		$platz = $sql->call("SELECT * FROM tb_platz");
 		
 		
@@ -27,7 +23,7 @@
 		
 		
 		
-		$daten["zeit"]=$speicher;
+		$daten["zeit"]=$zeit;
 		$daten["platz"]=$platz;
 		
 		
