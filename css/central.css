@@ -18,8 +18,8 @@
 @import url(screen/vlist.css);
 @import url(screen/typography.css);
 @import url(print/print.css);
-@import url(jquery2/jquery-ui-1.10.2.custom.css);
-@import url(jquery2/jquery-ui-1.10.2.custom.min.css);
+@import url(jquery/jquery-ui-1.10.3.custom.css);
+@import url(jquery/jquery-ui-1.10.3.custom.min.css);
 
 @import url("http://fonts.googleapis.com/css?family=Droid+Serif");
 @import url("http://fonts.googleapis.com/css?family=Droid+Sans:700");

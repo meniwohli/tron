@@ -9,7 +9,7 @@
 @media screen, projection {
 	
 	#header {
-		background: rgb(115,105,76) ;
+		background: rgb(60,60,60) ;
 		min-width: 700px;
 		height: 130px;
 		color: rgb(255,255,255);
@@ -63,6 +63,7 @@
 	}
 
 	.ym-gbox-left {
+		
 	}
 
 	.ym-gbox-right {
