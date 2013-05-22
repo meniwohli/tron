@@ -25,7 +25,7 @@
             				<td>
 							 	<form id= "sperren" method="post" action="../php/platzsperren.php">
 									<input type="hidden" name="{{ pla.platz_ID }}">
-									<input type="submit" value="Sperren">
+									<button type="submit" class="ym-button ym-spark">Sperren</button>
 								</form>
 							</td>
             			{% elseif pla.gesperrt == 1 %}
@@ -34,7 +34,7 @@
             				<td>
 							 	<form id= "oeffnen" method="post" action="../php/platzfreigeben.php">
 									<input type="hidden" name="{{ pla.platz_ID }}">
-									<input type="submit" value="Freigeben">
+									<button type="submit" class="ym-button ym-spark">Freigeben</button>
 								</form>
 							</td>
             			{% endif %}
@@ -46,7 +46,7 @@
 						<td>
 							 <form id= "loeschen" method="post" action="../php/platzloeschen.php">
 								<input type="hidden" name="{{ pla.platz_ID }}">
-								<input type="submit" value="L&ouml;schen">
+								<button type="submit" class="ym-button ym-delete">L&ouml;schen</button>
 							</form>
 						</td> 
             			
@@ -57,12 +57,12 @@
         		
         		<form id= "allessperren" method="post" action="../php/platzsperren.php">
         			<input type="hidden" name="allessperren">
-					<input type="submit" value="Alle Pl&auml;tze sperren">
+        			<button type="submit" class="ym-button ym-spark">Alle Pl&auml;tze sperren</button>
 				</form>
 				
 				<form id= "allesfreigeben" method="post" action="../php/platzfreigeben.php">
         			<input type="hidden" name="allesfreigeben">
-					<input type="submit" value="Alle Pl&auml;tze freigeben">
+					<button type="submit" class="ym-button ym-spark">Alle Pl&auml;tze freigeben</button>
 				</form>
         		
         		
@@ -75,11 +75,11 @@
         		
         		<form method="post" action="../php/plaetze.php">
         			Platz-Nummer:
-					<input type="text" name="platznr" />
+					<input type="text" name="platznum" />
 					</br>
 					</br>
 	   		    	<input type="hidden" name="neubestaetigt">
-					<input type="submit" value="Platz anlegen">
+	   		    	<button type="submit" class="ym-button ym-add">Platz anlegen</button>
 				</form>
         	{% else %}
         		{{ 'Keine Pl&auml;tze vorhanden' }}

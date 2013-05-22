@@ -14,11 +14,11 @@
 		if(isset($_POST["neubestaetigt"]))
 		{
 			$platznr = 'NULL';
-			if (isset($_POST['platznr']))
+			if (isset($_POST['platznum']))
 			{
-				$platznr = $_POST['platznr'];
+				$platznr = $_POST['platznum'];
 			}
-			if($platznr >= 1 && $platznr <= 99 && is_int($platznr))
+			if($platznr >= 1 && $platznr <= 99)// && is_int($platznr))
 			{
 				$sql->change("INSERT INTO `tb_platz` (`PlatzNr`, `Gesperrt`, `Kommentar`) VALUES ('$platznr', '0', 'Null')");
 			}

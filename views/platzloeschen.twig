@@ -8,18 +8,18 @@
 		{% if geloescht %}
 			Platz wurde aus der Datenbank gel&ouml;scht.
 		{% else %}
-			<div>
+			<p class="box error">
 				Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Platz unwiederruflich gel&ouml;scht!
 				</br>
 				Sind Sie sicher?
+			</p>
 				</br>
 				</br>
 				<form method="post" action="../php/platzloeschen.php">
    		    		<input type="hidden" name="{{ pid }}">
    		    		<input type="hidden" name="bestaetigt">
-					<input type="submit" value="Platz l&ouml;schen">
+					<button type="submit" class="ym-button ym-delete">Platz l&ouml;schen</button>
 				</form>
-			</div>
 		{% endif %}
 		
 	{% endblock %}
