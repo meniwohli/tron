@@ -431,14 +431,14 @@
 						<td>
 							{# Änderungen bestätigen Button #}	
 							{% if aendern == 1 %}
-								<input class="ym-button ym-save" type="submit" value="Speichern">
+								<button type="submit" class="ym-button ym-save">Speichern</button>
 							{% endif %}
 						
 							{# Recht ändern Button #}
 							{% if aendern != 1 %}
 				    
 				   	   		 	<input type="hidden" name="aendern">
-								<input class="ym-button ym-save" type="submit" value="&Auml;ndern">
+								<button type="submit" class="ym-button ym-edit">&Auml;ndern</button>
 					
 							{% endif %}
 						</td>
@@ -452,7 +452,7 @@
 			    
 			   		    <form id= "loeschen" method="post" action="../php/rechtloeschen.php">
 			   		    	<input type="hidden" name="{{ gewaehltesrecht.recht_ID }}">
-							<input class="ym-button ym-save" type="submit" value="Recht l&ouml;schen">
+							<button type="submit" class="ym-button ym-delete">Recht l&ouml;schen</button>
 						</form> 
 			
 					{% endif %}	
@@ -463,7 +463,7 @@
 					{% if benutzerrecht == 1 %}
 			    
 			   		    <form method="post" action="../php/rechtanlegen.php">
-							<input class="ym-button ym-save" type="submit" value="Recht anlegen">
+							<button type="submit" class="ym-button ym-add">Recht anlegen</button>
 						</form> 
 				
 					{% endif %}	
