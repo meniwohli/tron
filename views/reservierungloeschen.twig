@@ -3,25 +3,30 @@
 	{% block body %}
 		{{ parent() }}
 		
-		{# Aufforderung löschen bestätigen #}
-		
-		{% if geloescht %}
-			Reservierung wurde aus der Datenbank gel&ouml;scht.
-		{% else %}
-			<div>
-				<p class="box error">
-					Wenn Sie mit l&ouml;schen best&auml;tigen, wird die Reservierung unwiederruflich gel&ouml;scht!
-					</br>
-					Sind Sie sicher?
-				</p>
-				</br>
-				</br>
+		<table>
 				<form method="post" action="../php/reservierungloeschen.php">
-   		    		<input type="hidden" name="{{ rid }}">
-   		    		<input type="hidden" name="bestaetigt">
-					<input type="submit" value="Reservierung l&ouml;schen">
+				
+				<tr>
+					<td>
+						<input type="hidden" name="{{ rid }}">
+				   		<input type="hidden" name="bestaetigt">
+						<button type="submit" class="ym-button ym-delete">Reservierung l&ouml;schen</button>
+					</td>
+					
+					<td>
+						{% if geloescht %}
+							Reservierung wurde aus der Datenbank gel&ouml;scht.
+						{% else %}
+							<p class="box error">
+								Wenn Sie mit l&ouml;schen best&auml;tigen, wird die Reservierung unwiederruflich gel&ouml;scht!
+								</br>
+								Sind Sie sicher?
+							</p>
+							
+						{% endif %}
+					</td>
+				</tr>
 				</form>
-			</div>
-		{% endif %}
+			</table>
 		
 	{% endblock %}

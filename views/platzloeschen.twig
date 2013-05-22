@@ -2,24 +2,32 @@
 
 	{% block body %}
 		{{ parent() }}
-		
-		{# Aufforderung löschen bestätigen #}
-		
-		{% if geloescht %}
-			Platz wurde aus der Datenbank gel&ouml;scht.
-		{% else %}
-			<p class="box error">
-				Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Platz unwiederruflich gel&ouml;scht!
-				</br>
-				Sind Sie sicher?
-			</p>
-				</br>
-				</br>
+	
+			<table>
 				<form method="post" action="../php/platzloeschen.php">
-   		    		<input type="hidden" name="{{ pid }}">
-   		    		<input type="hidden" name="bestaetigt">
-					<button type="submit" class="ym-button ym-delete">Platz l&ouml;schen</button>
+				
+				<tr>
+					<td>
+						<input type="hidden" name="{{ pid }}">
+				   		<input type="hidden" name="bestaetigt">
+						<button type="submit" class="ym-button ym-delete">Platz l&ouml;schen</button>
+					</td>
+					
+					<td>
+						{% if geloescht %}
+							Platz wurde aus der Datenbank gel&ouml;scht.
+						{% else %}
+							<p class="box error">
+								Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Platz unwiederruflich gel&ouml;scht!
+								</br>
+								Sind Sie sicher?
+							</p>
+							
+						{% endif %}
+					</td>
+				</tr>
 				</form>
-		{% endif %}
+			</table>
+		
 		
 	{% endblock %}
