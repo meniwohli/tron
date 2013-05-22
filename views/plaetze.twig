@@ -65,7 +65,11 @@
 					<button type="submit" class="ym-button ym-spark">Alle Pl&auml;tze freigeben</button>
 				</form>
         		
-        		
+        		{% else %}
+        			<p class="box error">
+        				{{ 'Keine Pl&auml;tze vorhanden' }}
+        			</p>
+        		{% endif %}
         		
         		
         		</br>
@@ -77,13 +81,10 @@
         			Platz-Nummer:
 					<input type="text" name="platznum" />
 					</br>
-					</br>
 	   		    	<input type="hidden" name="neubestaetigt">
 	   		    	<button type="submit" class="ym-button ym-add">Platz anlegen</button>
 				</form>
-        	{% else %}
-        		{{ 'Keine Pl&auml;tze vorhanden' }}
-        	{% endif %}
+        	
 			</div>
 			
 	

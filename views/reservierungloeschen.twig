@@ -8,9 +8,11 @@
 				
 				<tr>
 					<td>
+					{% if geloescht == false %}
 						<input type="hidden" name="{{ rid }}">
 				   		<input type="hidden" name="bestaetigt">
 						<button type="submit" class="ym-button ym-delete">Reservierung l&ouml;schen</button>
+					{% endif %}
 					</td>
 					
 					<td>

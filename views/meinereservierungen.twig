@@ -51,7 +51,9 @@
         		{% endfor %}
         		</table>
         	{% else %}
-        		{{ 'Keine Reservierungen vorhanden' }}
+        		<p class="box error">
+        			{{ 'Keine Reservierungen vorhanden' }}
+        		</p>
         	{% endif %}
 			</div>
 			

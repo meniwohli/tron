@@ -5,6 +5,7 @@
 	
 	$ergebnis = array();
 	$sql = new Sql;
+	$plaetze = Array();
 	$platz;
 	
 	//Wenn eingeloggt, weiter..
