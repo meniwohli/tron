@@ -227,19 +227,19 @@
 				
 				<td>
 					{% if fehlercode %}
-						<div class="fehler">Der von Ihnen eingegebene Code ist kein g&uuml;ltiger Farbcode!</div>
+						<p class="box error">Der von Ihnen eingegebene Code ist kein g&uuml;ltiger Farbcode!</p>
 					{% endif %}
 						
 					{% if fehlerlaenge %}
-						<p class="fehler">Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!</p>
+						<p class="box error">Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!</p>
 					{% endif %}
 					
 					{% if fehlereingabe %}
-						<div class="fehler">Bitte f&uuml;llen Sie beide Felder!</div>
+						<p class="box error">Bitte f&uuml;llen Sie beide Felder!</p>
 					{% endif %}
 					
 					{% if farbeaufgenommen %}
-						<div class="">Die Farbe wurde ins System aufgenommen.</div>
+						<p class="box error">Die Farbe wurde ins System aufgenommen.</p>
 					{% endif %}
 				</td>
 			</tr>

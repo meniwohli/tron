@@ -31,22 +31,22 @@
 	   		    		</td>
 	   		    		
 	   		    		<td>
-				   		    <div class='fehler'>
+				   		    <p class="box error">
 				   		    	{% if fehlermail %}
-				   		    		<div class="fehler">E-Mail Adresse existiert bereits!</div> </br>
+				   		    		E-Mail Adresse existiert bereits!</br>
 				   		    	{% endif %}
 				   		    	
 				   		    	{% if fehlerpas %}
-				   		    		<div class="fehler">Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</div></br>
+				   		    		Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</br>
 				   		    	{% endif %}
 				   		    	
 				   		    	{% if fehleruser %}
-				   		    		<div class="fehler">Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</div></br>
+				   		    		Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</br>
 				   		    	{% endif %}
 				   		    		
 				   		    	Bitte f&uuml;llen Sie alle Felder die mit einem * markiert sind!</br>
 				   		    	
-				   		    </div> 
+				   		    </p>
 		   		    	</td>
 		   		    </tr>
 	   		    {% endif %}

@@ -5,25 +5,24 @@
 			 
 			
 			{% if sperrfehler == 1 %}
-				<div class="fehler">
+				<p class="box error">
 					Der User, mit dem Sie sich anmelden m&ouml;chten, ist gesperrt,</br>
 					bitte wenden Sie sich an Ihren Administrator. </br>
-				</div>
+				</p>
 			{% endif %}
 			
 			{% if pasfalsch %}
-				<div class="fehler">
+				<p class="box error">
 					Username oder Passwort falsch! </br>
-				</div>
+				</p>
 			{% endif %}
 			
 			{% if keinemail %}
-				<div class="ym-form">
-					<div class="fehler">
-						Bitte Daten vollst&auml;ndig ausf&uuml;llen! </br>
-					</div>
-				</div>
+				<p class="box error">
+					Bitte Daten vollst&auml;ndig ausf&uuml;llen! </br>
+				</p>
 			{% endif %}
+			
 			</br>
 			
 			
@@ -39,4 +38,5 @@
 				<button type="submit" class="ym-button ym-play">Login</button>
 				</form>
 			</div>
+			
 		{% endblock %}
