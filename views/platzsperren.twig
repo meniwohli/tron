@@ -2,27 +2,31 @@
 
 	{% block body %}
 		{{ parent() }}
-		
-		{# Aufforderung löschen bestätigen #}		
-		{% if gesperrt %}
-			
-		{% else %}
-			<div>
-				Bitte geben Sie einen Grund an, warum der Platz gesperrt werden soll.
-				</br>
-				</br>
-				
-				
-				
+
+		<table>
 				<form method="post" action="../php/platzsperren.php">
-					<input type="text" name="grund" />
-					</br>
-					</br>
-					<input type="hidden" name="{{ pid }}">
-	   		    	<input type="hidden" name="bestaetigt">
-	   		    	<button type="submit" class="ym-button ym-spark">Platz sperren</button>
+				
+				<tr>
+					<td>
+						<input type="text" name="grund" />
+						<input type="hidden" name="{{ pid }}">
+				   		<input type="hidden" name="bestaetigt">
+						<button type="submit" class="ym-button ym-spark">Platz sperren</button>
+					</td>
+					
+					<td>
+						{% if gesperrt %}
+							
+						{% else %}
+							<p class="box error">
+								Bitte geben Sie einen Grund an, warum der Platz gesperrt werden soll.
+								</br>
+							</p>
+							
+						{% endif %}
+					</td>
+				</tr>
 				</form>
-			</div>
-		{% endif %}
+			</table>
 		
 	{% endblock %}
