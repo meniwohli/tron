@@ -18,10 +18,13 @@
 						<td>{{ z }} Uhr</td>
 						{% for p in platz %}
 							<td>
-								
-							
-							
-							
+								{% for res in reservierungen %}
+									{% if res.fk_Platz_ID == p.Platz_ID %}
+										{% if res.ReservierungVon == z %}
+											reserviert 
+										{% endif %}
+									{% endif %}
+								{% endfor %}							
 							</td>
 						
 						{% endfor %}
