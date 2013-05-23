@@ -28,7 +28,7 @@
 		
 		if(isset($_POST["bestaetigt"]))
 			{
-				$sql->change("DELETE FROM tb_reservierung WHERE fk_Mitglied_ID = $uid")
+				$sql->change("DELETE FROM tb_reservierung WHERE fk_Mitglied_ID = $uid");
 				$sql->change("DELETE FROM tb_mitglied WHERE Mitglied_ID = $uid");
 				$daten["geloescht"] = true;
 			}
