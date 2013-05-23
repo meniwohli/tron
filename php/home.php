@@ -14,6 +14,8 @@
 		
 		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$datum'");
 		
+		$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
+		
 		
 		
 		
@@ -30,6 +32,7 @@
 		$daten["zeit"]=$zeit;
 		$daten["platz"]=$platz;
 		$daten["reservierungen"]=$reservierung;
+		$daten["mitglieder"]=$mitglied;
 		
 		
 		//auf Template verweisen

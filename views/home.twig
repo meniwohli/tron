@@ -19,12 +19,24 @@
 						{% for p in platz %}
 							<td>
 								{% for res in reservierungen %}
-									{% if res.fk_Platz_ID == p.Platz_ID %}
-										{% if res.ReservierungVon == z %}
-											reserviert 
+									{% if res.fk_Platz_ID == p.Platz_ID and res.ReservierungVon == z %}
+										{% if benutzerrecht %}
+											 {% for m in mitglieder %}
+												{% if res.fk_Mitglied_ID == m.Mitglied_ID %}
+												 	{{ m.Vorname }} {{ m.Nachname }}
+												{% endif %}
+											 {% endfor %}
+										{% else %}	
+											reserviert
 										{% endif %}
+										{% set voll = 1 %}
+									{% else %}
+										{% set voll = 0 %}
 									{% endif %}
-								{% endfor %}							
+								{% endfor %}
+								{% if voll == 0 %}
+									frei
+								{% endif %}
 							</td>
 						
 						{% endfor %}
