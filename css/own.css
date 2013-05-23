@@ -4,9 +4,14 @@
 
 @media screen, projection {
 	
-a:link:hover {
-	background: none;
-}
+	a:link:hover {
+		background: none;
+	}
+
+	.tdown {
+		width: 100em;
+	}
+
 	
 }
 

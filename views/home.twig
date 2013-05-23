@@ -5,18 +5,28 @@
 			
 			<table>
 				<th>
-					<td></td>
-									
-					{% for z in zeit.OffenVon..zeit.OffenBis %}
-						<td>{{ z }} Uhr</td>
-					{% endfor %}
+					
+					
+					{% for p in platz %}
+						<td class="tdown">{{ p.PlatzNr }}</td>
+					{% endfor %}			
+					
 				</th>
-				{% for p in platz %}
+				
+				{% for z in zeit.OffenVon..zeit.OffenBis %}
 					<tr>
-						<td>{{ p.PlatzNr }}</td>
+						<td>{{ z }} Uhr</td>
+						{% for p in platz %}
+							<td>
+								
+							
+							
+							
+							</td>
+						
+						{% endfor %}
 					</tr>
 				{% endfor %}
-				
 			
 			
 			
