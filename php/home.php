@@ -16,6 +16,10 @@
 		
 		$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
 		
+		$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
+		
+		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
+		
 		
 		
 		
@@ -33,6 +37,8 @@
 		$daten["platz"]=$platz;
 		$daten["reservierungen"]=$reservierung;
 		$daten["mitglieder"]=$mitglied;
+		$daten['farbzuweisung']=$farbzuweisung;
+		$daten['farben']=$farben;
 		
 		
 		//auf Template verweisen

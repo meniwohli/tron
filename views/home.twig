@@ -18,6 +18,7 @@
 						<td>{{ z }} Uhr</td>
 						{% for p in platz %}
 							<td>
+								{% set voll = 0 %}
 								{% for res in reservierungen %}
 									{% if res.fk_Platz_ID == p.Platz_ID and res.ReservierungVon == z %}
 										{% if benutzerrecht %}
@@ -30,8 +31,6 @@
 											reserviert
 										{% endif %}
 										{% set voll = 1 %}
-									{% else %}
-										{% set voll = 0 %}
 									{% endif %}
 								{% endfor %}
 								{% if voll == 0 %}
