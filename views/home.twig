@@ -2,6 +2,8 @@
 
         {% block body %}
 			  {{ parent() }}
+			  
+		{% if reservierungen %}
 			
 			<table>
 				<th>
@@ -41,6 +43,16 @@
 						{% endfor %}
 					</tr>
 				{% endfor %}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
 			
 			
 			
@@ -54,9 +66,10 @@
 			
 			
 			</table>
+		{% else %}
 			
 			
-			
+		{% endif %}
 			
 			
 	

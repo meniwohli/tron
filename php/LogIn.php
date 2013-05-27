@@ -2,9 +2,13 @@
 
 include 'includeup.php';
 
+$host = htmlspecialchars($_SERVER["HTTP_HOST"]);
+$uri  = rtrim(dirname(htmlspecialchars($_SERVER["PHP_SELF"])), "/\\");
+$extra = "home.php";
+
 if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 {
-	$template = $twig->loadTemplate('home.twig');
+	header("Location: http://$host$uri/$extra");
 	
 }elseif (isset($_POST["email"]))
 {
@@ -46,7 +50,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 		
 		include "import.php";	
 		
-		$template = $twig->loadTemplate('home.twig');
+		header("Location: http://$host$uri/$extra");
 		
 	}else{
 		
