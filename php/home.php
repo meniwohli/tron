@@ -4,6 +4,7 @@
 	include "includeup.php";
 	
 	$datum = '2013-05-22';
+	$colours = Array();
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
@@ -21,8 +22,14 @@
 		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
 		
 		
-		
-		
+		foreach($farbzuweisung as $f)
+		{
+			$abc = $f['fk_Farbe_ID'];
+			$resart = $f['Reservierungsart'];
+			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $abc");
+			$code = $code['FarbCode'];
+			$colours[$resart] = $code;
+		}
 		
 		
 		
@@ -37,9 +44,9 @@
 		$daten["platz"]=$platz;
 		$daten["reservierungen"]=$reservierung;
 		$daten["mitglieder"]=$mitglied;
-		$daten['farbzuweisung']=$farbzuweisung;
-		$daten['farben']=$farben;
-		
+		//$daten['farbzuweisung']=$farbzuweisung;
+		//$daten['farben']=$farben;
+		$daten["farben"]= $colours;
 		
 		//auf Template verweisen
 		$template = $twig->loadTemplate('home.twig');

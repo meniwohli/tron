@@ -19,10 +19,13 @@
 					<tr>
 						<td>{{ z }} Uhr</td>
 						{% for p in platz %}
-							<td>
+							<td 
 								{% set voll = 0 %}
 								{% for res in reservierungen %}
 									{% if res.fk_Platz_ID == p.Platz_ID and res.ReservierungVon == z %}
+										{% for key, value in farben %}
+											{% if key == "besetzt" %} style="background-color:{{ value }}" {% endif %}
+										{% endfor %} >
 										{% if benutzerrecht %}
 											 {% for m in mitglieder %}
 												{% if res.fk_Mitglied_ID == m.Mitglied_ID %}
@@ -36,6 +39,9 @@
 									{% endif %}
 								{% endfor %}
 								{% if voll == 0 %}
+									{% for key, value in farben %}
+										{% if key == "frei" %} style="background-color:{{ value }}" {% endif %}
+									{% endfor %} >
 									frei
 								{% endif %}
 							</td>
