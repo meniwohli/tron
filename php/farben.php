@@ -14,7 +14,8 @@
 	/**
 	 * includeup.php beinhaltet allgemeines über Twig etc.
 	 */
-	
+	$test = null;
+
 	include "includeup.php";
 	
 	//Wenn eingeloggt, weiter..
@@ -87,7 +88,7 @@
 		
 		
 		//array durchlaufen und einzelne werte zuweisen
-		$farbenaktuell;
+		$farbenaktuell = array();
 		
 		/**
 		* function für farbe auslesen und ändern wenn nötig
@@ -117,24 +118,63 @@
 		}
 			
 		//farbzuweisung auslesen und übergeben
+		$speicher = null;
 		$speicher = $sql->arrayCall("SELECT f.FarbCode, f.FarbName, fz.Reservierungsart, f.Farbe_ID FROM tb_farben as f, 
 									tb_farbzuweisung as fz WHERE f.Farbe_ID = fz.fk_Farbe_ID");
+		$rows = $sql->rows("SELECT f.FarbCode, f.FarbName, fz.Reservierungsart, f.Farbe_ID FROM tb_farben as f, 
+									tb_farbzuweisung as fz WHERE f.Farbe_ID = fz.fk_Farbe_ID");
 		
-		
-		foreach($speicher as $x)
+		//Prüfen, ob die Abfrage ergolgreich war. Wenn nicht gibt es keine Farben mehr
+		if ($rows != 0)
 		{
-			//oben definierte funktion readwrite
-			readwrite("frei");
-			readwrite("besetzt");
-			readwrite("zu");
-			readwrite("serie");
-			readwrite("turnier");
-			readwrite("meins");
+			foreach($speicher as $x)
+			{
+				//oben definierte funktion readwrite
+				readwrite("frei");
+				readwrite("besetzt");
+				readwrite("zu");
+				readwrite("serie");
+				readwrite("turnier");
+				readwrite("meins");
+			}
+		}else{
+			
+			//Setzt eine Fehlermeldung und Initialisiert neue Farben, wenn keine Farben mehr vorhanden.
+			$sqltext = "SELECT Farbe_ID, FarbCode FROM tb_farben";
+			$x = $sql->call($sqltext);
+			$rows = $sql->rows($sqltext);
+			$y = $x["FarbCode"];
+			$x = $x["Farbe_ID"];
+			
+			if($rows != 0)
+			{
+				function setcolor($resart)
+				{
+					global $x, $y, $sql, $test, $farbenaktuell;
+					$test = $x;
+					$sql->change("Update tb_farbzuweisung SET fk_Farbe_ID = $x WHERE Reservierungsart = '$resart'");
+					$farbenaktuell[$resart] = $y;
+					
+					
+				}
+				
+				setcolor("frei");
+				setcolor("besetzt");
+				setcolor("zu");
+				setcolor("serie");
+				setcolor("turnier");
+				setcolor("meins");
+				
+			}else
+			{
+				$daten["fehlerleer"] = true;
+			}
+			
 		}
 		
 		
-		
 		//übergabe
+		$daten["test"] = $test;
 		$daten["farbarray"] = $farben;
 		$daten["farbenaktuell"] = $farbenaktuell;
 		$daten["wahlfarbe"] = "hallo";

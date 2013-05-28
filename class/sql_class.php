@@ -124,6 +124,16 @@ class Sql
 		$this->logOut();
 	}
 	
+	//Gibt die Anzahl der Abgerufenen Reihen zurück
+	public function rows($call)
+	{
+		$this->logIn();
+		$ergebnis = $this->mysqli->query($call);
+		$ergebnis = mysqli_num_rows($ergebnis);
+		return $ergebnis;
+		$this->logOut();
+	}
+	
 	
 	public function logOut()
 	{

@@ -12,6 +12,9 @@
 		Sie k&ouml;nnen folgende Farben ausw&auml;hlen:
 		</br>
 		
+		{% if fehlerleer %}
+			<p class="box error">Es ist keine Farbe in der Datenbank vorhanden!</p>
+		{% endif %}
 		
 		<table>
 			<form method="post" action="../php/farben.php">
