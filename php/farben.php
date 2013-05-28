@@ -14,7 +14,6 @@
 	/**
 	 * includeup.php beinhaltet allgemeines über Twig etc.
 	 */
-	$test = null;
 
 	include "includeup.php";
 	
@@ -150,8 +149,7 @@
 			{
 				function setcolor($resart)
 				{
-					global $x, $y, $sql, $test, $farbenaktuell;
-					$test = $x;
+					global $x, $y, $sql, $farbenaktuell;
 					$sql->change("Update tb_farbzuweisung SET fk_Farbe_ID = $x WHERE Reservierungsart = '$resart'");
 					$farbenaktuell[$resart] = $y;
 					
@@ -174,7 +172,6 @@
 		
 		
 		//übergabe
-		$daten["test"] = $test;
 		$daten["farbarray"] = $farben;
 		$daten["farbenaktuell"] = $farbenaktuell;
 		$daten["wahlfarbe"] = "hallo";
