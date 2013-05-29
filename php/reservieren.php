@@ -11,7 +11,7 @@
 	
 		$zeit = $sql->call("SELECT * FROM tb_zeiten");
 				
-		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE PlatzNr = 1");
+		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = 22");
 		
 		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$datum'");
 		
@@ -30,9 +30,6 @@
 			$code = $code['FarbCode'];
 			$colours[$resart] = $code;
 		}
-		
-		
-		
 		
 		
 		

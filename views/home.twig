@@ -11,14 +11,10 @@
 					
 					{% for p in platz %}
 						<td class="tdown">
-							<form id= "reservieren" method="post"
-								{% if p.gesperrt == 0 %}
-									action="../php/reservieren.php">
-								{% else %}
-									action="../php/home.php">
-								{% endif %}
+							<form id= "reservieren" method="post" action="../php/reservieren.php">
 								<input type="hidden" name="{{ p.platz_ID }}">
-								<button type="submit" class="ym-button ym-spark">{{ p.PlatzNr }}</button>
+								<input type="hidden" name="geklickt">
+								<button type="submit" class="ym-button ym-spark">Platz {{ p.PlatzNr }}</button>
 							</form>
 						</td>
 					{% endfor %}			

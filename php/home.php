@@ -24,9 +24,9 @@
 		
 		foreach($farbzuweisung as $f)
 		{
-			$abc = $f['fk_Farbe_ID'];
+			$fid = $f['fk_Farbe_ID'];
 			$resart = $f['Reservierungsart'];
-			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $abc");
+			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $fid");
 			$code = $code['FarbCode'];
 			$colours[$resart] = $code;
 		}
