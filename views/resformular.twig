@@ -1,0 +1,63 @@
+{% extends "layout.twig" %}
+
+        {% block body %}
+			  {{ parent() }}
+			  
+		<form method="post" action="../php/resformular.php">
+			<table>
+			
+				
+			  	Reservieren von {# mitgegebene Zeit #} für Platz {# mitgegebener Platz #}
+			  	
+			  	
+			  	
+			  	<tr>
+			    	<td>
+			    		Reservieren bis
+			    	</td>
+			    	
+			    	<td>
+			    		<select name="offenbis" >
+							
+							{% for i in 6..22 %}
+							<option {% if zeit.offenBis == i %} selected="selected" {% endif %} value="{{ i }}">
+								{{ i }} Uhr
+							</option>
+							{% endfor %}
+					
+						</select>
+			    	</td>
+			  	</tr>
+			  	
+			  	{% if benutzerrecht %}
+			  		<tr>
+						<td>
+							Reservieren f&uuml;r:
+						</td>
+					
+						<td>
+							<select name="resfuer" >
+								{% for m in mitglieder %}
+									<option  value="{{ m.mitglied_ID }}">
+										{{ m.Vorname }} {{ m.Nachname }}
+									</option>
+								{% endfor %}
+							</select>
+						</td>
+					</tr>
+			  		
+			  		
+			  		
+			  	{% endif %}			  	
+			  	
+			  	
+			  	
+			</table>
+			<button type="submit" class="ym-button ym-save">Reservieren</button>
+			</form>
+			
+			
+			
+			
+	
+		{% endblock %}

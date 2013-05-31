@@ -10,7 +10,8 @@
 					
 					
 					{% for p in platz %}
-						<td class="tdown">{{ p.PlatzNr }}</td>
+						<td class="tdown">Platz {{ p.PlatzNr }}</td>
+						<td></td>
 					{% endfor %}			
 					
 				</th>
@@ -52,8 +53,16 @@
 								{% endif %}
 							{% endif %}
 							</td>
+							<td>
+								<form id= "reservieren" method="post" action="../php/resformular.php">
+									<input type="hidden" name="{{ p.platz_ID }}">
+									<input type="hidden" name="geklickt">
+									<button type="submit" class="ym-button ym-spark">reservieren</button>
+								</form>
+							</td>
 						
 						{% endfor %}
+						
 					</tr>
 				{% endfor %}
 				
@@ -61,28 +70,17 @@
 				
 				
 				
-				
-				
-				
-				
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			</table>
-		{% else %}
 			
 			
-		{% endif %}
+			
+			{% else %}
+				
+				
+			{% endif %}
+			
+			
 			
 			
 	
