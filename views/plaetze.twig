@@ -20,7 +20,11 @@
             			<td>{{ '' }}</td>
             			<td>{{ pla.platzNr }}</td>
             			{% if pla.gesperrt == 0 %}
-            				<td>Ge&ouml;ffnet</td>
+            				<td 
+            				{% for key, value in farben %}
+								{% if key == "frei" %} style="background-color:{{ value }}" {% endif %}
+							{% endfor %} >
+							Ge&ouml;ffnet</td>
             				<td></td>
             				<td>
 							 	<form id= "sperren" method="post" action="../php/platzsperren.php">
@@ -29,7 +33,11 @@
 								</form>
 							</td>
             			{% elseif pla.gesperrt == 1 %}
-            				<td>Gesperrt</td>
+            				<td
+            				{% for key, value in farben %}
+								{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
+							{% endfor %} >
+            				Gesperrt</td>
             				<td>{{ pla.kommentar }}</td>
             				<td>
 							 	<form id= "oeffnen" method="post" action="../php/platzfreigeben.php">
