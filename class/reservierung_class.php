@@ -32,10 +32,10 @@ class Reservierung
 		$this->datum = $call['Datum'];
 		$this->reservierungVon = $call['ReservierungVon'];
 		$this->reservierungBis = $call['ReservierungBis'];
-		$this->s1 = $call['s1'];
-		$this->s2 = $call['s2'];
-		$this->s3 = $call['s3'];
-		$this->s4 = $call['s4'];
+		$this->s1 = $call['S1'];
+		$this->s2 = $call['S2'];
+		$this->s3 = $call['S3'];
+		$this->s4 = $call['S4'];
 	}
 	
 	
