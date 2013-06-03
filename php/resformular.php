@@ -18,6 +18,19 @@
 			$von = $_POST["resvon"];
 			$pid = $_POST["pid"];
 			
+			if (isset($_POST["m1"])) {
+				$m1 = $_POST["m1"];
+			}
+			if (isset($_POST["m2"])) {
+				$m2 = $_POST["m3"];
+			}
+			if (isset($_POST["m3"])) {
+				$m3 = $_POST["m3"];
+			}
+			if (isset($_POST["m4"])) {
+				$m4 = $_POST["m4"];
+			}
+			
 
 			if (isset($_POST["resfuer"]))
 			{
@@ -29,7 +42,7 @@
 			
 			
 			
-			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis) VALUES ('$fuer', '$pid', '$date', '$von', '$bis')");
+			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$m1', '$m2', '$m3', '$m4')");
 		}
 		
 	

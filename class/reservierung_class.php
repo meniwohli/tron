@@ -4,16 +4,16 @@
 class Reservierung
 {
 	public $reservierung_ID;
-	public $fk_Mitglied_ID;
+
 	public $fk_Platz_ID;
 	public $datum;
 	public $reservierungVon;
 	public $reservierungBis;
 	public $fk_Farbe_ID;
-	public $fk_S1_ID;
-	public $fk_S2_ID;
-	public $fk_S3_ID;
-	public $fk_S4_ID;
+	public $s1;
+	public $s2;
+	public $s3;
+	public $s4;
 	public $sql;
 	
 	/*
@@ -28,15 +28,14 @@ class Reservierung
 		$call = $this->sql->call($call);
 		
 		$this->reservierung_ID = $call['Reservierung_ID'];
-		$this->fk_Mitglied_ID = $call['fk_Mitglied_ID'];
 		$this->fk_Platz_ID = $call['fk_Platz_ID'];
 		$this->datum = $call['Datum'];
 		$this->reservierungVon = $call['ReservierungVon'];
 		$this->reservierungBis = $call['ReservierungBis'];
-		$this->fk_S1_ID = $call['fk_S1_ID'];
-		$this->fk_S2_ID = $call['fk_S2_ID'];
-		$this->fk_S3_ID = $call['fk_S3_ID'];
-		$this->fk_S4_ID = $call['fk_S4_ID'];
+		$this->s1 = $call['s1'];
+		$this->s2 = $call['s2'];
+		$this->s3 = $call['s3'];
+		$this->s4 = $call['s4'];
 	}
 	
 	
@@ -52,16 +51,6 @@ class Reservierung
 	/*
 		getter und setter Methoden für alle Variablen
 	*/
-	public function getFk_Mitglied_ID()
-	{
-		return $this->fk_Mitglied_ID;
-			
-	}
-	
-	
-	
-	
-	
 	public function getFk_Platz_ID()
 	{
 		return $this->fk_Platz_ID;
@@ -124,9 +113,9 @@ class Reservierung
 	
 	
 	
-	public function getFk_S1_ID()
+	public function getS1()
 	{
-		return $this->fk_S1_ID;
+		return $this->s1;
 			
 	}
 	
@@ -134,9 +123,9 @@ class Reservierung
 	
 	
 	
-	public function getFk_S2_ID()
+	public function getS2()
 	{
-		return $this->fk_S2_ID;
+		return $this->s2;
 			
 	}
 	
@@ -144,9 +133,9 @@ class Reservierung
 	
 	
 	
-	public function getFk_S3_ID()
+	public function getS3()
 	{
-		return $this->fk_S3_ID;
+		return $this->s3;
 			
 	}
 	
@@ -154,9 +143,9 @@ class Reservierung
 	
 	
 	
-	public function getFk_S4_ID()
+	public function getS4()
 	{
-		return $this->fk_S4_ID;
+		return $this->s4;
 			
 	}
 }
