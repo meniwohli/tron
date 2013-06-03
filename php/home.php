@@ -3,7 +3,12 @@
 	
 	include "includeup.php";
 	
-	$datum = '2013-05-22';
+	
+	$datum = date("Y-m-d");
+	$_SESSION["datum"] =$datum;
+	$date = $_SESSION["datum"];
+	
+	
 	$colours = Array();
 	
 	//Wenn eingeloggt, weiter..
@@ -13,7 +18,7 @@
 				
 		$platz = $sql->arrayCall("SELECT * FROM tb_platz ORDER BY PlatzNr");
 		
-		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$datum'");
+		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
 		
 		$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
 		
@@ -44,9 +49,8 @@
 		$daten["platz"]=$platz;
 		$daten["reservierungen"]=$reservierung;
 		$daten["mitglieder"]=$mitglied;
-		//$daten['farbzuweisung']=$farbzuweisung;
-		//$daten['farben']=$farben;
-		$daten["farben"]= $colours;
+		$daten["farben"]=$colours;
+		$daten["datum"]=$date;
 		
 		//auf Template verweisen
 		$template = $twig->loadTemplate('home.twig');

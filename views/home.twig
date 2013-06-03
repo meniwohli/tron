@@ -3,7 +3,9 @@
         {% block body %}
 			  {{ parent() }}
 			  
-		{% if reservierungen %}
+			  <h2>Reservierungen am {{ datum }}</h2>
+			  
+		{% if datum %}
 			
 			<table>
 				<th>
@@ -13,6 +15,7 @@
 						<td class="tdown">
 							<form id= "reservieren" method="post" action="../php/reservieren.php">
 								<input type="hidden" name="pid" value="{{ p.Platz_ID }}">
+								<input type="hidden" name="datum" value="{{ datum }}">
 								<input type="hidden" name="geklickt">
 								<button type="submit" class="ym-button ym-spark">Platz {{ p.PlatzNr }}</button>
 							</form>

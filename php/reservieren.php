@@ -3,51 +3,58 @@
 	
 	include "includeup.php";
 	
-	$datum = '2013-05-22';
+	$date = $_SESSION["datum"];
 	$colours = Array();
-	$pid = $_POST["pid"];
+	
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
-	
-		$zeit = $sql->call("SELECT * FROM tb_zeiten");
-				
-		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 		
-		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$datum'");
+		if(isset($_POST["geklickt"])) {
+			
+			$pid = $_POST["pid"];
 		
-		$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
+			$zeit = $sql->call("SELECT * FROM tb_zeiten");
+					
+			$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
+			
+			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
+			
+			$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
+			
+			$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
+			
+			$farben = $sql->arrayCall("SELECT * FROM tb_farben");
+			
+			
+			foreach($farbzuweisung as $f)
+			{
+				$abc = $f['fk_Farbe_ID'];
+				$resart = $f['Reservierungsart'];
+				$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $abc");
+				$code = $code['FarbCode'];
+				$colours[$resart] = $code;
+			}
+			
+			
+			
+			
+			
+			
+			
+			$daten["zeit"]=$zeit;
+			$daten["platz"]=$platz;
+			$daten["reservierungen"]=$reservierung;
+			$daten["mitglieder"]=$mitglied;
+			$daten["farben"]= $colours;
+			$daten["datum"]=$date;
+			
+			//auf Template verweisen
+			$template = $twig->loadTemplate('reservieren.twig');
 		
-		$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
-		
-		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
-		
-		
-		foreach($farbzuweisung as $f)
-		{
-			$abc = $f['fk_Farbe_ID'];
-			$resart = $f['Reservierungsart'];
-			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $abc");
-			$code = $code['FarbCode'];
-			$colours[$resart] = $code;
+		}else{
+			header('Location: home.php');
 		}
-		
-		
-		
-		
-		
-		
-		
-		$daten["zeit"]=$zeit;
-		$daten["platz"]=$platz;
-		$daten["reservierungen"]=$reservierung;
-		$daten["mitglieder"]=$mitglied;
-		//$daten['farbzuweisung']=$farbzuweisung;
-		//$daten['farben']=$farben;
-		$daten["farben"]= $colours;
-		
-		//auf Template verweisen
-		$template = $twig->loadTemplate('reservieren.twig');
 		
 	//sonst auf anmeldeseite
 	}else{

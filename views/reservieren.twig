@@ -3,7 +3,9 @@
         {% block body %}
 			  {{ parent() }}
 			  
-		{% if reservierungen %}
+			  <h2>Reservierungen am {{ datum }}</h2>
+			  
+		{% if datum %}
 			
 			<table>
 				<th>
@@ -26,6 +28,7 @@
 									{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
 								{% endfor %} >
 								{{ p.Kommentar }}
+								{% set closed = 1 %}
 							{% else %}
 								{% set voll = 0 %}
 								{% for res in reservierungen %}
@@ -50,21 +53,27 @@
 										{% if key == "frei" %} style="background-color:{{ value }}" {% endif %}
 									{% endfor %} >
 									frei
+									</td>
+									<td>
+										<form id= "reservieren" method="post" action="../php/resformular.php">
+											<input type="hidden" name="pid" value="{{ p.platz_ID }}">
+											<input type="hidden" name="zeit" value="{{ z }}">
+											<input type="hidden" name="geklickt">
+											<button type="submit" class="ym-button ym-spark">reservieren</button>
+										</form>
+									</td>
+								{% else %}
+									</td>
 								{% endif %}
 							{% endif %}
-							</td>
-							<td>
-								<form id= "reservieren" method="post" action="../php/resformular.php">
-									<input type="hidden" name="{{ p.platz_ID }}">
-									<input type="hidden" name="geklickt">
-									<button type="submit" class="ym-button ym-spark">reservieren</button>
-								</form>
-							</td>
+							
 						
 						{% endfor %}
 						
 					</tr>
+					
 				{% endfor %}
+				
 				
 				
 				
@@ -72,7 +81,11 @@
 				
 
 			</table>
-			
+				{% if closed == 1 %}
+					<p class="box error">
+						Es ist aktuell keine Reservierung möglich, da der gewählte Platz gesperrt ist!
+					</p>
+				{% endif %}
 			
 			
 			{% else %}
