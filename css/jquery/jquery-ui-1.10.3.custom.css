@@ -194,6 +194,7 @@
 	cursor: default;
 }
 .ui-button {
+	min-width: 120px;
 	display: inline-block;
 	position: relative;
 	padding: 0;
