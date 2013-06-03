@@ -3,13 +3,12 @@
         {% block body %}
 			  {{ parent() }}
 			  
+			  Reservieren von {{ time }} Uhr f&uuml;r Platz {{ platz }} am {{ datum }}
+			  
 		<form method="post" action="../php/resformular.php">
 			<table>
 			
-				
-			  	Reservieren von {{ zeit }} Uhr f&uuml;r Platz {{ platz }} am {{ datum }}
-			  	
-			  	
+
 			  	
 			  	<tr>
 			    	<td>
@@ -17,7 +16,7 @@
 			    	</td>
 			    	
 			    	<td>
-			    		<select name="offenbis" >
+			    		<select name="resbis" >
 							
 							{% for i in 6..22 %}
 							<option {% if zeit.offenBis == i %} selected="selected" {% endif %} value="{{ i }}">
@@ -38,7 +37,7 @@
 						<td>
 							<select name="resfuer" >
 								{% for m in mitglieder %}
-									<option  value="{{ m.mitglied_ID }}">
+									<option  value="{{ m.Mitglied_ID }}">
 										{{ m.Vorname }} {{ m.Nachname }}
 									</option>
 								{% endfor %}
@@ -53,6 +52,8 @@
 			  	
 			  	
 			</table>
+			<input type="hidden" name="resvon" value={{ time }}>
+			<input type="hidden" name="reserviert">
 			<button type="submit" class="ym-button ym-save">Reservieren</button>
 			</form>
 			

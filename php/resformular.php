@@ -4,11 +4,31 @@
 	include "includeup.php";
 	
 	$date = $_SESSION["datum"];
-	$zeit = $_POST["zeit"];
+	$time = $_POST["zeit"];
 	$platz = $_POST["pid"];
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
+		
+		if (isset($_POST["reserviert"])) {
+			
+			$bis = $_POST["resbis"];
+			$von = $_POST["resvon"];
+			
+
+			if (isset($_POST["resfuer"]))
+			{
+				$fuer = $_POST["resfuer"];
+			} else {
+				$fuer = $mitglied->mitglied_ID;
+			}
+			
+			
+			
+			
+			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis) VALUES ('$fuer', '18', '$date', '$von', '$bis')");
+		}
+		
 	
 		if(isset($_POST["geklickt"])) {
 			
@@ -27,10 +47,14 @@
 			
 			
 			$daten["zeit"]=$zeit;
+			$daten["time"]=$time;
 			$daten["datum"]=$date;
 			$daten["reservierungen"]=$reservierung;
 			$daten["mitglieder"]=$mitglied;
 			$daten["platz"]=$platz;
+			
+			
+			
 		
 		}else{
 			header('Location: home.php');
