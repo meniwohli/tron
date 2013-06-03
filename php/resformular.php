@@ -6,6 +6,7 @@
 	$date = $_SESSION["datum"];
 	$time = $_POST["zeit"];
 	$platz = $_POST["pid"];
+	$pnr = $_POST["pnr"];
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
@@ -14,6 +15,7 @@
 			
 			$bis = $_POST["resbis"];
 			$von = $_POST["resvon"];
+			$pid = $_POST["pid"];
 			
 
 			if (isset($_POST["resfuer"]))
@@ -26,7 +28,7 @@
 			
 			
 			
-			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis) VALUES ('$fuer', '18', '$date', '$von', '$bis')");
+			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis) VALUES ('$fuer', '$pid', '$date', '$von', '$bis')");
 		}
 		
 	
@@ -52,6 +54,7 @@
 			$daten["reservierungen"]=$reservierung;
 			$daten["mitglieder"]=$mitglied;
 			$daten["platz"]=$platz;
+			$daten["pnr"]=$pnr;
 			
 			
 			

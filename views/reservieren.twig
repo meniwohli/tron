@@ -56,7 +56,8 @@
 									</td>
 									<td>
 										<form id= "reservieren" method="post" action="../php/resformular.php">
-											<input type="hidden" name="pid" value="{{ p.platz_ID }}">
+											<input type="hidden" name="pid" value="{{ p.Platz_ID }}">
+											<input type="hidden" name="pnr" value="{{ p.PlatzNr }}">
 											<input type="hidden" name="zeit" value="{{ z }}">
 											<input type="hidden" name="geklickt">
 											<button type="submit" class="ym-button ym-spark">reservieren</button>
