@@ -1,7 +1,7 @@
 /*! jQuery UI - v1.10.3 - 2013-06-03
 * http://jqueryui.com
 * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.selectable.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.dialog.css, jquery.ui.menu.css, jquery.ui.progressbar.css, jquery.ui.slider.css, jquery.ui.spinner.css, jquery.ui.tabs.css, jquery.ui.tooltip.css
-* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Segoe%20UI%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=%23333333&bgTextureHeader=gloss_wave&bgImgOpacityHeader=25&borderColorHeader=%23333333&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23000000&bgTextureContent=inset_soft&bgImgOpacityContent=25&borderColorContent=%23666666&fcContent=%23ffffff&iconColorContent=%23cccccc&bgColorDefault=%23555555&bgTextureDefault=glass&bgImgOpacityDefault=20&borderColorDefault=%23666666&fcDefault=%23eeeeee&iconColorDefault=%23cccccc&bgColorHover=%230078a3&bgTextureHover=glass&bgImgOpacityHover=40&borderColorHover=%2359b4d4&fcHover=%23ffffff&iconColorHover=%23ffffff&bgColorActive=%23f58400&bgTextureActive=inset_soft&bgImgOpacityActive=30&borderColorActive=%23ffaf0f&fcActive=%23ffffff&iconColorActive=%23222222&bgColorHighlight=%23d38d0b&bgTextureHighlight=highlight_soft&bgImgOpacityHighlight=80&borderColorHighlight=%23cccccc&fcHighlight=%232e7db2&iconColorHighlight=%234b8e0b&bgColorError=%23ffc73d&bgTextureError=glass&bgImgOpacityError=40&borderColorError=%23ffb73d&fcError=%23111111&iconColorError=%23a83300&bgColorOverlay=%235c5c5c&bgTextureOverlay=flat&bgImgOpacityOverlay=50&opacityOverlay=80&bgColorShadow=%23cccccc&bgTextureShadow=flat&bgImgOpacityShadow=30&opacityShadow=60&thicknessShadow=7px&offsetTopShadow=-7px&offsetLeftShadow=-7px&cornerRadiusShadow=8px&zThemeParams=5d000001000806000000000000003d8888d844329a8dfe02723de3e5701cc8cb8a0f4166c8f002bb384a9a94d46b66930ecd1d30314057ff273da42b76034e7df160b9e7ba7002682805fc5802b2a0549efda864da8b43871254a8db50234db11c2645a6a024432bad09b51b91644ad5cdd184166d1d7fa05d2e8306f1491343602885cc1feef2e605d5e4e0237c397399844934773d9db4e19c031a1ce7b18571f8903d4e3999359acd5af91776b5e339dda288188af7506377366f57db0f35000a12eabebc78285d6453d4bf8c4a2c3d1546c7316039d3a94b30a4d44540bec82479bc96d81c8a6e6735c51fc0f5cfef3053bbabff3b6ce6ef74020d8e1ec1be5d894ac7ceff73ed6cc265dc4d599b5af0d15540670c866d949c3e944e999198f3f2ba00a5c509bc83eaf63fa4a632b653ada3e0e32b942840e1b116f51e69d92880ac7ce4960a510178bbe9eab54704a1b5f7119dfc463857bb1ea723a36ae478761c3337afc9fe32c5d17235b18a839da0a1120e46ec43a7e68fb2f5768f05d6ff3e894d4786288c8da015fb63a78f459021e08b48bcf2400939a40a2a9500aa75d0057b818819c4c8689d610959fe356e4e030422afe0f07d441643977f4748facdc6c4fcf537167384fea00211021089a29de09959a09ff3f0a9c274f7a3f7574db0395fef04b1785cb59fff4dcede00
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Segoe%20UI%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=%23333333&bgTextureHeader=flat&bgImgOpacityHeader=25&borderColorHeader=%23333333&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23000000&bgTextureContent=glow_ball&bgImgOpacityContent=40&borderColorContent=%23666666&fcContent=%23ffffff&iconColorContent=%23cccccc&bgColorDefault=%23555555&bgTextureDefault=inset_soft&bgImgOpacityDefault=20&borderColorDefault=%23666666&fcDefault=%23eeeeee&iconColorDefault=%23cccccc&bgColorHover=%230078a3&bgTextureHover=inset_soft&bgImgOpacityHover=40&borderColorHover=%2359b4d4&fcHover=%23ffffff&iconColorHover=%23ffffff&bgColorActive=%23f58400&bgTextureActive=loop&bgImgOpacityActive=30&borderColorActive=%23ffaf0f&fcActive=%23ffffff&iconColorActive=%23222222&bgColorHighlight=%23eeeeee&bgTextureHighlight=diagonals_medium&bgImgOpacityHighlight=95&borderColorHighlight=%23cccccc&fcHighlight=%232e7db2&iconColorHighlight=%234b8e0b&bgColorError=%23ffaa3d&bgTextureError=glass&bgImgOpacityError=40&borderColorError=%23ff6b3d&fcError=%23111111&iconColorError=%23a81500&bgColorOverlay=%235c5c5c&bgTextureOverlay=flat&bgImgOpacityOverlay=50&opacityOverlay=80&bgColorShadow=%23cccccc&bgTextureShadow=flat&bgImgOpacityShadow=30&opacityShadow=60&thicknessShadow=7px&offsetTopShadow=-7px&offsetLeftShadow=-7px&cornerRadiusShadow=8px
 * Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
 
 /* Layout helpers
@@ -194,7 +194,6 @@
 	cursor: default;
 }
 .ui-button {
-	min-width: 120px;
 	display: inline-block;
 	position: relative;
 	padding: 0;
@@ -802,7 +801,7 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #666666;
-	background: #000000 url(images/ui-bg_inset-soft_25_000000_1x100.png) 50% bottom repeat-x;
+	background: #000000 url(images/ui-bg_glow-ball_40_000000_600x600.png) 50% 35% repeat-x;
 	color: #ffffff;
 }
 .ui-widget-content a {
@@ -810,7 +809,7 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #333333;
-	background: #333333 url(images/ui-bg_gloss-wave_25_333333_500x100.png) 50% 50% repeat-x;
+	background: #333333 url(images/ui-bg_flat_25_333333_40x100.png) 50% 50% repeat-x;
 	color: #ffffff;
 	font-weight: bold;
 }
@@ -824,7 +823,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
 	border: 1px solid #666666;
-	background: #555555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
+	background: #555555 url(images/ui-bg_inset-soft_20_555555_1x100.png) 50% 50% repeat-x;
 	font-weight: bold;
 	color: #eeeeee;
 }
@@ -841,7 +840,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
 	border: 1px solid #59b4d4;
-	background: #0078a3 url(images/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;
+	background: #0078a3 url(images/ui-bg_inset-soft_40_0078a3_1x100.png) 50% 50% repeat-x;
 	font-weight: bold;
 	color: #ffffff;
 }
@@ -856,7 +855,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
 	border: 1px solid #ffaf0f;
-	background: #f58400 url(images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
+	background: #f58400 url(images/ui-bg_loop_30_f58400_21x21.png) 50% 50% repeat;
 	font-weight: bold;
 	color: #ffffff;
 }
@@ -873,7 +872,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
 	border: 1px solid #cccccc;
-	background: #d38d0b url(images/ui-bg_highlight-soft_80_d38d0b_1x100.png) 50% top repeat-x;
+	background: #eeeeee url(images/ui-bg_diagonals-medium_95_eeeeee_40x40.png) 50% 50% repeat;
 	color: #2e7db2;
 }
 .ui-state-highlight a,
@@ -884,8 +883,8 @@ body .ui-tooltip {
 .ui-state-error,
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
-	border: 1px solid #ffb73d;
-	background: #ffc73d url(images/ui-bg_glass_40_ffc73d_1x400.png) 50% 50% repeat-x;
+	border: 1px solid #ff6b3d;
+	background: #ffaa3d url(images/ui-bg_glass_40_ffaa3d_1x400.png) 50% 50% repeat-x;
 	color: #111111;
 }
 .ui-state-error a,
@@ -951,7 +950,7 @@ body .ui-tooltip {
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-	background-image: url(images/ui-icons_a83300_256x240.png);
+	background-image: url(images/ui-icons_a81500_256x240.png);
 }
 
 /* positioning */

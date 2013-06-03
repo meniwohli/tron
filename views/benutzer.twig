@@ -84,11 +84,20 @@
 				</td>
 				
 				
+				
 			{# Geburtsdatum abfragen und formatieren #}
 			{% if aendern == 1 %}
-				<td> (TT)<input type="text" name="geburtstag" value="{{ geburtstag }}" /> </td>
-				<td> (MM)<input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" /> </td>
-				<td> (JJJJ)<input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" /> </td>
+			
+				
+				<td></td>
+			</tr>
+			<tr>
+				<td>Tag(TT)</td><td><input type="text" name="geburtstag" value="{{ geburtstag }}" /> </td>
+			</tr>
+				<td>Monat(MM)</td><td><input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" /> </td>
+			</tr>
+			<tr>
+				<td>Jahr(JJJJ)</td><td><input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" /> </td>
 			{% elseif geburtstag %}
 				<td>
 					{{ geburtstag }}.{{ geburtsmonat }}.{{ geburtsjahr }}

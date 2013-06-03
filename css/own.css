@@ -5,9 +5,19 @@
 @media screen, projection {
 	
 	button {
-	widht: 300px;
+		widht: 300px;
 	}
 
+
+	input[type="text"],
+	select,
+	input[type="password"],
+	textarea {
+   		width:200px;
+    	padding: 2px;
+    	border: none;
+    }
+	
 	.tdres {
 		width: 100em;
 		text-align: center;
