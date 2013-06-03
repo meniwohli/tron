@@ -12,7 +12,7 @@
 					{% for p in platz %}
 						<td class="tdown">
 							<form id= "reservieren" method="post" action="../php/reservieren.php">
-								<input type="hidden" name="{{ p.platz_ID }}">
+								<input type="hidden" name="pid" value="{{ p.Platz_ID }}">
 								<input type="hidden" name="geklickt">
 								<button type="submit" class="ym-button ym-spark">Platz {{ p.PlatzNr }}</button>
 							</form>

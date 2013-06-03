@@ -5,13 +5,14 @@
 	
 	$datum = '2013-05-22';
 	$colours = Array();
+	$pid = $_POST["pid"];
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 	
 		$zeit = $sql->call("SELECT * FROM tb_zeiten");
 				
-		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = 18");
+		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 		
 		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$datum'");
 		
