@@ -287,7 +287,7 @@
 	   		    {% endif %}
 	   		    <tr>
 					<td>
-						<button type="submit" class="ym-button ym-save">Speichern</button>
+						<button type="submit">Speichern</button>
 					</td>
 				</tr> 
 			
@@ -302,7 +302,7 @@
 	   		    	<tr>
 	   		    		<td>
 							<input type="hidden" name="aendern">
-							<button type="submit" class="ym-button ym-edit">&Auml;ndern</button>
+							<button type="submit">&Auml;ndern</button>
 						</td>
 					</tr>
 					
@@ -320,7 +320,7 @@
 	   		    	<tr>
 	   		    		<td>
 	   		    			<input type="hidden" name="first">
-							<button type="submit" class="ym-button ym-add">Benutzer anlegen</button>
+							<button type="submit">Benutzer anlegen</button>
 						</td>
 					</tr>
 				</form> 
@@ -335,7 +335,7 @@
 	   		    	<tr>
 	   		    		<td>
 	   		    			<input type="hidden" name="{{ uid }}">
-							<button type="submit" class="ym-button ym-delete">Benutzer l&ouml;schen</button>
+							<button type="submit">Benutzer l&ouml;schen</button>
 						</td>
 					</tr>
 				</form> 
@@ -360,7 +360,7 @@
 					   				<li> 
 					   				<form method="post" action="../php/benutzereinstellungen.php">
 										<input type="hidden" name="{{ value }}">
-										<input  class="ym-button ym-save" type="submit" value="{{ key }}">
+										<input type="submit" value="{{ key }}">
 									</form> 
 					   				</li>
 					   			{% endfor %}    
