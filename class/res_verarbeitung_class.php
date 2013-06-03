@@ -19,7 +19,7 @@ class ReservierungenVerarbeiten
 	{
 		$this->sql= new Sql;
 		
-		$call = "Select Reservierung_ID From tb_reservierung Where Datum = '$datum'";
+		$call = "Select * From tb_reservierung Where Datum = '$datum' ORDER BY Datum, ReservierungVon";
 		$this->ergebnis = $this->sql->arrayCall($call);
 		
 		foreach($this->ergebnis as $id)
@@ -39,7 +39,7 @@ class ReservierungenVerarbeiten
 	{
 		$this->sql= new Sql;
 		
-		$call = "Select Reservierung_ID From tb_reservierung where fk_Mitglied_ID = '$benID'";
+		$call = "Select * From tb_reservierung where fk_Mitglied_ID = '$benID' ORDER BY Datum, ReservierungVon";
 		$this->ergebnis = $this->sql->arrayCall($call);
 		
 		foreach($this->ergebnis as $id)
@@ -58,7 +58,7 @@ class ReservierungenVerarbeiten
 	{
 		$this->sql= new Sql;
 		
-		$call = "Select * from tb_reservierung";
+		$call = "Select * from tb_reservierung ORDER BY Datum, ReservierungVon";
 		$this->ergebnis = $this->sql->arrayCall($call);
 		
 		foreach($this->ergebnis as $id)

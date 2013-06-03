@@ -4,7 +4,9 @@
 	include "includeup.php";
 	
 	$date = $_SESSION["datum"];
+	$formatdate = $_SESSION["formatdate"];
 	$colours = Array();
+	
 	
 	
 	//Wenn eingeloggt, weiter..
@@ -48,6 +50,7 @@
 			$daten["mitglieder"]=$mitglied;
 			$daten["farben"]= $colours;
 			$daten["datum"]=$date;
+			$daten["formatdate"]=$formatdate;
 			
 			//auf Template verweisen
 			$template = $twig->loadTemplate('reservieren.twig');

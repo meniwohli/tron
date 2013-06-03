@@ -25,7 +25,7 @@
             			<td>{{ res.datum }}</td>
             			<td>{{ res.ReservierungVon }} Uhr</td>
             			<td>{{ res.ReservierungBis }} Uhr</td>
-            			{% for pla in place %}
+            			{% for pla in platz %}
             				{% if pla.Platz_ID == res.fk_Platz_ID %}
             					<td>{{ pla.PlatzNr }}</td>
             				{% endif %}

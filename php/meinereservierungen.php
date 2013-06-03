@@ -6,7 +6,6 @@
 	$result = array();
 	$uebergabe = array();
 	$members = array();
-	$plaetze = array();
 	$result;
 	$mitglieder;
 	
@@ -36,7 +35,7 @@
 			$uebergabe[] = $reserve;
 		}
 		
-		$place = $sql->arrayCall("SELECT * FROM tb_platz");
+		$platz = $sql->arrayCall("SELECT * FROM tb_platz");
 		
 		
 		if($benutzerrecht == 1)
@@ -50,7 +49,7 @@
 		
 		$daten["reservierungen"]=$uebergabe;
 		$daten["mitglieder"]=$members;
-		$daten["place"]=$place;
+		$daten["platz"]=$platz;
 		
 		
 		

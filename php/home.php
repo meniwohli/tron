@@ -4,9 +4,25 @@
 	include "includeup.php";
 	
 	
-	$datum = date("Y-m-d");
-	$_SESSION["datum"] =$datum;
-	$date = $_SESSION["datum"];
+	$datumAktuell = date("d.m.Y");
+	
+	if (isset($_POST["datum"])) {
+		$formatdate = $_POST["datum"];
+	} else {
+		$formatdate = $datumAktuell;
+	}
+	
+	$tag = substr($formatdate, 0, 2);
+	$monat = substr($formatdate, 3, 2);
+	$jahr = substr($formatdate, 6, 4);
+	
+	$date = $jahr . "-" . $monat . "-" . $tag;
+	
+	$_SESSION["formatdate"] = $formatdate;
+	$_SESSION["datum"] = $date;
+	
+	
+	
 	
 	
 	$colours = Array();
@@ -51,6 +67,7 @@
 		$daten["mitglieder"]=$mitglied;
 		$daten["farben"]=$colours;
 		$daten["datum"]=$date;
+		$daten["formatdate"]=$formatdate;
 		
 		//auf Template verweisen
 		$template = $twig->loadTemplate('home.twig');

@@ -4,6 +4,7 @@
 	include "includeup.php";
 	
 	$date = $_SESSION["datum"];
+	$formatdate = $_SESSION["formatdate"];
 	$time = $_POST["zeit"];
 	$platz = $_POST["pid"];
 	$pnr = $_POST["pnr"];
@@ -51,6 +52,7 @@
 			$daten["zeit"]=$zeit;
 			$daten["time"]=$time;
 			$daten["datum"]=$date;
+			$daten["formatdate"]=$formatdate;
 			$daten["reservierungen"]=$reservierung;
 			$daten["mitglieder"]=$mitglied;
 			$daten["platz"]=$platz;
