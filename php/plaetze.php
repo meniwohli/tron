@@ -35,7 +35,21 @@
 			$plaetze[] = $platz;
 		}
 		
+		$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
 		
+		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
+		
+		foreach($farbzuweisung as $f)
+		{
+			$fid = $f['fk_Farbe_ID'];
+			$resart = $f['Reservierungsart'];
+			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $fid");
+			$code = $code['FarbCode'];
+			$colours[$resart] = $code;
+		}
+		
+		
+		$daten["farben"]=$colours;
 		$daten["plaetze"]=$plaetze;
 		
 		
