@@ -33,14 +33,10 @@
 		
 		foreach($result as $reserve)
 		{
-			if($reserve->getFk_Platz_ID() != null)
-			{
-			$platz = new Platz($reserve->getFk_Platz_ID());
-			$plaetze[] = $platz;
-			}
 			$uebergabe[] = $reserve;
-			
 		}
+		
+		$place = $sql->arrayCall("SELECT * FROM tb_platz");
 		
 		
 		if($benutzerrecht == 1)
@@ -48,18 +44,13 @@
 			foreach($mitglieder as $m)
 			{
 				$members[] = $m;
-				
-				/*if($m->getID() == $reserve->getFk_Mitglied_ID())
-				{
-					$members[] = $m->getVorname() . " " . $m->getNachname();
-				}*/
 			}
 		}
 		
 		
 		$daten["reservierungen"]=$uebergabe;
-		$daten["plaetze"]=$plaetze;
 		$daten["mitglieder"]=$members;
+		$daten["place"]=$place;
 		
 		
 		
