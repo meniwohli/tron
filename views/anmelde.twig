@@ -3,28 +3,36 @@
         {% block body %}
 			  {{ parent() }}
 			 
-			
-			{% if sperrfehler == 1 %}
-				<p class="box error">
-					Der User, mit dem Sie sich anmelden m&ouml;chten, ist gesperrt,</br>
-					bitte wenden Sie sich an Ihren Administrator. </br>
-				</p>
-			{% endif %}
-			
-			{% if pasfalsch %}
-				<p class="box error">
-					Username oder Passwort falsch! </br>
-				</p>
-			{% endif %}
-			
-			{% if keinemail %}
-				<p class="box error">
-					Bitte Daten vollst&auml;ndig ausf&uuml;llen! </br>
-				</p>
+			{# Fehlerdesign J-Query #}
+			{% if sperrfehler == 1 or pasfalsch or keinemail %}
+				<div class="ui-widget">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px">
+						<p>
+							<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+							</span>
+							
+							<strong>Achtung: </strong>
+							
+							{% if sperrfehler == 1 %}
+									Der User, mit dem Sie sich anmelden m&ouml;chten, ist gesperrt, 
+									bitte wenden Sie sich an Ihren Administrator.
+							{% endif %}
+							
+							{% if pasfalsch %}
+									Username oder Passwort falsch!
+							{% endif %}
+							
+							{% if keinemail %}
+									Bitte Daten vollst&auml;ndig ausf&uuml;llen!
+							{% endif %}
+							
+							
+						</p>
+					</div>
+				</div>
 			{% endif %}
 			
 			</br>
-			
 					
 					
 			<div>
