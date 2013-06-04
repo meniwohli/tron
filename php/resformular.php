@@ -23,7 +23,7 @@
 				$m1 = $_POST["m1"];
 			}
 			if (isset($_POST["m2"])) {
-				$m2 = $_POST["m3"];
+				$m2 = $_POST["m2"];
 			}
 			if (isset($_POST["m3"])) {
 				$m3 = $_POST["m3"];
