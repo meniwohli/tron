@@ -3,14 +3,16 @@
 	
 	include "includeup.php";
 	
+	$pruefen = true;
 	
 	$datumAktuell = date("d.m.Y");
 	
 	if (isset($_POST["datum"])) {
-		$formatdate = $_POST["datum"];
+		$formatdate = $_POST["datum"];		
 	} else {
 		$formatdate = $datumAktuell;
 	}
+	
 	
 	$tag = substr($formatdate, 0, 2);
 	$monat = substr($formatdate, 3, 2);
