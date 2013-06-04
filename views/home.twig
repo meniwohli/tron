@@ -3,14 +3,23 @@
         {% block body %}
 			  {{ parent() }}
 			  
-			  <h2>Reservierungen am {{ formatdate }}</h2>
-			  
+		{% set count = 0 %}	  
+		
+		{% for p in platz %}
+			{% set count = count + 1 %}
+		{% endfor %}
+		
 		{% if datum %}
 			
 			<table>
-				<th>
-					
-					
+				<tr>
+					<td></td>
+					<td colspan={{ count }}><h2>Reservierungen am {{ formatdate }}</h2></td>
+				</tr>
+				
+				
+				<tr>
+					<td></td>
 					{% for p in platz %}
 						<td class="tdown">
 							<form id= "reservieren" method="post" action="../php/reservieren.php">
@@ -22,7 +31,7 @@
 						</td>
 					{% endfor %}			
 					
-				</th>
+				</tr>
 				
 				{% for z in zeit.OffenVon..zeit.OffenBis %}
 					<tr>
