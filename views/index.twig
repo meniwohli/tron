@@ -1,17 +1,19 @@
-
-
 	{# Wenn Login gegeben ist #}
 	{% if login %}
 		
 		{#<div id="datepicker">#}
 			
 			</br>
-			<p>Datum ausw&auml;hlen:</p>
-			</br>
+			<h2>Datum ausw&auml;hlen:</h2>
 			<form method="post" action="../php/home.php">
-			<input id="datepicker"  type="text" name="datum" value="zum Ausw&auml;hlen klicken"/>
-			</br>
-			<button type="submit">Datum ausw&auml;hlen</button>
+			
+			<div class="middle">
+				<input id="datepicker" class="middle bolt"  type="text" name="datum" value="zum Ausw&auml;hlen klicken"/>
+				</br>
+				</br>
+				<button type="submit">Datum ausw&auml;hlen</button>
+			</div>
+			
 			</form>
 		</div>
 		</br>
@@ -71,8 +73,3 @@
     	
     	
 	{% endif %}
-    
-    </br>
-    </br>
-
-    	

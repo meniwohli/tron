@@ -19,6 +19,7 @@ textarea {
     border: none;
 }
 
+
 /* Tabellen */
 table,
 td,
@@ -30,6 +31,14 @@ th{
 .tdres {
 	width: 100em;
 	text-align: center;
+}
+
+.middle{
+	text-align:center;
+}
+
+.bolt{
+	font-weight:bold;
 }
 }
 
