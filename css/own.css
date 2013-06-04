@@ -5,13 +5,17 @@
 @media screen, projection {
 
 
-	/* Buttonbreite */
-	button {
-		widht: 500px;
+	table {
+		align:center
 	}
 	
-	button:middle{
-		width: 
+	/* Buttonbreite */
+	button {
+		min-width: 100px;
+	}
+	
+	.bt-middle{
+		min-width:200px;
 	}
 	
 	
@@ -26,14 +30,6 @@
 	}
 	
 	
-	/* Tabellen */
-	table,
-	td,
-	th{
-		border:0;
-	}
-	
-	
 	.tdres {
 		width: 100em;
 		text-align: center;
@@ -42,6 +38,8 @@
 	
 	/* Einzelzentrierung */
 	.middle{
+		
+		padding:5px;
 		text-align:center;
 	}
 	
