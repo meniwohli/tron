@@ -9,7 +9,8 @@
 
 
 @import url(jquery/jquery-ui-1.10.3.custom.css);
-@import url(own.css);
+@import url(allgemein.css);
+@import url(login.css);
 @import url(../yaml/core/base.css);
 @import url("../yaml/forms/gray-theme.css");
 @import url(screen/screen.css);

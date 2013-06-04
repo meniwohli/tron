@@ -49,33 +49,6 @@
 		font-weight:bold;
 	}
 	
-	
-	/* Anmeldebox */
-	.anmelde{
-		background:rgb(185, 185, 185);
-		width: 350px;
-		height: 200px;
-		margin-left: 5em;
-		margin-top: 5em;
-		
-		border: 5px groove rgb(229, 122, 56);padding:3px;
-	}
-	
-	.anmeldeinh{
-		padding-top: 20px;
-		padding-left: 30px;
-	}
-	
-	#logbutton{
-		text-align:right;
-		padding-right:30px;
-	}
-	
-	.logfehler{
-		margin-left: 4.4em;
-		margin-top: 2em;
-		width: 370px; 
-	}
 }
 
 
