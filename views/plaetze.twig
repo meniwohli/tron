@@ -8,16 +8,15 @@
 			<div>
 			{% if plaetze != null %}
 				<table>
-					<th>
+					<tr>
 						<td>Platz-Nr</td>
 						<td>Offen/Gesperrt</td>
 						<td>Kommentar</td>
 						<td></td>
 						<td></td>
-					</th>
+					</tr>
 				{% for pla in plaetze %}
             		<tr>
-            			<td>{{ '' }}</td>
             			<td>{{ pla.platzNr }}</td>
             			{% if pla.gesperrt == 0 %}
             				<td 
@@ -60,18 +59,24 @@
             			
             		</tr>
         		{% endfor %}
-        		</table>
         		
-        		
-        		<form id= "allessperren" method="post" action="../php/platzsperren.php">
-        			<input type="hidden" name="allessperren">
-        			<button type="submit">Alle Pl&auml;tze sperren</button>
-				</form>
-				
-				<form id= "allesfreigeben" method="post" action="../php/platzfreigeben.php">
-        			<input type="hidden" name="allesfreigeben">
-					<button type="submit">Alle Pl&auml;tze freigeben</button>
-				</form>
+	        		<tr>
+	        			<td></td>
+	        			<td colspan="2">
+			        		<form id= "allessperren" method="post" action="../php/platzsperren.php">
+			        			<input type="hidden" name="allessperren">
+			        			<button type="submit">Alle Pl&auml;tze sperren</button>
+							</form>
+						</td>
+						<td></td>
+						<td colspan="2">
+							<form id= "allesfreigeben" method="post" action="../php/platzfreigeben.php">
+			        			<input type="hidden" name="allesfreigeben">
+								<button type="submit">Alle Pl&auml;tze freigeben</button>
+							</form>
+						</td>
+					</tr>
+				</table>
         		
         		{% else %}
         			<p class="box error">
@@ -79,19 +84,32 @@
         			</p>
         		{% endif %}
         		
-        		
-        		</br>
-        		<b>Neuen Platz anlegen</b>
-        		</br>
-        		</br>
-        		
-        		<form method="post" action="../php/plaetze.php">
-        			Platz-Nummer:
-					<input type="text" name="platznum" />
-					</br>
-	   		    	<input type="hidden" name="neubestaetigt">
-	   		    	<button type="submit">Platz anlegen</button>
-				</form>
+        		<table>
+	        		<tr>
+	        			<td>
+	        				<b>Neuen Platz anlegen</b>
+	        			</td>
+	        			<td></td>
+	        		</tr>
+        			<tr>
+        				<td>
+        					Platz-Nummer:
+        				</td>
+        				<td>
+			        		<form method="post" action="../php/plaetze.php">
+								<input type="text" name="platznum" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+				   		    	<input type="hidden" name="neubestaetigt">
+				   		    	<button type="submit">Platz anlegen</button>
+							</form>
+						</td>
+					</tr>
+				</table>
+						
         	
 			</div>
 			

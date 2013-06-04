@@ -7,22 +7,31 @@
 		{% if gesperrt %}
 			
 		{% else %}
-			<div>
-				Bitte geben Sie einen Grund an, warum alle Pl&auml;tze gesperrt werden sollen.
-				</br>
-				</br>
-				
-				
-				
+			<table>
 				<form method="post" action="../php/platzsperren.php">
-					<input type="text" name="grund" />
-					</br>
-					</br>
+				
+				<tr>
+					<td>
+						<input type="text" name="grund" />
 					<input type="hidden" name="allessperren">
 	   		    	<input type="hidden" name="bestaetigt">
 					<button type="submit">Pl&auml;tz sperren</button>
+					</td>
+					
+					<td>
+						{% if gesperrt %}
+							
+						{% else %}
+							<p class="box error">
+								Bitte geben Sie einen Grund an, warum alle Pl&auml;tze gesperrt werden sollen.
+								</br>
+							</p>
+							
+						{% endif %}
+					</td>
+				</tr>
 				</form>
-			</div>
+			</table>
 		{% endif %}
 		
 	{% endblock %}

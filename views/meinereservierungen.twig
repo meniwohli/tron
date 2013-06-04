@@ -9,7 +9,7 @@
 			<div>
 			{% if reservierungen != null %}
 				<table>
-					<th>
+					<tr>
 						<td>Datum</td>
 						<td>von</td>
 						<td>bis</td>
@@ -18,10 +18,9 @@
 						<td>Reserviert von</td>
 						{% endif %}
 						<td></td>
-					</th>
+					</tr>
 				{% for res in reservierungen %}
             		<tr>
-            			<td>{{ '' }}</td>
             			<td>{{ res.datum }}</td>
             			<td>{{ res.ReservierungVon }} Uhr</td>
             			<td>{{ res.ReservierungBis }} Uhr</td>

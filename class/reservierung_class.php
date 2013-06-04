@@ -163,4 +163,12 @@ class Reservierung
 		return $this->s4;
 			
 	}
+	
+	
+	
+	/*
+	 * Datumsformat umwandeln für die richtige Anzeige
+	 */
+	
+	
 }

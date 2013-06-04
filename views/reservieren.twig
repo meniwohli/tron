@@ -3,20 +3,22 @@
         {% block body %}
 			  {{ parent() }}
 			  
-			  <h2>Reservierungen am {{ formatdate }}</h2>
+			  
 			  
 		{% if datum %}
 			
 			<table>
-				<th>
-					
-					
+				
+				<tr>
+					<td colspan="3"><h2>Reservierungen am {{ formatdate }}</h2></td>
+				</tr>
+				
+				<tr>
 					{% for p in platz %}
-						<td class="tdown">Platz {{ p.PlatzNr }}</td>
-						<td></td>
+						<td class="tdown" colspan="3">Platz {{ p.PlatzNr }}</td>
 					{% endfor %}			
 					
-				</th>
+				</tr>
 				
 				{% for z in zeit.OffenVon..zeit.OffenBis %}
 					<tr>
