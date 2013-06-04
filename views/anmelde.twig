@@ -31,22 +31,42 @@
 						</p>
 					</div>
 				</div>
+				
+				</br>
 			{% endif %}
 			
-			</br>
 					
+			<div class = "anmelde">
+				<div class = "anmeldeinh">
+					<h3>Bitte geben Sie Ihre Login-Daten ein:</h3>
+					</br>
+					<form method="post" action="../php/LogIn.php">
 					
-			<div>
-				Bitte geben Sie Ihre Login-Daten ein:
-				</br>
-				<form method="post" action="../php/LogIn.php">
-				Username: <br />
-				<input type="text" name="email" size="20" />
-				<br />
-				Passwort: <br />
-				<input type="password" name="passwort" size="20" /><br />
-				<button type="submit" >Login</button>
-				</form>
+					<table>
+						<tr>
+							<td>
+								<b>Username:</b>
+							</td>
+							<td>
+								<input type="text" name="email" size="20" />
+					
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b>Passwort:</b>
+							</td>
+							<td>
+								<input type="password" name="passwort" size="20" />
+							</td>
+						</tr>
+						
+					</table>
+					
+					<br />
+					<div id="logbutton"><button type="submit" >Login</button></div>
+					</form>
+				</div>
 			</div>
 			
 		{% endblock %}
