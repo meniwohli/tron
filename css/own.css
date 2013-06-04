@@ -52,7 +52,7 @@
 	
 	/* Anmeldebox */
 	.anmelde{
-		background:rgb(51, 255, 255);
+		background:rgb(102, 204, 204);
 		width: 350px;
 		height: 200px;
 		margin-left: 5em;
@@ -69,6 +69,12 @@
 	#logbutton{
 		text-align:right;
 		padding-right:30px;
+	}
+	
+	.logfehler{
+		margin-left: 4.4em;
+		margin-top: 2em;
+		width: 370px; 
 	}
 }
 
