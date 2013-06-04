@@ -18,7 +18,7 @@
 	include "includeup.php";
 	
 	//Wenn eingeloggt, weiter..
-	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
+	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok" && $farbrecht == 1) { 
 	
 		//Farbe einfügen
 		if((isset($_POST["farbeneu"]) && $_POST["farbeneu"] != null) && (isset($_POST["farbeneuname"]) && $_POST["farbeneuname"] != null))
