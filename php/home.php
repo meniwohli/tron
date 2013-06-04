@@ -4,6 +4,7 @@
 	include "includeup.php";
 	
 	$pruefen = true;
+	$colours = Array();
 	
 	$datumAktuell = date("d.m.Y");
 	

@@ -22,7 +22,13 @@
 					</tr>
 				{% for res in reservierungen %}
             		<tr>
-            			<td>{{ res.Datum }}</td>
+            			<td>      				
+            				{% for key, value in date %}
+            					{% if key == res.Datum %}
+            						{{ value }}
+            					{% endif %}
+            				{% endfor %}
+            			</td>
             			<td>{{ res.ReservierungVon }} Uhr</td>
             			<td>{{ res.ReservierungBis }} Uhr</td>
             			{% for pla in platz %}
@@ -61,7 +67,6 @@
         		</p>
         	{% endif %}
 			</div>
-			
 			
 			
 		{% endblock %}

@@ -5,6 +5,7 @@
 	
 	$formatdate = date("d.m.Y");
 	$mem;
+	$alleDatum = Array();
 	
 	$tag = substr($formatdate, 0, 2);
 	$monat = substr($formatdate, 3, 2);
@@ -32,11 +33,26 @@
 		
 		$platz = $sql->arrayCall("SELECT * FROM tb_platz");
 		
+		foreach($res as $r)
+		{
+			$date = $r['Datum'];
+			
+			$tag = substr($date, 8, 2);
+			$monat = substr($date, 5, 2);
+			$jahr = substr($date, 0, 4);
+			
+			$datumFormatiert = $tag . "." . $monat . "." . $jahr;
+			
+			$alleDatum[$date] = $datumFormatiert;
+		
+		}
+		
 		
 		
 		$daten["reservierungen"]=$res;
 		$daten["mitglieder"]=$mem;
 		$daten["platz"]=$platz;
+		$daten["date"]=$alleDatum;
 		
 		
 		
