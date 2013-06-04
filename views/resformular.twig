@@ -43,6 +43,22 @@
 							</select>
 						</td>
 					</tr>
+					
+					<tr>
+						<td>
+							Art der Reservierung:
+						</td>
+					
+						<td>
+							<select name="art" >
+								{% for a in art %}
+									<option  value="{{ a.Reservierungsart_ID }}">
+										{{ a.Reservierungsart }}
+									</option>
+								{% endfor %}
+							</select>
+						</td>
+					</tr>
 			  	{% endif %}
 				  	<tr>
 						<td>

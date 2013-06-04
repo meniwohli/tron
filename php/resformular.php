@@ -17,6 +17,7 @@
 			$bis = $_POST["resbis"];
 			$von = $_POST["resvon"];
 			$pid = $_POST["pid"];
+			$resArt = $_POST['art'];
 			
 			if (isset($_POST["m1"])) {
 				$m1 = $_POST["m1"];
@@ -42,7 +43,7 @@
 			
 			
 			
-			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$m1', '$m2', '$m3', '$m4')");
+			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resArt', '$m1', '$m2', '$m3', '$m4')");
 		}
 		
 	
@@ -55,7 +56,7 @@
 			
 			$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
 			
-			
+			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 			
 			
 			
@@ -70,6 +71,7 @@
 			$daten["mitglieder"]=$mitglied;
 			$daten["platz"]=$platz;
 			$daten["pnr"]=$pnr;
+			$daten['art']=$art;
 			
 			
 			
