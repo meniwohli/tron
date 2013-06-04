@@ -6,6 +6,8 @@ class Platz
 	public $platz_ID;
 	public $platzNr;
 	public $gesperrt;
+	public $gesperrtVon;
+	public $gesperrtBis;
 	public $kommentar;
 	public $sql;
 	
@@ -22,6 +24,8 @@ class Platz
 		
 		$this->platzNr = $call['PlatzNr'];
 		$this->gesperrt = $call['Gesperrt'];
+		$this->gesperrtVon = $call['GesperrtVon'];
+		$this->gesperrtBis = $call['GesperrtBis'];
 		$this->kommentar = $call['Kommentar'];
 	}
 	
@@ -69,7 +73,32 @@ class Platz
 	}
 	
 	
+	public function getGesperrtVon()
+	{
+		return $this->gesperrtVon;
+			
+	}
 	
+	public function setGesperrtVon($daten)
+	{
+		$this->gesperrtVon = $daten;
+		$update = $this->sqlString("GesperrtVon", $daten);
+		$this->sql->change($update);
+	}
+	
+	
+	public function getGesperrtBis()
+	{
+		return $this->gesperrtBis;
+			
+	}
+	
+	public function setGesperrtBis($daten)
+	{
+		$this->gesperrtBis = $daten;
+		$update = $this->sqlString("GesperrtBis", $daten);
+		$this->sql->change($update);
+	}
 	
 	
 	public function getKommentar()

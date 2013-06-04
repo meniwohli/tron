@@ -9,6 +9,7 @@ class Reservierung
 	public $datum;
 	public $reservierungVon;
 	public $reservierungBis;
+	public $fk_Reservierungsart_ID;
 	public $fk_Farbe_ID;
 	public $s1;
 	public $s2;
@@ -32,6 +33,7 @@ class Reservierung
 		$this->datum = $call['Datum'];
 		$this->reservierungVon = $call['ReservierungVon'];
 		$this->reservierungBis = $call['ReservierungBis'];
+		$this->fk_Reservierungsart_ID = $call['fk_Reservierungsart_ID'];
 		$this->s1 = $call['S1'];
 		$this->s2 = $call['S2'];
 		$this->s3 = $call['S3'];
@@ -92,6 +94,19 @@ class Reservierung
 	}
 	
 	
+	
+	public function getFk_Reservierungsart_ID()
+	{
+		return $this->fk_Reservierungsart_ID;
+			
+	}
+	
+	public function setFk_Reservierungsart_ID($daten)
+	{
+		$this->fk_Reservierungsart_ID = $daten;
+		$update = $this->sqlString("fk_Reservierungsart_ID", $daten);
+		$this->sql->change($update);
+	}
 	
 	
 	
