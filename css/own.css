@@ -3,27 +3,34 @@
 
 
 @media screen, projection {
-	
-	button {
-		widht: 300px;
-	}
+
+/* Buttonbreite */
+button {
+	widht: 300px;
+}
+
+/* Einheitliche Formatierung Eingaben */
+input[type="text"],
+select,
+input[type="password"],
+textarea {
+	width:200px;
+	padding: 2px;
+    border: none;
+}
+
+/* Tabellen */
+table,
+td,
+th{
+	border:0;
+}
 
 
-	input[type="text"],
-	select,
-	input[type="password"],
-	textarea {
-   		width:200px;
-    	padding: 2px;
-    	border: none;
-    }
-	
-	.tdres {
-		width: 100em;
-		text-align: center;
-	}
-
-	
+.tdres {
+	width: 100em;
+	text-align: center;
+}
 }
 
 

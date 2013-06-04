@@ -11,12 +11,13 @@
 	#header {
 		min-width: 700px;
 		height: 130px;
-		color: rgb(255,255,255);
 		padding: 5px;
 	}
 
 	.ym-wrapper {
-		background: rgb(0, 120, 163) ;
+		/*background: rgb(0, 120, 163) ;*/
+		background-image:url('../../pics/header.png');
+		background-repeat:repeat-x;
 		margin: 0 auto;
 		max-width: 95%;
 		min-width: 700px;
