@@ -4,42 +4,52 @@
 
 @media screen, projection {
 
-/* Buttonbreite */
-button {
-	widht: 300px;
-}
 
-/* Einheitliche Formatierung Eingaben */
-input[type="text"],
-select,
-input[type="password"],
-textarea {
-	width:200px;
-	padding: 2px;
-    border: none;
-}
-
-
-/* Tabellen */
-table,
-td,
-th{
-	border:0;
-}
-
-
-.tdres {
-	width: 100em;
-	text-align: center;
-}
-
-.middle{
-	text-align:center;
-}
-
-.bolt{
-	font-weight:bold;
-}
+	/* Buttonbreite */
+	button {
+		widht: 500px;
+	}
+	
+	button:middle{
+		width: 
+	}
+	
+	
+	/* Einheitliche Formatierung Eingaben */
+	input[type="text"],
+	select,
+	input[type="password"],
+	textarea {
+		width:200px;
+		padding: 2px;
+	    border: none;
+	}
+	
+	
+	/* Tabellen */
+	table,
+	td,
+	th{
+		border:0;
+	}
+	
+	
+	.tdres {
+		width: 100em;
+		text-align: center;
+	}
+	
+	
+	/* Einzelzentrierung */
+	.middle{
+		text-align:center;
+	}
+	
+	
+	/* Fett */
+	.bolt{
+		font-weight:bold;
+	}
 }
 
 

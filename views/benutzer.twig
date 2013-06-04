@@ -4,6 +4,25 @@
 		{{ parent() }}
 		
 		
+		{% if gesperrt == 1 %}
+				
+			
+			<div class="ui-widget">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center">
+					<p>
+							
+						<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+						</span>
+						
+						<strong>Achtung: </strong>Benutzer gesperrt!
+								
+					</p>
+				</div>
+			</div>
+			</br>
+		{% endif %}
+		
+		
 		<div>Mitgliedsdaten:</div>
 		</br>
 		
@@ -245,14 +264,7 @@
 				 	</td>
 				 </tr>
 				 
-			{% elseif gesperrt == 1 %}
-				
-				<tr>
-					<td>
-						<div id = "fehler">Benutzer gesperrt!</div>
-					</td>
-				</tr>
-						
+			
 			{% endif %}
 			
 			

@@ -222,6 +222,8 @@
 	}
 
 	.info {
+		text-align:center;
+		width:400px;
 		background: #f8f8f8;
 		color: #666;
 		font-size: 91.7%;
@@ -230,6 +232,8 @@
 	}
 
 	.note {
+		text-align:center;
+		width:400px;
 		background: #efe;
 		border: 2px #484 solid;
 		color: #040;
@@ -238,6 +242,8 @@
 	}
 
 	.important {
+		text-align:center;
+		width:400px;
 		background: #ffe;
 		border: 2px #884 solid;
 		color: #440;

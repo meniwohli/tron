@@ -2,20 +2,43 @@
 
 	{% block body %}
 		{{ parent() }}
-		
-		<div>Farben</div>
-		
-		{# Farben auswählen #}
-		</br>
-		</br>
-		Sie k&ouml;nnen folgende Farben ausw&auml;hlen:
-		</br>
-		
-		{% if fehlerleer %}
-			<p class="box error">Es ist keine Farbe in der Datenbank vorhanden!</p>
-		{% endif %}
-		
 		<table>
+		
+			<tr>
+				<td colspan="2">
+					<h2>Farben</h2>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<h3 class="middle">Sie k&ouml;nnen folgende Farben ausw&auml;hlen:</h3>
+				</td>
+			</tr>
+		
+		
+			{% if fehlerleer %}
+				<tr>
+					<td colspan="2">
+						<div class="ui-widget">
+							<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center">
+								<p>
+										
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+									</span>
+								
+									<strong>Achtung: </strong> 
+									
+									Es ist keine Farbe in der Datenbank vorhanden!
+									
+								</p>
+							</div>
+						</div>
+					</td>
+				</tr>
+			{% endif %}
+			
+		
 			<form method="post" action="../php/farben.php">
 			
 				<tr>
@@ -162,26 +185,26 @@
 				
 			
 			<tr>
-				<td>
-					<button type="submit">Speichern</button>
+				<td colspan = "2">
+					<div class="middle">
+						<button type="submit">Speichern</button>
+					</div>
 				</td>
 			</tr>
 			
 			
 		</form>
 		
+					
+		{# Farben löschen #}
+		{% if farbegeloescht %}
+			<tr>
+				<td colspan="2">
+					<div class="important">Die Farbe wurde gel&ouml;scht</div>
+				</td>
+			</tr>
+		{% endif %}
 		
-		<tr>
-		
-			<td>
-			</td>
-			<td>			
-				{# Farben löschen #}
-				{% if farbegeloescht %}
-					<div class="">Die Farbe wurde gel&ouml;scht</div>
-				{% endif %}
-			</td>
-		</tr>
 		
 		
 		<form method="post" action="../php/farben.php">
@@ -192,7 +215,7 @@
 				<td>
 					<select name="loeschen" >
 						{% for key, value in farbarray %}
-						<option style="background-color:{{ key }}" value="{{ key }}">{{ value }}</option>
+							<option style="background-color:{{ key }}" value="{{ key }}">{{ value }}</option>
 						{% endfor %}
 				</td>
 				
@@ -200,8 +223,10 @@
 			</tr>
 			
 			<tr>
-				<td>
-					<button type="submit">L&ouml;schen</button>
+				<td colspan = "2">
+					<div class="middle">
+						<button type="submit">L&ouml;schen</button>
+					</div>
 				</td>
 			</tr>
 			
@@ -222,31 +247,6 @@
 			
 			{# Farben hinzufügen #}
 			
-			{# Fehler/Infos #}
-			<tr>
-				<td>
-				</td>
-				
-				<td>
-					{% if fehlercode %}
-						<p class="box error">Der von Ihnen eingegebene Code ist kein g&uuml;ltiger Farbcode!</p>
-					{% endif %}
-						
-					{% if fehlerlaenge %}
-						<p class="box error">Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!</p>
-					{% endif %}
-					
-					{% if fehlereingabe %}
-						<p class="box error">Bitte f&uuml;llen Sie beide Felder!</p>
-					{% endif %}
-					
-					{% if farbeaufgenommen %}
-						<p class="box error">Die Farbe wurde ins System aufgenommen.</p>
-					{% endif %}
-				</td>
-			</tr>
-			
-			
 			<tr>
 				<td>
 					<div id="info">Info</div>
@@ -255,15 +255,55 @@
 				<td>
 					<div id="infofeld">
 						Der Farbcode besteht aus einer Raute (#) und vier Hexadezimalwerten. (z.B. #0099FF)
-						</br>
-						Hexadezimalwerte k&ouml;nnen Zahlen von 0-9 oder Buchstaben von A-F enthalten.
-						</br>
-						Die sechs Hexadezimalstellen setzen sich aus RGB (rot gr&uuml;n blau) zusammen, womit man alle Farben mischen kann.
-						</br>
-						Passende Farbtabellen sind einfach auf Google zu finden. Dazu einfach als Suchwort "HTML Farbtabelle" eingeben.
+						
 					</div>
 				</td>
 			</tr>
+			
+			
+			{# Fehler/Infos #}
+			{% if fehlercode or fehlerlaenge or fehlereingabe %}
+				<tr>
+					<td colspan="2">
+						<div class="ui-widget">
+							<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center">
+								<p>
+									
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+									</span>
+								
+									<strong>Achtung: </strong> 
+									
+									{% if fehlercode %}
+										Der von Ihnen eingegebene Code ist kein g&uuml;ltiger Farbcode!
+									{% endif %}
+										
+									{% if fehlerlaenge %}
+										Der Farbcode muss aus # und 6 Hexadezimalstellen bestehen!
+									{% endif %}
+									
+									{% if fehlereingabe %}
+										Bitte f&uuml;llen Sie beide Felder!
+									{% endif %}
+									
+								</p>
+							</div>
+						</div>
+					</td>
+				</tr>
+			{% endif %}
+			
+			{% if farbeaufgenommen %}
+				<tr>
+					<td colspan="2">
+						<p class="important">Die Farbe wurde ins System aufgenommen.</p>
+					</td>
+				</tr>
+			{% endif %}
+					
+			
+			
+			
 			
 			<tr>
 				<td>
@@ -286,8 +326,10 @@
 			</tr>
 			
 			<tr>
-				<td>
-					<button type="submit">Einf&uuml;gen</button>
+				<td colspan = "2">
+					<div class="middle">
+						<button type="submit">Einf&uuml;gen</button>
+					</div>
 				</td>
 			</tr>
 		</form>
