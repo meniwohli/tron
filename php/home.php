@@ -36,12 +36,13 @@
 		
 		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
 		
-		$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
+		$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
 		
 		$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
 		
 		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
 		
+		$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 		
 		foreach($farbzuweisung as $f)
 		{
@@ -64,10 +65,12 @@
 		$daten["zeit"]=$zeit;
 		$daten["platz"]=$platz;
 		$daten["reservierungen"]=$reservierung;
-		$daten["mitglieder"]=$mitglied;
+		$daten["mitglieder"]=$mitglieder;
 		$daten["farben"]=$colours;
 		$daten["datum"]=$date;
 		$daten["formatdate"]=$formatdate;
+		$daten["art"]=$art;
+		$daten['online']=$mitglied;
 		
 		//auf Template verweisen
 		$template = $twig->loadTemplate('home.twig');
