@@ -2,14 +2,17 @@
 <?php
 	
 	include 'includeup.php';
-
-	$result = array();
-	$uebergabe = array();
-	$members = array();
-	$result;
-	$mitglieder;
 	
-	//Test-Kommentar
+	$formatdate = date("d.m.Y");
+	$mem;
+	
+	$tag = substr($formatdate, 0, 2);
+	$monat = substr($formatdate, 3, 2);
+	$jahr = substr($formatdate, 6, 4);
+	
+	$datumAktuell = $jahr . "-" . $monat . "-" . $tag;
+	
+	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 		
@@ -17,38 +20,22 @@
 		//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
 		if($benutzerrecht == 1)
 		{
-			$result = $reservierungen->getAllRes();
-			$mitglieder = $reservierungen->getMitgliedMail();
+			$res = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum >= '$datumAktuell'");
+			$mem = $sql->arrayCall("SELECT * FROM tb_mitglied");
 		}
 		//ruft nur Reservierungen des aktuellen Benutzers auf
 		else
 		{
 			$benID = $mitglied->getID();
-			$result = $reservierungen->getResID($benID);
-		}
-		
-		//Variable für fortlaufende Reservierungs-Nummer bei der Ausgabe
-		$count = 1;
-		
-		foreach($result as $reserve)
-		{
-			$uebergabe[] = $reserve;
+			$res = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE fk_Mitglied_ID = '$benID' AND Datum >= '$datumAktuell'");
 		}
 		
 		$platz = $sql->arrayCall("SELECT * FROM tb_platz");
 		
 		
-		if($benutzerrecht == 1)
-		{
-			foreach($mitglieder as $m)
-			{
-				$members[] = $m;
-			}
-		}
 		
-		
-		$daten["reservierungen"]=$uebergabe;
-		$daten["mitglieder"]=$members;
+		$daten["reservierungen"]=$res;
+		$daten["mitglieder"]=$mem;
 		$daten["platz"]=$platz;
 		
 		
