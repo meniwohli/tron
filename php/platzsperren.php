@@ -8,71 +8,75 @@
 	//Wenn eingeloggt und Benutzerrecht weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") 
 	{
+		if ($platzrecht) {
 		
-		
-		//Reservierung ID's mit POST vergleichen
-		$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
-		
-		$pid = true;
-		
-		foreach($plaetze as $p)
-		{
-			$id = $p["Platz_ID"];
+			//Reservierung ID's mit POST vergleichen
+			$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
 			
-			if(isset($_POST["$id"]))
+			$pid = true;
+			
+			foreach($plaetze as $p)
 			{
-				$pid = $id;
-			}
-		}
-		
-		
-		
-		if(isset($_POST["bestaetigt"]))
-			{
-				$grund = 'NULL';
-				if (isset($_POST['grund']))
-				{
-					$grund = $_POST['grund'];
-				}
+				$id = $p["Platz_ID"];
 				
-				if($grund != NULL)
+				if(isset($_POST["$id"]))
 				{
-					if(isset($_POST["allessperren"]))
+					$pid = $id;
+				}
+			}
+			
+			
+			
+			if(isset($_POST["bestaetigt"]))
+				{
+					$grund = 'NULL';
+					if (isset($_POST['grund']))
 					{
-												
-						foreach($plaetze as $id)
+						$grund = $_POST['grund'];
+					}
+					
+					if($grund != NULL)
+					{
+						if(isset($_POST["allessperren"]))
 						{
-							$pid = $id['Platz_ID'];
+													
+							foreach($plaetze as $id)
+							{
+								$pid = $id['Platz_ID'];
+								$sql->change("UPDATE tb_platz SET Gesperrt = '1' WHERE Platz_ID = '$pid'");
+								$sql->change("UPDATE tb_platz SET Kommentar = '$grund' WHERE Platz_ID = '$pid'");
+							}
+						}
+						else {
+						
 							$sql->change("UPDATE tb_platz SET Gesperrt = '1' WHERE Platz_ID = '$pid'");
 							$sql->change("UPDATE tb_platz SET Kommentar = '$grund' WHERE Platz_ID = '$pid'");
+							
 						}
-					}
-					else {
-					
-						$sql->change("UPDATE tb_platz SET Gesperrt = '1' WHERE Platz_ID = '$pid'");
-						$sql->change("UPDATE tb_platz SET Kommentar = '$grund' WHERE Platz_ID = '$pid'");
+						$daten["gesperrt"] = true;
 						
+						//Aufrufen der plaetze.php
+						header('Location: plaetze.php');
 					}
-					$daten["gesperrt"] = true;
 					
-					//Aufrufen der plaetze.php
-					header('Location: plaetze.php');
+					
 				}
-				
-				
+			
+			$daten["pid"] = $pid;
+			
+			if(isset($_POST["allessperren"]))
+			{
+				$template = $twig->loadTemplate('allessperren.twig');
+			}
+			else {
+				//auf Template verweisen
+				$template = $twig->loadTemplate('platzsperren.twig');
 			}
 		
-		$daten["pid"] = $pid;
-		
-		if(isset($_POST["allessperren"]))
-		{
-			$template = $twig->loadTemplate('allessperren.twig');
-		}
-		else {
-			//auf Template verweisen
-			$template = $twig->loadTemplate('platzsperren.twig');
-		}
-		
+		//sonst auf home.php
+		}else{
+			header('Location: home.php');
+		}	
 			
 	//sonst auf anmeldeseite
 	}else{

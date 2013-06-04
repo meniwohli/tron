@@ -8,37 +8,43 @@
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") 
 	{
 		
+		if ($platzrecht) {
 		
-		//Reservierung ID's mit POST vergleichen
-		$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
-		
-		$pid = true;
-		
-		foreach($plaetze as $p)
-		{
-			$id = $p["Platz_ID"];
+			//Reservierung ID's mit POST vergleichen
+			$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
 			
-			if(isset($_POST["$id"]))
+			$pid = true;
+			
+			foreach($plaetze as $p)
 			{
-				$pid = $id;
+				$id = $p["Platz_ID"];
+				
+				if(isset($_POST["$id"]))
+				{
+					$pid = $id;
+				}
 			}
+			
+			if(isset($_POST["bestaetigt"]))
+				{
+					$sql->change("DELETE FROM tb_reservierung WHERE fk_Platz_ID = $pid");
+					$sql->change("DELETE FROM tb_platz WHERE Platz_ID = $pid");
+					$daten["geloescht"] = true;
+				}
+			
+			$daten["pid"] = $pid;
+			
+			
+			
+			
+			
+			//auf Template verweisen
+			$template = $twig->loadTemplate('platzloeschen.twig');
+			
+		//sonst auf home.php
+		}else{
+			header('Location: home.php');
 		}
-		
-		if(isset($_POST["bestaetigt"]))
-			{
-				$sql->change("DELETE FROM tb_reservierung WHERE fk_Platz_ID = $pid");
-				$sql->change("DELETE FROM tb_platz WHERE Platz_ID = $pid");
-				$daten["geloescht"] = true;
-			}
-		
-		$daten["pid"] = $pid;
-		
-		
-		
-		
-		
-		//auf Template verweisen
-		$template = $twig->loadTemplate('platzloeschen.twig');
 		
 	//sonst auf anmeldeseite
 	}else{

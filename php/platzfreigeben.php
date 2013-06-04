@@ -7,42 +7,47 @@
 	//Wenn eingeloggt und Benutzerrecht weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") 
 	{
+		if ($platzrecht) {
 		
-		
-		//Reservierung ID's mit POST vergleichen
-		$plaetze = $sql->arrayCall("SELECT * FROM tb_platz");
-		
-		$pid = true;
-		
-		foreach($plaetze as $p)
-		{
-			$id = $p["Platz_ID"];
+			//Reservierung ID's mit POST vergleichen
+			$plaetze = $sql->arrayCall("SELECT * FROM tb_platz");
 			
-			if(isset($_POST["$id"]))
+			$pid = true;
+			
+			foreach($plaetze as $p)
 			{
-				$pid = $id;
+				$id = $p["Platz_ID"];
+				
+				if(isset($_POST["$id"]))
+				{
+					$pid = $id;
+				}
 			}
-		}
-		
-		if(isset($_POST["allesfreigeben"]))
-		{
-			foreach($plaetze as $id)
+			
+			if(isset($_POST["allesfreigeben"]))
 			{
-				$pid = $id['Platz_ID'];
+				foreach($plaetze as $id)
+				{
+					$pid = $id['Platz_ID'];
+					$sql->change("UPDATE tb_platz SET Gesperrt = '0' WHERE Platz_ID = '$pid'");
+					$sql->change("UPDATE tb_platz SET Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
+				}
+			}
+			else {
 				$sql->change("UPDATE tb_platz SET Gesperrt = '0' WHERE Platz_ID = '$pid'");
 				$sql->change("UPDATE tb_platz SET Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
 			}
+			
+			
+			
+			
+			//Aufrufen der plaetze.php
+			header('Location: plaetze.php');
+			
+		//sonst auf home.php
+		}else{
+			header('Location: home.php');
 		}
-		else {
-			$sql->change("UPDATE tb_platz SET Gesperrt = '0' WHERE Platz_ID = '$pid'");
-			$sql->change("UPDATE tb_platz SET Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
-		}
-		
-		
-		
-		
-		//Aufrufen der plaetze.php
-		header('Location: plaetze.php');
 				
 	//sonst auf anmeldeseite
 	}else{
