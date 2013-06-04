@@ -7,13 +7,29 @@
 		{% if benutzerrecht == 1 %}
 		
 		{% if geloescht %}
-			{{ name }} wurde aus der Datenbank gel&ouml;scht.
+			<div class="note"><b>{{ name }}</b> wurde aus der Datenbank gel&ouml;scht. </div>
 		{% else %}
 			<div>
-				Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Benutzer ({{ name }}) unwiederruflich gel&ouml;scht!
+			
+				<div class="ui-widget">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center;">
+						<p>
+							
+							<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+							</span>
+						
+							<strong>Achtung: </strong>
+							
+							Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Benutzer <b>({{ name }})</b> unwiederruflich gel&ouml;scht!
+										
+						</p>
+					</div>
+				</div>
+			
+				
 				</br>
-				Sind Sie sicher?
 				</br>
+ 				<h3>Sind Sie sicher?</h3>
 				</br>
 				<form method="post" action="../php/benutzerloeschen.php">
    		    		<input type="hidden" name="{{ uid }}">
