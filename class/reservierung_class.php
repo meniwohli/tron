@@ -169,6 +169,15 @@ class Reservierung
 	/*
 	 * Datumsformat umwandeln für die richtige Anzeige
 	 */
-	
+	public function editDate($datum)
+	{
+		$tag = substr($datum, 0, 2);
+		$monat = substr($datum, 3, 2);
+		$jahr = substr($datum, 6, 4);
+		
+		$date = $jahr . "-" . $monat . "-" . $tag;
+		
+		return $date;
+	}
 	
 }
