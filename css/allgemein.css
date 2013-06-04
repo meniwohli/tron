@@ -49,6 +49,12 @@
 		font-weight:bold;
 	}
 	
+	/* TC-Imst logo Header */
+	#tc-imst{
+		float:right;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
 }
 
 
