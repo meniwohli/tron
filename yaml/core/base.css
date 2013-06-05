@@ -371,17 +371,15 @@
 	}
 
 	.ym-gl {
-		float: left;
 		margin: 0;
 	}
 
 	.ym-gr {
-		float: right;
 		margin: 0 0 0 -5px;
 	}
 
 	.ym-g20 {
-		width: 20%;
+		width: 240px;
 }
 
 	.ym-g40 {
@@ -393,7 +391,7 @@
 	}
 
 	.ym-g80 {
-		width: 80%;
+		
 	}
 
 	.ym-g25 {
@@ -430,10 +428,15 @@
 
 	.ym-gbox-left {
 		padding: 0 10px 0 0;
+		position: absolute;
+		
 	}
 
 	.ym-gbox-right {
+		margin-top: 20px;
+		margin-left:280px;
 		padding: 0 0 0 10px;
+		
 	}
 
 	.ym-equalize {
@@ -458,8 +461,7 @@
 
 	.ym-grid > .ym-gl,
 	.ym-grid > .ym-gr {
-		display: table;
-		overflow: visible;
+		
 	}
 
 	.ym-print {

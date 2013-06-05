@@ -9,6 +9,9 @@
 @media screen, projection {
 	
 	#header {
+		background-image:url('../../pics/header.png');
+		background-repeat:repeat-x;
+		background-attachment:fixed;
 		min-width: 700px;
 		height: 130px;
 		padding: 5px;
@@ -16,20 +19,16 @@
 
 	.ym-wrapper {
 		/*background: rgb(0, 120, 163) ;*/
-		background-image:url('../../pics/header.png');
-		background-repeat:repeat-x;
-		background-attachment:fixed;
 		margin: 0 auto;
 		max-width: 95%;
-		min-width: 700px;
 		width: auto;
 	}
 
-	.ym-wbox 
+	.ym-wbox{
 	}
 
 	#main {
-		overflow: auto;
+		
 	}
 
 	#index {

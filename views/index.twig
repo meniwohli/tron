@@ -7,20 +7,15 @@
 			<form id="submitting" method="post" action="../php/home.php">
 			
 			
-			
-			<div class="middle">
-				<div class="datepicker"></div>
-				<input id="dp" type="hidden" name="datum"/>
-				</br>
-				{# <button type="submit">Weiter</button> #}
-			</div>
+				<div id="datum">
+					<div class="datepicker">
+						<input id="dp" type="hidden" name="datum"/>
+					</div>
+				</div>
 			
 			</form>
-		</div>
 		
-		
-		</br>
-		
+		<div id="index">
 		<ul class="menu">
 			
 			<li><a href="../php/home.php">Home</a></li>
@@ -30,47 +25,47 @@
 				{% else %}
 					Meine Reservierungen
 				{% endif %}
-			</a></li>
-			<li><a href="../php/benutzereinstellungen.php">Benutzereinstellungen</a></li>
+				</a></li>
+				<li><a href="../php/benutzereinstellungen.php">Benutzereinstellungen</a></li>
 			
 		
 	{% endif %}
-    
-    
-    
-    {# Wenn rechtrecht = 1 #}
-    {% if rechtrecht == 1 %}
-    
-			<li><a href="../php/rechte.php">Rechte Verwalten</a></li>
-		     
-	{% endif %}
-    
-    {% if platzrecht %}
-    
-   		 <li><a href="../php/plaetze.php">Pl&auml;tze</a></li>
-			   
-	{% endif %}
-	
-	
-	{% if farbrecht %}
-	
-		<li><a href="../php/farben.php">Farben</a></li>
-		
-	{% endif %}
-	
-	
-	{% if allgemeinrecht %}
-	
-		<li><a href="../php/allgemein.php">Allgemein</a></li>
-		
-	{% endif %}
-    
-    
-    {% if login %}
-    	
-    	
-		  <li><a href="../php/logout.php">Logout</a></li>
-		</ul>
-    	
-    	
-	{% endif %}
+		    
+		    
+		    
+		    {# Wenn rechtrecht = 1 #}
+		    {% if rechtrecht == 1 %}
+		    
+					<li><a href="../php/rechte.php">Rechte Verwalten</a></li>
+				     
+			{% endif %}
+		    
+		    {% if platzrecht %}
+		    
+		   		 <li><a href="../php/plaetze.php">Pl&auml;tze</a></li>
+					   
+			{% endif %}
+			
+			
+			{% if farbrecht %}
+			
+				<li><a href="../php/farben.php">Farben</a></li>
+				
+			{% endif %}
+			
+			
+			{% if allgemeinrecht %}
+			
+				<li><a href="../php/allgemein.php">Allgemein</a></li>
+				
+			{% endif %}
+		    
+		    
+		    {% if login %}
+		    	
+				  <li><a href="../php/logout.php">Logout</a></li>
+				
+			{% endif %}
+			
+	</ul>
+	</div>
