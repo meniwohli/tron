@@ -22,11 +22,23 @@
 						{% if gesperrt %}
 							
 						{% else %}
-							<p class="box error">
-								Bitte geben Sie einen Grund an, warum alle Pl&auml;tze gesperrt werden sollen.
-								</br>
-							</p>
+						
+							<div class="ui-widget logfehler">
+								<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+									<p>
+										<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+										</span>
+										
+										<strong>Achtung: </strong>
+										
+										Bitte geben Sie einen Grund an, warum alle Pl&auml;tze gesperrt werden sollen.
+										
+									</p>
+								</div>
+							</div>
 							
+							</br>
+														
 						{% endif %}
 					</td>
 				</tr>

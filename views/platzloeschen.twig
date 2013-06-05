@@ -3,33 +3,46 @@
 	{% block body %}
 		{{ parent() }}
 	
-			<table>
 				<form method="post" action="../php/platzloeschen.php">
 				
-				<tr>
-					<td>
-						{% if geloescht == false %}
-						<input type="hidden" name="{{ pid }}">
-				   		<input type="hidden" name="bestaetigt">
-						<button type="submit">Platz l&ouml;schen</button>
-						{% endif %}
-					</td>
+					{% if geloescht %}
+				
+						<div class="important">Platz wurde aus der Datenbank gel&ouml;scht.</div>
+						
+					{% else %}
+				
+						<div class="ui-widget">
+							<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center;">
+								<p>
+									
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+									</span>
+								
+									<strong>Achtung: </strong>
+									
+									Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Platz unwiederruflich gel&ouml;scht!
+												
+								</p>
+							</div>
+						</div>
 					
-					<td>
-						{% if geloescht %}
-							Platz wurde aus der Datenbank gel&ouml;scht.
-						{% else %}
-							<p class="box error">
-								Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Platz unwiederruflich gel&ouml;scht!
-								</br>
-								Sind Sie sicher?
-							</p>
-							
+						
+						</br>
+						</br>
+		 				<h3>Sind Sie sicher?</h3>
+						</br>
+						
+						{% if geloescht == false %}
+							<input type="hidden" name="{{ pid }}">
+					   		<input type="hidden" name="bestaetigt">
+							<button type="submit">Platz l&ouml;schen</button>
 						{% endif %}
-					</td>
-				</tr>
+						
+					{% endif %}
+						
 				</form>
-			</table>
+						
+					
 		
 		
 	{% endblock %}

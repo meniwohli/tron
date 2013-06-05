@@ -3,8 +3,7 @@
 	{% block body %}
 		{{ parent() }}
 
-		<table>
-				<form method="post" action="../php/platzsperren.php">
+			<form method="post" action="../php/platzsperren.php">
 				
 				<tr>
 					<td>
@@ -18,15 +17,24 @@
 						{% if gesperrt %}
 							
 						{% else %}
-							<p class="box error">
-								Bitte geben Sie einen Grund an, warum der Platz gesperrt werden soll.
-								</br>
-							</p>
+							
+							<div class="ui-widget logfehler">
+								<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+									<p>
+										<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+										</span>
+										
+										<strong>Achtung: </strong>
+										
+										Bitte geben Sie einen Grund an, warum der Platz gesperrt werden soll.
+										
+									</p>
+								</div>
+							</div>
 							
 						{% endif %}
 					</td>
 				</tr>
-				</form>
-			</table>
+			</form>
 		
 	{% endblock %}

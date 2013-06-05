@@ -3,33 +3,41 @@
 	{% block body %}
 		{{ parent() }}
 
-		<table>
-				<form method="post" action="../php/reservierungloeschen.php">
+		
+			<form method="post" action="../php/reservierungloeschen.php">
 				
-				<tr>
-					<td>
-					{% if geloescht == false %}
-						<input type="hidden" name="res" value="{{ reservierung.Reservierung_ID }}">
-				   		<input type="hidden" name="geklickt">
-				   		<input type="hidden" name="bestaetigt">
-						<button type="submit">Reservierung l&ouml;schen</button>
-					{% endif %}
-					</td>
-					
-					<td>
-						{% if geloescht %}
-							Reservierung wurde aus der Datenbank gel&ouml;scht.
-						{% else %}
-							<p class="box error">
-								Wenn Sie mit l&ouml;schen best&auml;tigen, wird die Reservierung unwiederruflich gel&ouml;scht!
-								</br>
-								Sind Sie sicher?
-							</p>
+				{% if geloescht %}
+
+					<div class="important">Reservierung wurde aus der Datenbank gel&ouml;scht.</div>
 							
-						{% endif %}
-					</td>
-				</tr>
-				</form>
-			</table>
+				{% else %}
+					
+					<div class="ui-widget logfehler">
+						<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+							<p>
+								<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+								</span>
+								
+								<strong>Achtung: </strong>
+								
+								Wenn Sie mit l&ouml;schen best&auml;tigen, wird die Reservierung unwiederruflich gel&ouml;scht!
+								
+							</p>
+						</div>
+					</div>
+					
+					</br>
+					</br>
+					<h3>Sind Sie sicher?</h3>
+					</br>	
+					
+					<input type="hidden" name="res" value="{{ reservierung.Reservierung_ID }}">
+				  	<input type="hidden" name="geklickt">
+				   	<input type="hidden" name="bestaetigt">
+					<button type="submit">Reservierung l&ouml;schen</button>
+
+				{% endif %}
+				
+			</form>
 		
 	{% endblock %}

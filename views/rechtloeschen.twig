@@ -9,28 +9,38 @@
 			<table>
 				<form method="post" action="../php/rechtloeschen.php">
 				
-				<tr>
-					<td>
+						
+					{% if geloescht %}
+						
+						<div class="important">{{ rechtname }}-Recht wurde aus der Datenbank gel&ouml;scht.</div>
+						
+					{% else %}
+						
+						<div class="ui-widget logfehler">
+							<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+									</span>
+						
+									<strong>Achtung: </strong>
+										
+									Wenn Sie mit l&ouml;schen best&auml;tigen, wird das Recht ({{ rechtname }}) unwiederruflich gel&ouml;scht!
+										
+								</p>
+							</div>
+						</div>
+							
+						<h3>Sind Sie sicher?</h3>
+						
+						</br>
+						
 						<input type="hidden" name="{{ rid }}">
 				   		<input type="hidden" name="bestaetigt">
 						<button type="submit">Recht l&ouml;schen</button>
-					</td>
-					
-					<td>
-						{% if geloescht %}
-							{{ rechtname }}-Recht wurde aus der Datenbank gel&ouml;scht.
-						{% else %}
-							<p class="box error">
-								Wenn Sie mit l&ouml;schen best&auml;tigen, wird das Recht ({{ rechtname }}) unwiederruflich gel&ouml;scht!
-								</br>
-								Sind Sie sicher?
-							</p>
 							
-						{% endif %}
-					</td>
-				</tr>
+					{% endif %}
+					
 				</form>
-			</table>
 			
 		{% endif %}
 		
