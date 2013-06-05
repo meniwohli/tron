@@ -4,7 +4,7 @@
 	include 'includeup.php';
 	
 	$formatdate = date("d.m.Y");
-	$mem;
+	$mem = Array();
 	$alleDatum = Array();
 	
 	$tag = substr($formatdate, 0, 2);

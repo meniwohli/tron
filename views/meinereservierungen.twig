@@ -19,6 +19,7 @@
 						{% endif %}
 						<td colspan="4">Mitspieler</td>
 						<td></td>
+						<td></td>
 					</tr>
 				{% for res in reservierungen %}
             		<tr>
@@ -56,7 +57,15 @@
 								<input type="hidden" name="geklickt">
 								<button type="submit">L&ouml;schen</button>
 							</form>
-						</td> 
+						</td>
+						<td>
+							 <form id= "bearbeiten" method="post" action="../php/reservierungbearbeiten.php">
+								<input type="hidden" name="resbearb" value="{{ res }}">
+								<input type="hidden" name="geklickt">
+								<input type="hidden" name="bearbeiten">
+								<button type="submit">Bearbeiten</button>
+							</form>
+						</td>  
             			
             		</tr>
         		{% endfor %}

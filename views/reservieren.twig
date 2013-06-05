@@ -24,21 +24,34 @@
 					<tr>
 						<td>{{ z }} Uhr</td>
 						{% for p in platz %}
+						{% set resart = 'frei' %}
 							<td 
 							{% if p.Gesperrt %}
 								{% for key, value in farben %}
 									{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
 								{% endfor %} >
 								{{ p.Kommentar }}
-								{% set closed = 1 %}
 							{% else %}
 								{% set voll = 0 %}
 								{% for res in reservierungen %}
 									{% if res.fk_Platz_ID == p.Platz_ID and z >= res.ReservierungVon and z < res.ReservierungBis %}
+										{% for a in art %}
+											{% if res.fk_Reservierungsart_ID == a.Reservierungsart_ID %}
+												{% if online.mitglied_ID == res.fk_Mitglied_ID %}
+													{% set resart = 'meins' %}
+												{% elseif a.Reservierungsart == "Normal" %}
+													{% set resart = 'besetzt' %}
+												{% elseif a.Reservierungsart == "Turnier" %}
+													{% set resart = 'turnier' %}
+												{% elseif a.Reservierungsart == "Serie" %}
+													{% set resart = 'serie' %}
+												{% endif %}
+											{% endif %}
+										{% endfor %}
 										{% for key, value in farben %}
-											{% if key == "besetzt" %} style="background-color:{{ value }}" {% endif %}
+											{% if key == resart %} style="background-color:{{ value }}" {% endif %}
 										{% endfor %} >
-										{% if benutzerrecht %}
+										{% if benutzerrecht or online.mitglied_ID == res.fk_Mitglied_ID %}
 											 {% for m in mitglieder %}
 												{% if res.fk_Mitglied_ID == m.Mitglied_ID %}
 												 	{{ m.Vorname }} {{ m.Nachname }}
@@ -84,11 +97,6 @@
 				
 
 			</table>
-				{% if closed == 1 %}
-					<p class="box error">
-						Es ist aktuell keine Reservierung möglich, da der gewählte Platz gesperrt ist!
-					</p>
-				{% endif %}
 			
 			
 			{% else %}

@@ -8,7 +8,7 @@ include "includeup.php";
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") {
 			
-		if ($benutzerrecht) {
+		
 
 
 			//Mitglied und Recht abfragen
@@ -271,10 +271,7 @@ include "includeup.php";
 			//auf Template verweisen
 			$template = $twig->loadTemplate('benutzer.twig');
 		
-		//sonst auf home.php
-		}else{
-			header('Location: home.php');
-		}
+	
 			
 	//sonst auf anmeldeseite
 	}else{
