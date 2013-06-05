@@ -50,10 +50,9 @@
             			<td>{{ res.S4 }}</td>
             			
             			
-            			
 						<td>
 							 <form id= "loeschen" method="post" action="../php/reservierungloeschen.php">
-								<input type="hidden" name="{{ res.reservierung_ID }}">
+								<input type="hidden" name="resdelete" value="{{ res.Reservierung_ID }}">
 								<input type="hidden" name="geklickt">
 								<button type="submit">L&ouml;schen</button>
 							</form>

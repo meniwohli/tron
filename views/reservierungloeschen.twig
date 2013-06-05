@@ -2,14 +2,15 @@
 
 	{% block body %}
 		{{ parent() }}
-		
+
 		<table>
 				<form method="post" action="../php/reservierungloeschen.php">
 				
 				<tr>
 					<td>
 					{% if geloescht == false %}
-						<input type="hidden" name="{{ rid }}">
+						<input type="hidden" name="res" value="{{ reservierung.Reservierung_ID }}">
+				   		<input type="hidden" name="geklickt">
 				   		<input type="hidden" name="bestaetigt">
 						<button type="submit">Reservierung l&ouml;schen</button>
 					{% endif %}
