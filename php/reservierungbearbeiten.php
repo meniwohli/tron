@@ -3,83 +3,12 @@
 	
 	include "includeup.php";
 	
-	$date = $_SESSION["datum"];
-	$formatdate = $_SESSION["formatdate"];
-	$time = $_POST["zeit"];
-	$platz = $_POST["pid"];
-	$pnr = $_POST["pnr"];
+	
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
 		
-		if (isset($_POST["reserviert"])) {
-			
-			$bis = $_POST["resbis"];
-			$von = $_POST["resvon"];
-			$pid = $_POST["pid"];
-			$resArt = $_POST['art'];
-			
-			if (isset($_POST["m1"])) {
-				$m1 = $_POST["m1"];
-			}
-			if (isset($_POST["m2"])) {
-				$m2 = $_POST["m2"];
-			}
-			if (isset($_POST["m3"])) {
-				$m3 = $_POST["m3"];
-			}
-			if (isset($_POST["m4"])) {
-				$m4 = $_POST["m4"];
-			}
-			
-
-			if (isset($_POST["resfuer"]))
-			{
-				$fuer = $_POST["resfuer"];
-			} else {
-				$fuer = $mitglied->mitglied_ID;
-			}
-			
-			
-			
-			
-			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resArt', '$m1', '$m2', '$m3', '$m4')");
-		}
 		
-	
-		if(isset($_POST["geklickt"])) {
-			
-		
-			$zeit = $sql->call("SELECT * FROM tb_zeiten");
-			
-			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
-			
-			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
-			
-			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
-			
-			
-			
-			
-			
-			
-			$daten["zeit"]=$zeit;
-			$daten["time"]=$time;
-			$daten["datum"]=$date;
-			$daten["formatdate"]=$formatdate;
-			$daten["reservierungen"]=$reservierung;
-			$daten["mitglieder"]=$mitglieder;
-			$daten["platz"]=$platz;
-			$daten["pnr"]=$pnr;
-			$daten['art']=$art;
-			$daten['online']=$mitglied;
-			
-			
-			
-		
-		}else{
-			header('Location: home.php');
-		}
 		
 		
 		
@@ -92,7 +21,7 @@
 		
 		
 		//auf Template verweisen
-		$template = $twig->loadTemplate('resformular.twig');
+		$template = $twig->loadTemplate('reservierungbearbeiten.twig');
 		
 	//sonst auf anmeldeseite
 	}else{
