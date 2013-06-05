@@ -5,8 +5,8 @@
 @media screen, projection {
 
 
-	table {
-		align:center
+	.tables {
+		margin: 0 auto;
 	}
 	
 	/* Buttonbreite */
