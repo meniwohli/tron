@@ -36,7 +36,7 @@
 						<td>
 							<select name="resfuer" >
 								{% for m in mitglieder %}
-									<option  value="{{ m.Mitglied_ID }}">
+									<option {% if online.mitglied_ID == m.Mitglied_ID %} selected="selected" {% endif %} value="{{ m.Mitglied_ID }}">
 										{{ m.Vorname }} {{ m.Nachname }}
 									</option>
 								{% endfor %}

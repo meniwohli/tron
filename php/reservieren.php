@@ -17,26 +17,28 @@
 			$pid = $_POST["pid"];
 		
 			$zeit = $sql->call("SELECT * FROM tb_zeiten");
-					
-			$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
+				
+		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
+		
+		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
+		
+		$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
+		
+		$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
+		
+		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
+		
+		$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 			
-			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
 			
-			$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
-			
-			$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
-			
-			$farben = $sql->arrayCall("SELECT * FROM tb_farben");
-			
-			
-			foreach($farbzuweisung as $f)
-			{
-				$abc = $f['fk_Farbe_ID'];
-				$resart = $f['Reservierungsart'];
-				$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $abc");
-				$code = $code['FarbCode'];
-				$colours[$resart] = $code;
-			}
+		foreach($farbzuweisung as $f)
+		{
+			$fid = $f['fk_Farbe_ID'];
+			$resart = $f['Reservierungsart'];
+			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $fid");
+			$code = $code['FarbCode'];
+			$colours[$resart] = $code;
+		}
 			
 			
 			
@@ -47,10 +49,12 @@
 			$daten["zeit"]=$zeit;
 			$daten["platz"]=$platz;
 			$daten["reservierungen"]=$reservierung;
-			$daten["mitglieder"]=$mitglied;
+			$daten["mitglieder"]=$mitglieder;
 			$daten["farben"]= $colours;
 			$daten["datum"]=$date;
 			$daten["formatdate"]=$formatdate;
+			$daten["art"]=$art;
+			$daten['online']=$mitglied;
 			
 			//auf Template verweisen
 			$template = $twig->loadTemplate('reservieren.twig');

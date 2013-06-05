@@ -54,7 +54,7 @@
 			
 			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
 			
-			$mitglied = $sql->arrayCall("SELECT * FROM tb_mitglied");
+			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
 			
 			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 			
@@ -68,10 +68,11 @@
 			$daten["datum"]=$date;
 			$daten["formatdate"]=$formatdate;
 			$daten["reservierungen"]=$reservierung;
-			$daten["mitglieder"]=$mitglied;
+			$daten["mitglieder"]=$mitglieder;
 			$daten["platz"]=$platz;
 			$daten["pnr"]=$pnr;
 			$daten['art']=$art;
+			$daten['online']=$mitglied;
 			
 			
 			
