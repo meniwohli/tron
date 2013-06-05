@@ -1,0 +1,113 @@
+{% extends "layout.twig" %}
+
+        {% block body %}
+			  {{ parent() }}
+			  
+			  <h2>Reservieren ab {{ time }} Uhr f&uuml;r Platz {{ pnr }} am {{ formatdate }}</h2>
+			  
+		<form method="post" action="../php/resformular.php">
+			<table>
+
+			  	
+			  	<tr>
+			    	<td>
+			    		Reservieren bis
+			    	</td>
+			    	
+			    	<td>
+			    		<select name="resbis" >
+							
+							{% for i in time+1..zeit.OffenBis %}
+							<option {% if zeit.offenBis == i %} selected="selected" {% endif %} value="{{ i }}">
+								{{ i }} Uhr
+							</option>
+							{% endfor %}
+					
+						</select>
+			    	</td>
+			  	</tr>
+			  	
+			  	{% if benutzerrecht %}
+			  		<tr>
+						<td>
+							Reservieren f&uuml;r:
+						</td>
+					
+						<td>
+							<select name="resfuer" >
+								{% for m in mitglieder %}
+									<option {% if online.mitglied_ID == m.Mitglied_ID %} selected="selected" {% endif %} value="{{ m.Mitglied_ID }}">
+										{{ m.Vorname }} {{ m.Nachname }}
+									</option>
+								{% endfor %}
+							</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Art der Reservierung:
+						</td>
+					
+						<td>
+							<select name="art" >
+								{% for a in art %}
+									<option  value="{{ a.Reservierungsart_ID }}">
+										{{ a.Reservierungsart }}
+									</option>
+								{% endfor %}
+							</select>
+						</td>
+					</tr>
+			  	{% endif %}
+				  	<tr>
+						<td>
+							Mitspieler 1:
+						</td>
+						
+						<td>
+							<input type="text" name="m1" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Mitspieler 2:
+						</td>
+						
+						<td>
+							<input type="text" name="m2" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Mitspieler 3:
+						</td>
+						
+						<td>
+							<input type="text" name="m3" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Mitspieler 4:
+						</td>
+						
+						<td>
+							<input type="text" name="m4" />
+						</td>
+					</tr>			  	
+			  	
+			  	
+			  	
+			</table>
+			<input type= "hidden" name="pid" value={{ platz }}>
+			<input type="hidden" name="resvon" value={{ time }}>
+			<input type="hidden" name="reserviert">
+			<button type="submit">Reservieren</button>
+			</form>
+			
+			
+			
+			
+	
+		{% endblock %}
