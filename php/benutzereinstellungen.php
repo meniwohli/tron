@@ -8,7 +8,7 @@ include "includeup.php";
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") {
 			
-		if ($platzrecht) {
+		if ($benutzerrecht) {
 
 
 			//Mitglied und Recht abfragen

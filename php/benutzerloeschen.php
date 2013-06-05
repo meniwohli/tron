@@ -7,7 +7,7 @@
 	//Wenn eingeloggt und Benutzerrecht weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") {
 		
-		if ($platzrecht) {
+		if ($benutzerrecht && isset($_POST["geklickt"])) {
 		
 		
 			//User ID's mit POST vergleichen

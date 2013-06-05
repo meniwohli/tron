@@ -7,7 +7,7 @@
 	//Wenn eingeloggt und Benutzerrecht weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")	{
 		
-		if($benutzerrecht) {
+		if($benutzerrecht && isset($_POST["geklickt"])) {
 		
 		
 			//alle rechte für administrator auslesen
