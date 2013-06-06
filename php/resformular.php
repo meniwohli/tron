@@ -9,7 +9,15 @@
 	$pid = $_POST["pid"];
 	
 	//Wenn eingeloggt, weiter..
-	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
+	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") {
+
+		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
+		
+		$zeit = $sql->call("SELECT * FROM tb_zeiten");
+			
+		$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
+			
+		$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 		
 		if (isset($_POST["reserviert"])) {
 			
@@ -17,7 +25,7 @@
 			$von = $_POST["resvon"];
 			$pid = $_POST["pid"];
 			$resart = $_POST["art"];
-			
+				
 			if (isset($_POST["kommentar"])) {
 				$comment = $_POST["kommentar"];
 			} else {
@@ -43,8 +51,8 @@
 			} else {
 				$m2 = '';
 			}
+				
 			
-
 			if (isset($_POST["resfuer"]))
 			{
 				$fuer = $_POST["resfuer"];
@@ -54,8 +62,50 @@
 			
 			
 			
+			foreach($reservierung as $res) {
+				if($von < $res["ReservierungVon"]){
+					if($bis <= $res["ReservierungVon"]){
+						$var = 0;
+						
+					} else {
+						$var = 1;
+					}
+					
+				} else {
+					$var = 0;
+				}
+				
+			}
 			
-			$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
+			if($var == 0) {
+				
+				$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
+				
+			} else {
+				
+				$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
+				
+				$template = $twig->loadTemplate('resformular.twig');
+				$daten["falsch"] = true;
+				
+				
+				$daten["zeit"]=$zeit;
+				$daten["time"]=$von;
+				$daten["datum"]=$date;
+				$daten["formatdate"]=$formatdate;
+				$daten["reservierungen"]=$reservierung;
+				$daten["mitglieder"]=$mitglieder;
+				$daten["platz"]=$platz;
+				$daten["art"]=$art;
+				$daten["online"]=$mitglied;
+				
+				
+				
+			}
+			
+			
+			
+			
 		}
 		
 	
@@ -63,13 +113,6 @@
 			
 			$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 		
-			$zeit = $sql->call("SELECT * FROM tb_zeiten");
-			
-			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
-			
-			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
-			
-			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 			
 			
 			

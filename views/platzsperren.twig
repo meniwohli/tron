@@ -2,7 +2,7 @@
 
 	{% block body %}
 		{{ parent() }}
-
+		<table>
 			<form method="post" action="../php/platzsperren.php">
 				
 				<tr>
@@ -31,10 +31,11 @@
 									</p>
 								</div>
 							</div>
-							
+						<br />
 						{% endif %}
 					</td>
 				</tr>
 			</form>
+		</table>
 		
 	{% endblock %}
