@@ -17,25 +17,22 @@
 			$resbis = $_POST["resbis"];
 			$reservierer = $_POST["resfuer"];
 			$resart = $_POST["art"];
+			$comment = $_POST["kommentar"];
 			$m1 = $_POST["m1"];
 			$m2 = $_POST["m2"];
 			$m3 = $_POST["m3"];
 			$m4 = $_POST["m4"];
 			
 			
+			$sql->change("UPDATE tb_reservierung SET ReservierungVon = '$resvon', ReservierungBis = '$resbis', fk_Mitglied_ID = '$reservierer', fk_Reservierungsart_ID = '$resart', Kommentar = '$comment', S1 = '$m1', S2 = '$m2', S3 = '$m3', S4 = '$m4' WHERE Reservierung_ID ='$rid'");
 			
-			
-			
-			
-			
-			
-			$sql->change("UPDATE tb_reservierung SET ReservierungVon = '$resvon', ReservierungBis = '$resbis', fk_Mitglied_ID = '$reservierer', fk_Reservierungsart_ID = '$resart', S1 = '$m1', S2 = '$m2', S3 = '$m3', S4 = '$m4' WHERE Reservierung_ID ='$rid'");
-			$daten["bearbeitet"] = true;
+			header('Location: meinereservierungen.php');
 		}
 		
 		
-		
-		$rid = $_POST["resbearb"];
+		if(isset($_POST["resbearb"])) {
+			$rid = $_POST["resbearb"];
+		}
 		
 		$reservierung = $sql->call("SELECT * FROM tb_reservierung WHERE Reservierung_ID = '$rid'");
 		

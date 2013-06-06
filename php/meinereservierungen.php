@@ -21,14 +21,14 @@
 		//Prüft ob BenutzerVerwalten-Recht gegeben und ruft alle Reservierungen auf
 		if($benutzerrecht == 1)
 		{
-			$res = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum >= '$datumAktuell'");
+			$res = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum >= '$datumAktuell' ORDER BY Datum, ReservierungVon, ReservierungBis");
 			$mem = $sql->arrayCall("SELECT * FROM tb_mitglied");
 		}
 		//ruft nur Reservierungen des aktuellen Benutzers auf
 		else
 		{
 			$benID = $mitglied->getID();
-			$res = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE fk_Mitglied_ID = '$benID' AND Datum >= '$datumAktuell'");
+			$res = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE fk_Mitglied_ID = '$benID' AND Datum >= '$datumAktuell' ORDER BY Datum, ReservierungVon, ReservierungBis");
 		}
 		
 		$platz = $sql->arrayCall("SELECT * FROM tb_platz");
