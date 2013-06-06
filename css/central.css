@@ -11,8 +11,8 @@
 @import url(jquery/jquery-ui-1.10.3.custom.css);
 @import url(allgemein.css);
 @import url(login.css);
-@import url(../yaml/core/base.css);
-@import url("../yaml/forms/gray-theme.css");
+@import url(core/base.css);
+@import url("forms/gray-theme.css");
 @import url(screen/screen.css);
 @import url(screen/form-theme.css);
 @import url(screen/hlist.css);
