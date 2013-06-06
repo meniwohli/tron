@@ -15,7 +15,6 @@
 			$rid = $_POST["rid"];
 			$resvon = $_POST["resvon"];
 			$resbis = $_POST["resbis"];
-			$reservierer = $_POST["resfuer"];
 			$resart = $_POST["art"];
 			$comment = $_POST["kommentar"];
 			$m1 = $_POST["m1"];
@@ -23,6 +22,13 @@
 			$m3 = $_POST["m3"];
 			$m4 = $_POST["m4"];
 			
+			
+			if (isset($_POST["resfuer"]))
+			{
+				$reservierer = $_POST["resfuer"];
+			} else {
+				$reservierer = $mitglied->mitglied_ID;
+			}
 			
 			$sql->change("UPDATE tb_reservierung SET ReservierungVon = '$resvon', ReservierungBis = '$resbis', fk_Mitglied_ID = '$reservierer', fk_Reservierungsart_ID = '$resart', Kommentar = '$comment', S1 = '$m1', S2 = '$m2', S3 = '$m3', S4 = '$m4' WHERE Reservierung_ID ='$rid'");
 			
