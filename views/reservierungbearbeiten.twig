@@ -5,9 +5,26 @@
 			  
 			  <h2>Reservierung bearbeiten</h2>
 			  
-		<form method="post" action="../php/resformular.php">
+		<form method="post" action="../php/reservierungbearbeiten.php">
 			<table>
 
+			  	<tr>
+			    	<td>
+			    		Reservieren von
+			    	</td>
+			    	
+			    	<td>
+			    		<select name="resvon" >
+							
+							{% for i in zeit.OffenVon..zeit.OffenBis %}
+							<option {% if res.ReservierungVon == i %} selected="selected" {% endif %} value="{{ i }}">
+								{{ i }} Uhr
+							</option>
+							{% endfor %}
+					
+						</select>
+			    	</td>
+			  	</tr>
 			  	
 			  	<tr>
 			    	<td>
@@ -17,8 +34,8 @@
 			    	<td>
 			    		<select name="resbis" >
 							
-							{% for i in time+1..zeit.OffenBis %}
-							<option {% if zeit.offenBis == i %} selected="selected" {% endif %} value="{{ i }}">
+							{% for i in zeit.OffenVon..zeit.OffenBis %}
+							<option {% if res.ReservierungBis == i %} selected="selected" {% endif %} value="{{ i }}">
 								{{ i }} Uhr
 							</option>
 							{% endfor %}
@@ -36,7 +53,7 @@
 						<td>
 							<select name="resfuer" >
 								{% for m in mitglieder %}
-									<option {% if online.mitglied_ID == m.Mitglied_ID %} selected="selected" {% endif %} value="{{ m.Mitglied_ID }}">
+									<option {% if res.fk_Mitglied_ID == m.Mitglied_ID %} selected="selected" {% endif %} value="{{ m.Mitglied_ID }}">
 										{{ m.Vorname }} {{ m.Nachname }}
 									</option>
 								{% endfor %}
@@ -52,7 +69,7 @@
 						<td>
 							<select name="art" >
 								{% for a in art %}
-									<option  value="{{ a.Reservierungsart_ID }}">
+									<option {% if res.fk_Reservierungsart_ID == a.Reservierungsart_ID %} selected="selected" {% endif %}  value="{{ a.Reservierungsart_ID }}">
 										{{ a.Reservierungsart }}
 									</option>
 								{% endfor %}
@@ -66,7 +83,7 @@
 						</td>
 						
 						<td>
-							<input type="text" name="m1" />
+							<input type="text" name="m1" value="{{ res.S1 }}" />
 						</td>
 					</tr>
 					<tr>
@@ -75,7 +92,7 @@
 						</td>
 						
 						<td>
-							<input type="text" name="m2" />
+							<input type="text" name="m2" value="{{ res.S2 }}" />
 						</td>
 					</tr>
 					<tr>
@@ -84,7 +101,7 @@
 						</td>
 						
 						<td>
-							<input type="text" name="m3" />
+							<input type="text" name="m3" value="{{ res.S3 }}" />
 						</td>
 					</tr>
 					<tr>
@@ -93,17 +110,16 @@
 						</td>
 						
 						<td>
-							<input type="text" name="m4" />
+							<input type="text" name="m4" value="{{ res.S4 }}" />
 						</td>
 					</tr>			  	
 			  	
 			  	
 			  	
 			</table>
-			<input type= "hidden" name="pid" value={{ platz }}>
-			<input type="hidden" name="resvon" value={{ time }}>
-			<input type="hidden" name="reserviert">
-			<button type="submit">Reservieren</button>
+			<input type="hidden" name="rid" value="{{ res.Reservierung_ID }}">
+			<input type="hidden" name="bearbeitet">
+			<button type="submit">Bearbeiten</button>
 			</form>
 			
 			
