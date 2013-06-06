@@ -12,6 +12,15 @@
 		if(isset($_POST["bearbeitet"]))
 		{
 			
+			$rid = $_POST["rid"];
+			$resvon = $_POST["resvon"];
+			$resbis = $_POST["resbis"];
+			$reservierer = $_POST["resfuer"];
+			$resart = $_POST["art"];
+			$m1 = $_POST["m1"];
+			$m2 = $_POST["m2"];
+			$m3 = $_POST["m3"];
+			$m4 = $_POST["m4"];
 			
 			
 			
@@ -20,8 +29,7 @@
 			
 			
 			
-			
-			$sql->change("");
+			$sql->change("UPDATE tb_reservierung SET ReservierungVon = '$resvon', ReservierungBis = '$resbis', fk_Mitglied_ID = '$reservierer', fk_Reservierungsart_ID = '$resart', S1 = '$m1', S2 = '$m2', S3 = '$m3', S4 = '$m4' WHERE Reservierung_ID ='$rid'");
 			$daten["bearbeitet"] = true;
 		}
 		
