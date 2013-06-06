@@ -3,7 +3,7 @@
         {% block body %}
 			  {{ parent() }}
 			  
-			  <h2>Reservieren ab {{ time }} Uhr f&uuml;r Platz {{ pnr }} am {{ formatdate }}</h2>
+			  <h2>Reservieren ab {{ time }} Uhr f&uuml;r Platz {{ platz.PlatzNr }} am {{ formatdate }}</h2>
 			  
 		<form method="post" action="../php/resformular.php">
 			<table>
@@ -18,7 +18,7 @@
 			    		<select name="resbis" >
 							
 							{% for i in time+1..zeit.OffenBis %}
-							<option {% if zeit.offenBis == i %} selected="selected" {% endif %} value="{{ i }}">
+							<option value="{{ i }}">
 								{{ i }} Uhr
 							</option>
 							{% endfor %}
@@ -52,7 +52,7 @@
 						<td>
 							<select name="art" >
 								{% for a in art %}
-									<option  value="{{ a.Reservierungsart_ID }}">
+									<option value="{{ a.Reservierungsart_ID }}">
 										{{ a.Reservierungsart }}
 									</option>
 								{% endfor %}
@@ -109,7 +109,7 @@
 			  	
 			  	
 			</table>
-			<input type= "hidden" name="pid" value={{ platz }}>
+			<input type= "hidden" name="pid" value={{ platz.Platz_ID }}>
 			<input type="hidden" name="resvon" value={{ time }}>
 			<input type="hidden" name="reserviert">
 			<button type="submit">Reservieren</button>

@@ -14,16 +14,12 @@
 				</tr>
 				
 				<tr>
-					{% for p in platz %}
-						<td class="tdown" colspan="3">Platz {{ p.PlatzNr }}</td>
-					{% endfor %}			
-					
+					<td class="tdown" colspan="3">Platz {{ platz.PlatzNr }}</td>		
 				</tr>
 				
 				{% for z in zeit.OffenVon..zeit.OffenBis %}
 					<tr>
 						<td>{{ z }} Uhr</td>
-						{% for p in platz %}
 						{% set resart = 'frei' %}
 							<td 
 							{% if p.Gesperrt %}
@@ -34,7 +30,7 @@
 							{% else %}
 								{% set voll = 0 %}
 								{% for res in reservierungen %}
-									{% if res.fk_Platz_ID == p.Platz_ID and z >= res.ReservierungVon and z < res.ReservierungBis %}
+									{% if res.fk_Platz_ID == platz.Platz_ID and z >= res.ReservierungVon and z < res.ReservierungBis %}
 										{% for a in art %}
 											{% if res.fk_Reservierungsart_ID == a.Reservierungsart_ID %}
 												{% if online.mitglied_ID == res.fk_Mitglied_ID %}
@@ -71,8 +67,7 @@
 									</td>
 									<td>
 										<form id= "reservieren" method="post" action="../php/resformular.php">
-											<input type="hidden" name="pid" value="{{ p.Platz_ID }}">
-											<input type="hidden" name="pnr" value="{{ p.PlatzNr }}">
+											<input type="hidden" name="pid" value="{{ platz.Platz_ID }}">
 											<input type="hidden" name="zeit" value="{{ z }}">
 											<input type="hidden" name="geklickt">
 											<button type="submit">reservieren</button>
@@ -82,9 +77,6 @@
 									</td>
 								{% endif %}
 							{% endif %}
-							
-						
-						{% endfor %}
 						
 					</tr>
 					

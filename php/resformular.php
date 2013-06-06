@@ -6,8 +6,7 @@
 	$date = $_SESSION["datum"];
 	$formatdate = $_SESSION["formatdate"];
 	$time = $_POST["zeit"];
-	$platz = $_POST["pid"];
-	$pnr = $_POST["pnr"];
+	$pid = $_POST["pid"];
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
@@ -17,10 +16,10 @@
 			$bis = $_POST["resbis"];
 			$von = $_POST["resvon"];
 			$pid = $_POST["pid"];
-			$resArt = $_POST['art'];
+			$resart = $_POST["art"];
 			
 			if (isset($_POST["kommentar"])) {
-				$comment = $_POST['kommentar'];
+				$comment = $_POST["kommentar"];
 			}
 			
 			if (isset($_POST["m1"])) {
@@ -47,16 +46,17 @@
 			
 			
 			
-			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resArt', '$comment', $m1', '$m2', '$m3', '$m4')");
+			$sql->change("INSERT INTO tb_reservierung(fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resart', '$comment', $m1', '$m2', '$m3', '$m4')");
 		}
 		
 	
 		if(isset($_POST["geklickt"])) {
 			
+			$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 		
 			$zeit = $sql->call("SELECT * FROM tb_zeiten");
 			
-			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
+			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date' AND fk_Platz_ID = '$pid'");
 			
 			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
 			
@@ -74,7 +74,6 @@
 			$daten["reservierungen"]=$reservierung;
 			$daten["mitglieder"]=$mitglieder;
 			$daten["platz"]=$platz;
-			$daten["pnr"]=$pnr;
 			$daten['art']=$art;
 			$daten['online']=$mitglied;
 			

@@ -18,27 +18,27 @@
 		
 			$zeit = $sql->call("SELECT * FROM tb_zeiten");
 				
-		$platz = $sql->arrayCall("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
-		
-		$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
-		
-		$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
-		
-		$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
-		
-		$farben = $sql->arrayCall("SELECT * FROM tb_farben");
-		
-		$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
+			$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 			
+			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
 			
-		foreach($farbzuweisung as $f)
-		{
-			$fid = $f['fk_Farbe_ID'];
-			$resart = $f['Reservierungsart'];
-			$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $fid");
-			$code = $code['FarbCode'];
-			$colours[$resart] = $code;
-		}
+			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
+			
+			$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
+			
+			$farben = $sql->arrayCall("SELECT * FROM tb_farben");
+			
+			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
+				
+				
+			foreach($farbzuweisung as $f)
+			{
+				$fid = $f['fk_Farbe_ID'];
+				$resart = $f['Reservierungsart'];
+				$code = $sql->call("SELECT FarbCode FROM tb_farben WHERE Farbe_ID = $fid");
+				$code = $code['FarbCode'];
+				$colours[$resart] = $code;
+			}
 			
 			
 			
