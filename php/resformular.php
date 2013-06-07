@@ -68,7 +68,7 @@
 			
 			$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 		
-			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date'");
+			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date' AND ReservierungVon > '$time' ORDER BY ReservierungVon");
 			
 			$zeit = $sql->call("SELECT * FROM tb_zeiten");
 				

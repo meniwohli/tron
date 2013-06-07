@@ -37,10 +37,18 @@
 			    	<td>
 			    		<select name="resbis" >
 							
-							{% for i in time+1..zeit.OffenBis %}
-							<option value="{{ i }}">
-								{{ i }} Uhr
-							</option>
+							{% set var = 0 %}
+							{% for i in time+1..zeit.OffenBis if var == 0 %}
+							
+								{% for res in reservierungen %}
+									{% if res.ReservierungVon == i %}
+										{% set var = 1 %}
+									{% endif %}
+								{% endfor %}
+							
+								<option value="{{ i }}">
+									{{ i }} Uhr
+								</option>
 							{% endfor %}
 					
 						</select>
