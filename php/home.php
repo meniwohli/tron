@@ -10,7 +10,11 @@
 	
 	if (isset($_POST["datum"])) {
 		$formatdate = $_POST["datum"];		
+	}
+	elseif (isset($_SESSION["formatdate"])) {
+		$formatdate = $_SESSION["formatdate"];
 	} else {
+	
 		$formatdate = $datumAktuell;
 	}
 	
