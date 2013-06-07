@@ -31,7 +31,7 @@
 					
 				</tr>
 				
-				{% for z in zeit.OffenVon..zeit.OffenBis %}
+				{% for z in zeit.OffenVon..zeit.OffenBis-1 %}
 					<tr>
 						<td>{{ z }} Uhr</td>
 						{% for p in platz %}

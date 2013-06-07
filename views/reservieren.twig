@@ -17,7 +17,7 @@
 					<td class="tdown" colspan="3">Platz {{ platz.PlatzNr }}</td>		
 				</tr>
 				
-				{% for z in zeit.OffenVon..zeit.OffenBis %}
+				{% for z in zeit.OffenVon..zeit.OffenBis-1 %}
 					<tr>
 						<td>{{ z }} Uhr</td>
 						{% set resart = 'frei' %}

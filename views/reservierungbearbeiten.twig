@@ -16,7 +16,7 @@
 			    	<td>
 			    		<select name="resvon" >
 							
-							{% for i in zeit.OffenVon..zeit.OffenBis %}
+							{% for i in zeit.OffenVon..zeit.OffenBis-1 %}
 							<option {% if res.ReservierungVon == i %} selected="selected" {% endif %} value="{{ i }}">
 								{{ i }} Uhr
 							</option>
