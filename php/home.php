@@ -8,11 +8,15 @@
 	
 	$datumAktuell = date("d.m.Y");
 	
-	if (isset($_POST["datum"])) {
-		$formatdate = $_POST["datum"];		
+	if (isset($_SESSION["reserviert"])) {
+		
+		$formatdate=$_SESSION["formatdate"];
+		unset($_SESSION["reserviert"]);
 	}
-	elseif (isset($_SESSION["formatdate"])) {
-		$formatdate = $_SESSION["formatdate"];
+	elseif (isset($_POST["datum"])) {
+		
+		$formatdate = $_POST["datum"];
+				
 	} else {
 	
 		$formatdate = $datumAktuell;
