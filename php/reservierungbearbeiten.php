@@ -3,7 +3,7 @@
 	
 	include "includeup.php";
 	
-	
+	$var = 0;
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
@@ -11,11 +11,13 @@
 		if(isset($_POST["bearbeiten"])) {
 		
 			if(isset($_POST["bearbeitet"]))
-			{
+			{				
 				
 				$rid = $_POST["rid"];
+				$pid = $_POST["pid"];
 				$resvon = $_POST["resvon"];
 				$resbis = $_POST["resbis"];
+				$date = $_POST["datum"];
 				$resart = $_POST["art"];
 				$comment = $_POST["kommentar"];
 				$m1 = $_POST["m1"];
@@ -32,14 +34,28 @@
 				}
 				
 				
-				if($resvon < $resbis) {
+				$reserve = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date' AND fk_Platz_ID = '$pid' AND ReservierungVon > '$resvon' ORDER BY ReservierungVon");
+				
+				foreach($reserve as $res) {
 					
-					$sql->change("UPDATE tb_reservierung SET ReservierungVon = '$resvon', ReservierungBis = '$resbis', fk_Mitglied_ID = '$reservierer', fk_Reservierungsart_ID = '$resart', Kommentar = '$comment', S1 = '$m1', S2 = '$m2', S3 = '$m3', S4 = '$m4' WHERE Reservierung_ID ='$rid'");
-					
-					header('Location: meinereservierungen.php');
-					
-				} else {
-					$daten["fehler"]=true;
+					if($resbis > $res['ReservierungVon']) {
+						
+						$var = 1;
+						$daten["doppelt"]=true;
+					}
+				}
+				
+				
+				if($var == 0) {
+					if($resvon < $resbis) {
+						
+						$sql->change("UPDATE tb_reservierung SET ReservierungVon = '$resvon', ReservierungBis = '$resbis', fk_Mitglied_ID = '$reservierer', fk_Reservierungsart_ID = '$resart', Kommentar = '$comment', S1 = '$m1', S2 = '$m2', S3 = '$m3', S4 = '$m4' WHERE Reservierung_ID ='$rid'");
+						
+						header('Location: meinereservierungen.php');
+						
+					} else {
+						$daten["fehler"]=true;
+					}
 				}
 				
 				

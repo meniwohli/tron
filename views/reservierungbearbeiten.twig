@@ -25,6 +25,26 @@
 			
 			<br />
 			
+			{% endif %} 
+			
+			{% if doppelt %}
+			
+				<div class="ui-widget logfehler">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+						<p>
+							<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+							</span>
+								
+							<strong>Achtung: </strong>
+								
+							Bitte fr&uuml;heren Endzeitpunkt legen, da sich die Reservierung sonst mit einer anderen &uuml;berschneiden w&uuml;rde (siehe Home bei Datum: {{ res.Datum }})
+								
+						</p>
+					</div>
+				</div>
+			
+			<br />
+			
 			{% endif %} 	  
 			  
 		<form method="post" action="../php/reservierungbearbeiten.php">
@@ -149,6 +169,8 @@
 			  	
 			</table>
 			<input type="hidden" name="rid" value="{{ res.Reservierung_ID }}">
+			<input type="hidden" name="datum" value="{{ res.Datum }}">
+			<input type="hidden" name="pid" value="{{ res.fk_Platz_ID }}">
 			<input type="hidden" name="bearbeitet">
 			<input type="hidden" name="bearbeiten">
 			<button type="submit">Bearbeiten</button>
