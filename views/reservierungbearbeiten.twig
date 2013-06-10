@@ -5,6 +5,28 @@
 			  
 			  <h2>Reservierung bearbeiten</h2>
 			  
+					
+			
+			{% if fehler %}
+			
+				<div class="ui-widget logfehler">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+						<p>
+							<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+							</span>
+								
+							<strong>Achtung: </strong>
+								
+							Endzeitpunkt der Reservierung muss nach dem Startzeitpunkt liegen!
+								
+						</p>
+					</div>
+				</div>
+			
+			<br />
+			
+			{% endif %} 	  
+			  
 		<form method="post" action="../php/reservierungbearbeiten.php">
 			<table>
 
@@ -34,7 +56,7 @@
 			    	<td>
 			    		<select name="resbis" >
 							
-							{% for i in zeit.OffenVon..zeit.OffenBis %}
+							{% for i in zeit.OffenVon+1..zeit.OffenBis %}
 							<option {% if res.ReservierungBis == i %} selected="selected" {% endif %} value="{{ i }}">
 								{{ i }} Uhr
 							</option>
@@ -128,6 +150,7 @@
 			</table>
 			<input type="hidden" name="rid" value="{{ res.Reservierung_ID }}">
 			<input type="hidden" name="bearbeitet">
+			<input type="hidden" name="bearbeiten">
 			<button type="submit">Bearbeiten</button>
 			</form>
 			
