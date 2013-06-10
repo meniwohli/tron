@@ -63,20 +63,15 @@
 			
 		}
 		
-	
-		if(isset($_POST["geklickt"])) {
-			
-			$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
-		
-			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date' AND ReservierungVon > '$time' ORDER BY ReservierungVon");
-			
-			$zeit = $sql->call("SELECT * FROM tb_zeiten");
-				
 			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
 				
 			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 			
+			$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
+		
+			$reservierung = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE Datum = '$date' AND fk_Platz_ID = '$pid' AND ReservierungVon > '$time' ORDER BY ReservierungVon");
 			
+			$zeit = $sql->call("SELECT * FROM tb_zeiten");
 			
 			
 			
@@ -93,10 +88,7 @@
 			
 			
 		
-		}else{
-			$_SESSION["reserviert"]=true;
-			header('Location: home.php');
-		}
+		
 		
 		
 		

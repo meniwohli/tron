@@ -3,27 +3,9 @@
         {% block body %}
 			  {{ parent() }}
 			  
-			  <h2>Reservieren ab {{ time }} Uhr f&uuml;r Platz {{ platz.PlatzNr }} am {{ formatdate }}</h2>
-		
-		{% if falsch %}
-			
-			<div class="ui-widget logfehler">
-						<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
-							<p>
-								<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
-								</span>
-								
-								<strong>Achtung: </strong>
-								
-								Reservierungen &uuml;berschneiden sich, bitte anderen End-Zeitpunkt w&auml;hlen!
-								
-							</p>
-						</div>
-					</div>
-			
-			
-		{% endif %}
-		
+			  <h2>Reservieren ab {{ time }} Uhr f&uuml;r Platz {{ platz.PlatzNr }} am {{ formatdate }}</h2>		
+			  
+			  {% set var = 0 %}
 			  
 		<form method="post" action="../php/resformular.php">
 			<table>
@@ -37,20 +19,23 @@
 			    	<td>
 			    		<select name="resbis" >
 							
-							{% set var = 0 %}
+
 							{% for i in time+1..zeit.OffenBis if var == 0 %}
 							
 								{% for res in reservierungen %}
+								
 									{% if res.ReservierungVon == i %}
+									
 										{% set var = 1 %}
+										
 									{% endif %}
+									
 								{% endfor %}
 							
 								<option value="{{ i }}">
 									{{ i }} Uhr
 								</option>
 							{% endfor %}
-					
 						</select>
 			    	</td>
 			  	</tr>
