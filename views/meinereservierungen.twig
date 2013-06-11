@@ -1,5 +1,13 @@
 {% extends "layout.twig" %}
-
+		{% block title %}
+			{{ parent() }}
+			{% if benutzerrecht %}
+				Reservierungen
+			{% else %}
+				Meine Reservierungen
+			{% endif %}
+		{% endblock %}
+		
         {% block body %}
 			  {{ parent() }}
 
