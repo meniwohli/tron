@@ -169,13 +169,17 @@
 								     <option {% if gewaehltesrecht.tageVoraus == x %}selected="selected"{% endif %} >{{ x }}</option>
 								 
 								 {% endfor %}
-								 
+								 <option {% if gewaehltesrecht.tageVoraus == 14 %}selected="selected"{% endif %} value="14" >2 Wochen</option>
 								 <option {% if gewaehltesrecht.tageVoraus == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
 								 </select>
 								 
 							{% elseif gewaehltesrecht.tageVoraus == 99 %}
 							
 								unbegrenzt
+								
+							{% elseif gewaehltesrecht.tageVoraus == 14 %}
+							
+								2 Wochen
 								
 							{% else %}
 							

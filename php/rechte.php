@@ -79,7 +79,10 @@
 				if($_POST["tage"] == "unbegrenzt" && $gewaehltesrecht->getTageVoraus() != 99)
 				{
 					$gewaehltesrecht->setTageVoraus(99);
-				}elseif($_POST['tage'] < 8 && $_POST['tage'] > 0)
+				}elseif ($_POST["tage"] == 14 && $gewaehltesrecht->getTageVoraus() != 14)
+				{
+					$gewaehltesrecht->setTageVoraus(14);
+				}elseif($_POST['tage'] > 0)
 				{
 					$gewaehltesrecht->setTageVoraus($_POST["tage"]);
 				}
