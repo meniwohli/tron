@@ -63,6 +63,8 @@
 			
 		}
 		
+			$rechtID = $mitglied->fk_Recht_ID;
+		
 			$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
 				
 			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
@@ -84,6 +86,7 @@
 			$daten["platz"]=$platz;
 			$daten["art"]=$art;
 			$daten["online"]=$mitglied;
+			$daten["recht"]=$recht;
 			
 			
 			

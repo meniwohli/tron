@@ -6,6 +6,7 @@
 			  <h2>Reservieren ab {{ time }} Uhr f&uuml;r Platz {{ platz.PlatzNr }} am {{ formatdate }}</h2>		
 			  
 			  {% set var = 0 %}
+			  {% set anzahl = 0 %}
 			  
 		<form method="post" action="../php/resformular.php">
 			<table>
@@ -21,20 +22,27 @@
 							
 
 							{% for i in time+1..zeit.OffenBis if var == 0 %}
-							
-								{% for res in reservierungen %}
 								
-									{% if res.ReservierungVon == i %}
+								{% if anzahl < recht.anzahlStunden %}
+								
+									{% set anzahl = anzahl + 1 %}
+								
+									{% for res in reservierungen %}
 									
-										{% set var = 1 %}
+										{% if res.ReservierungVon == i %}
 										
-									{% endif %}
+											{% set var = 1 %}
+											
+										{% endif %}
+										
+									{% endfor %}
+								
+									<option value="{{ i }}">
+										{{ i }} Uhr
+									</option>
 									
-								{% endfor %}
-							
-								<option value="{{ i }}">
-									{{ i }} Uhr
-								</option>
+								{% endif %}	
+									
 							{% endfor %}
 						</select>
 			    	</td>
