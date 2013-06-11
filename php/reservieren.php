@@ -11,6 +11,14 @@
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
+				
+		if(isset($_POST["nores"])) {
+			$_SESSION["datumNeu"]=$formatdate;
+			$_SESSION["resfehler"]=true;
+			header('Location: home.php');
+		}
+		
+		
 		
 		if(isset($_POST["geklickt"])) {
 			

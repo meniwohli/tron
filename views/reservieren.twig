@@ -1,102 +1,98 @@
 {% extends "layout.twig" %}
 
         {% block body %}
-			  {{ parent() }}
+			  {{ parent() }}  	  
 			  
-			  
-			  
-		{% if datum %}
-			
-			<table>
+			{% if datum %}
 				
-				<tr>
-					<td colspan="3"><h2>Reservierungen am {{ formatdate }}</h2></td>
-				</tr>
-				
-				<tr>
-					<td class="tdown" colspan="3">Platz {{ platz.PlatzNr }}</td>		
-				</tr>
-				
-				{% for z in zeit.OffenVon..zeit.OffenBis-1 %}
+				<table>
+					
 					<tr>
-						<td>{{ z }} Uhr</td>
-						{% set resart = 'frei' %}
-							<td 
-							{% if p.Gesperrt %}
-								{% for key, value in farben %}
-									{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
-								{% endfor %} >
-								{{ p.Kommentar }}
-							{% else %}
-								{% set voll = 0 %}
-								{% for res in reservierungen %}
-									{% if res.fk_Platz_ID == platz.Platz_ID and z >= res.ReservierungVon and z < res.ReservierungBis %}
-										{% for a in art %}
-											{% if res.fk_Reservierungsart_ID == a.Reservierungsart_ID %}
-												{% if online.mitglied_ID == res.fk_Mitglied_ID %}
-													{% set resart = 'meins' %}
-												{% elseif a.Reservierungsart == "Normal" %}
-													{% set resart = 'besetzt' %}
-												{% elseif a.Reservierungsart == "Turnier" %}
-													{% set resart = 'turnier' %}
-												{% elseif a.Reservierungsart == "Serie" %}
-													{% set resart = 'serie' %}
-												{% endif %}
-											{% endif %}
-										{% endfor %}
-										{% for key, value in farben %}
-											{% if key == resart %} style="background-color:{{ value }}" {% endif %}
-										{% endfor %} >
-										{% if benutzerrecht or online.mitglied_ID == res.fk_Mitglied_ID %}
-											 {% for m in mitglieder %}
-												{% if res.fk_Mitglied_ID == m.Mitglied_ID %}
-												 	{{ m.Vorname }} {{ m.Nachname }}
-												{% endif %}
-											 {% endfor %}
-										{% else %}	
-											reserviert
-										{% endif %}
-										{% set voll = 1 %}
-									{% endif %}
-								{% endfor %}
-								{% if voll == 0 %}
-									{% for key, value in farben %}
-										{% if key == "frei" %} style="background-color:{{ value }}" {% endif %}
-									{% endfor %} >
-									frei
-									</td>
-									<td>
-										<form id= "reservieren" method="post" action="../php/resformular.php">
-											<input type="hidden" name="pid" value="{{ platz.Platz_ID }}">
-											<input type="hidden" name="zeit" value="{{ z }}">
-											<input type="hidden" name="geklickt">
-											<button type="submit">reservieren</button>
-										</form>
-									</td>
-								{% else %}
-									</td>
-								{% endif %}
-							{% endif %}
-						
+						<td colspan="3"><h2>Reservierungen am {{ formatdate }}</h2></td>
 					</tr>
 					
-				{% endfor %}
+					<tr>
+						<td class="tdown" colspan="3">Platz {{ platz.PlatzNr }}</td>		
+					</tr>
+					
+					{% for z in zeit.OffenVon..zeit.OffenBis-1 %}
+						<tr>
+							<td>{{ z }} Uhr</td>
+							{% set resart = 'frei' %}
+								<td 
+								{% if p.Gesperrt %}
+									{% for key, value in farben %}
+										{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
+									{% endfor %} >
+									{{ p.Kommentar }}
+								{% else %}
+									{% set voll = 0 %}
+									{% for res in reservierungen %}
+										{% if res.fk_Platz_ID == platz.Platz_ID and z >= res.ReservierungVon and z < res.ReservierungBis %}
+											{% for a in art %}
+												{% if res.fk_Reservierungsart_ID == a.Reservierungsart_ID %}
+													{% if online.mitglied_ID == res.fk_Mitglied_ID %}
+														{% set resart = 'meins' %}
+													{% elseif a.Reservierungsart == "Normal" %}
+														{% set resart = 'besetzt' %}
+													{% elseif a.Reservierungsart == "Turnier" %}
+														{% set resart = 'turnier' %}
+													{% elseif a.Reservierungsart == "Serie" %}
+														{% set resart = 'serie' %}
+													{% endif %}
+												{% endif %}
+											{% endfor %}
+											{% for key, value in farben %}
+												{% if key == resart %} style="background-color:{{ value }}" {% endif %}
+											{% endfor %} >
+											{% if benutzerrecht or online.mitglied_ID == res.fk_Mitglied_ID %}
+												 {% for m in mitglieder %}
+													{% if res.fk_Mitglied_ID == m.Mitglied_ID %}
+													 	{{ m.Vorname }} {{ m.Nachname }}
+													{% endif %}
+												 {% endfor %}
+											{% else %}	
+												reserviert
+											{% endif %}
+											{% set voll = 1 %}
+										{% endif %}
+									{% endfor %}
+									{% if voll == 0 %}
+										{% for key, value in farben %}
+											{% if key == "frei" %} style="background-color:{{ value }}" {% endif %}
+										{% endfor %} >
+										frei
+										</td>
+										<td>
+											<form id= "reservieren" method="post" action="../php/resformular.php">
+												<input type="hidden" name="pid" value="{{ platz.Platz_ID }}">
+												<input type="hidden" name="zeit" value="{{ z }}">
+												<input type="hidden" name="geklickt">
+												<button type="submit">reservieren</button>
+											</form>
+										</td>
+									{% else %}
+										</td>
+									{% endif %}
+								{% endif %}
+							
+						</tr>
+						
+					{% endfor %}
+					
+					
+					
+					
+					
+					
+	
+				</table>
 				
 				
-				
-				
-				
-				
-
-			</table>
-			
-			
-			{% else %}
-				
-				
-			{% endif %}
-			
-			
+				{% else %}
+					
+					
+				{% endif %}
 			
 			
 	

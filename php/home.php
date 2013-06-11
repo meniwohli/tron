@@ -5,10 +5,15 @@
 	
 	$pruefen = true;
 	$colours = Array();
+	$count = 0;
 	
 	$datumAktuell = date("d.m.Y");
 	
-	if (isset($_SESSION["reserviert"])) {
+	if (isset($_SESSION["datumNeu"])) {
+		$formatdate=$_SESSION["datumNeu"];
+		unset($_SESSION["datumNeu"]);
+	}
+	elseif (isset($_SESSION["reserviert"])) {
 		
 		$formatdate=$_SESSION["formatdate"];
 		unset($_SESSION["reserviert"]);
@@ -33,13 +38,26 @@
 	$_SESSION["datum"] = $date;
 	
 	
-	
-	
-	
-	$colours = Array();
-	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
+		
+		if(isset($_SESSION["resfehler"])) {
+			$daten["resfehler"]=true;
+			unset($_SESSION["resfehler"]);
+		}
+		
+		$mid = $mitglied->mitglied_ID;
+		
+		$resMitglied = $sql->arrayCall("SELECT * FROM tb_reservierung WHERE fk_Mitglied_ID = '$mid' AND Datum = '$date'");
+		
+		
+		foreach($resMitglied as $res) {
+			$count++;
+		}
+		
+		if($count >= $recht->anzahlReservierungen) {
+			$daten["nores"]=true;
+		}
 	
 		$zeit = $sql->call("SELECT * FROM tb_zeiten");
 				
