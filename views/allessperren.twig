@@ -46,7 +46,7 @@
 						{% endif %}
 					</td>
 				</tr>
-				</form>
+				
 			</table>
 			
 			<table>
@@ -57,24 +57,21 @@
 			
 			<tr>
 				<td>
-					<form id="submitting" method="post" action="../php/platzsperren.php">
-						<div id="datum">
-							<div class="datepicker2">
-								<input id="dp" type="hidden" name="datumAnfang"/>
-							</div>
+					<div id="datum1">
+						<div class="datepicker3">
+							<input class="dpfill" type="hidden" name="datumAnfang"/>
 						</div>
-					</form>
+					</div>
 				</td>
 				<td>
-					<form id="submitting" method="post" action="../php/platzsperren.php">
-						<div id="datum">
-							<div class="datepicker2">
-								<input id="dp" type="hidden" name="datumEnde"/>
-							</div>
+					<div id="datum2">
+						<div class="datepicker3">
+							<input class="dpfill" type="hidden" name="datumEnde"/>
 						</div>
-					</form>
+					</div>
 				<td>
 			</tr>
+			</form>
 		</table>
 		
 		{% endif %}

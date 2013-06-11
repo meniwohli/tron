@@ -24,11 +24,11 @@
 							<td>{{ z }} Uhr</td>
 							{% set resart = 'frei' %}
 								<td 
-								{% if p.Gesperrt %}
+								{% if datum >= platz.GesperrtVon and datum <= platz.GesperrtBis %}
 									{% for key, value in farben %}
 										{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
 									{% endfor %} >
-									{{ p.Kommentar }}
+									{{ platz.Kommentar }}
 								{% else %}
 									{% set voll = 0 %}
 									{% for res in reservierungen %}

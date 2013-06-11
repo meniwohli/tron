@@ -29,13 +29,11 @@
 				foreach($plaetze as $id)
 				{
 					$pid = $id['Platz_ID'];
-					$sql->change("UPDATE tb_platz SET Gesperrt = '0' WHERE Platz_ID = '$pid'");
-					$sql->change("UPDATE tb_platz SET Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
+					$sql->change("UPDATE tb_platz SET Gesperrt = '0', GesperrtVon = 'NULL', GesperrtBis = 'NULL', Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
 				}
 			}
 			else {
-				$sql->change("UPDATE tb_platz SET Gesperrt = '0' WHERE Platz_ID = '$pid'");
-				$sql->change("UPDATE tb_platz SET Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
+				$sql->change("UPDATE tb_platz SET Gesperrt = '0', GesperrtVon = 'NULL', GesperrtBis = 'NULL', Kommentar = 'NULL' WHERE Platz_ID = '$pid'");
 			}
 			
 			

@@ -14,8 +14,7 @@
 			$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
 			
 			$pid = true;
-			$von = $_POST["datumVon"];
-			$bis = $_POST["datumBis"];
+			
 			
 			foreach($plaetze as $p)
 			{
@@ -31,6 +30,9 @@
 			
 			if(isset($_POST["bestaetigt"]))
 				{
+					
+					$von = $_POST["datumAnfang"];
+					$bis = $_POST["datumEnde"];
 					$grund = 'NULL';
 					if (isset($_POST['grund']))
 					{
@@ -45,14 +47,12 @@
 							foreach($plaetze as $id)
 							{
 								$pid = $id['Platz_ID'];
-								$sql->change("UPDATE tb_platz SET Gesperrt = '1' WHERE Platz_ID = '$pid'");
-								$sql->change("UPDATE tb_platz SET Kommentar = '$grund' WHERE Platz_ID = '$pid'");
+								$sql->change("UPDATE tb_platz SET Gesperrt = '1', GesperrtVon = '$von', GesperrtBis = ' $bis', Kommentar = '$grund' WHERE Platz_ID = '$pid'");
 							}
 						}
 						else {
 						
-							$sql->change("UPDATE tb_platz SET Gesperrt = '1' WHERE Platz_ID = '$pid'");
-							$sql->change("UPDATE tb_platz SET Kommentar = '$grund' WHERE Platz_ID = '$pid'");
+							$sql->change("UPDATE tb_platz SET Gesperrt = '1', GesperrtVon = '$von', GesperrtBis = ' $bis', Kommentar = '$grund' WHERE Platz_ID = '$pid'");
 							
 						}
 						$daten["gesperrt"] = true;

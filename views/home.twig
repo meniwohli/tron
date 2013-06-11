@@ -64,7 +64,7 @@
 							{% for p in platz %}
 								{% set resart = 'frei' %}
 								<td 
-								{% if p.Gesperrt %}
+								{% if datum >= p.GesperrtVon and datum <= p.GesperrtBis %}
 									{% for key, value in farben %}
 										{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
 									{% endfor %} >
