@@ -14,6 +14,8 @@
 			$plaetze = $sql->arrayCall("SELECT Platz_ID FROM tb_platz");
 			
 			$pid = true;
+			$von = $_POST["datumVon"];
+			$bis = $_POST["datumBis"];
 			
 			foreach($plaetze as $p)
 			{

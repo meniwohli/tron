@@ -42,4 +42,32 @@
 			</form>
 		</table>
 		
+		<table>
+			<tr>
+				<td>Sperren von:</td>
+				<td>Sperren bis:</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<form id="submitting" method="post" action="../php/platzsperren.php">
+						<div id="datum">
+							<div class="datepicker2">
+								<input id="dp" type="hidden" name="datumAnfang"/>
+							</div>
+						</div>
+					</form>
+				</td>
+				<td>
+					<form id="submitting" method="post" action="../php/platzsperren.php">
+						<div id="datum">
+							<div class="datepicker2">
+								<input id="dp" type="hidden" name="datumEnde"/>
+							</div>
+						</div>
+					</form>
+				<td>
+			</tr>
+		</table>
+		
 	{% endblock %}
