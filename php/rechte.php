@@ -73,6 +73,8 @@
 				}
 			}
 			
+			$daten["test"] = "test";
+			
 			// tageVoraus
 			if (isset($_POST['tage']) && $gewaehltesrecht->getTageVoraus() != $_POST['tage'])
 			{
