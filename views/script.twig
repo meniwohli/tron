@@ -24,7 +24,7 @@
 			    		altField: '#dp',
 			    		dateFormat : "dd.mm.yy",
 			    		firstDay: 1,
-			    		maxDate: "",
+			    		maxDate: "{% if tiv == 99 %}{% else %}{{ tiv }}{% endif %}",
 			    		minDate: "-0d",
 			    		dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
 			    		monthNamesShort: [ "Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez" ],
