@@ -148,7 +148,7 @@
 			$daten["gewaehltesrecht"] = $gewaehltesrecht;
 			$daten["rechtarray"] = $rechtarray;
 			
-			//aktuelles recht übergen:
+			//aktuelles recht übergeben:
 			$daten["recht"] = $recht->getRechtName();
 			
 			
