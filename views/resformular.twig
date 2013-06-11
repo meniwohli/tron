@@ -75,7 +75,7 @@
 						</td>
 					
 						<td>
-							<select name="art" >
+							<select name="art" id="reservierungsart">
 								{% for a in art %}
 									<option value="{{ a.Reservierungsart_ID }}">
 										{{ a.Reservierungsart }}
@@ -84,6 +84,19 @@
 							</select>
 						</td>
 					</tr>
+					
+					
+					<tr>
+						<td>
+							<div class="seriendauer" style="display:none">Seriendauer:</div>
+						</td>
+					
+						<td>
+							<div class="seriendauer" style="display:none"><div class="datepicker3"></div></div>
+						</td>
+					</tr>
+					
+					
 			  	{% endif %}
 				  	<tr>
 						<td>

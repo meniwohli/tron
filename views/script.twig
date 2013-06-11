@@ -4,10 +4,12 @@
          <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
          <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
          
+         
          <link rel="shortcut icon" type="image/x-icon" href="../pics/favicon.ico" />
          
          {# Einbindung YAML/ CSS #}
          <link rel="stylesheet" href="../css/central.css" type="text/css"/>
+    	
     	
     	<script>
 
@@ -41,7 +43,27 @@
 		 	});
 
 
-		 	
+
+		 	// Einstellungen Minikallender für Serien/Platzsperren
+		 	 $(document).ready(function() {
+		    	$( ".datepicker3" ).datepicker({
+		    		altField: '.dpfill',
+		    		dateFormat : "dd.mm.yy",
+		    		firstDay: 1,
+		    		maxDate: "{% if tiv == 99 %}{% else %}{{ tiv }}{% endif %}",
+		    		minDate: "-0d",
+		    		dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+		    		monthNamesShort: [ "Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez" ],
+		    		monthNames: [ "Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+		    		showAnim: "slideDown",
+		    		duration: "slow",
+		    		hideIfNoPrevNext: true,
+		    		buttonImageOnly: true,
+			    	}).show();
+		 	});
+			
+
+			 	
 
 		 	// Einstellungen Minikallender für allgemeines
 		 	 $(document).ready(function() {
@@ -68,6 +90,18 @@
 					$( "#infofeld" ).slideToggle( "slow" );
 					});
 				});
+
+			
+			//fade in für Serienreservierung
+			$(document).ready(function(){
+				  $( "#reservierungsart" ).change(function(){
+					if($(this).val() == "3"){
+						$(".seriendauer").fadeIn("slow");
+					}else{
+						$(".seriendauer").fadeOut("slow");
+					}
+				});
+			});
 			
 			 	
 			// Indexeinstellungen
