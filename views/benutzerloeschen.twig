@@ -12,6 +12,9 @@
 		
 		{% if geloescht %}
 			<div class="note"><b>{{ name }}</b> wurde aus der Datenbank gel&ouml;scht. </div>
+			<form action="../php/benutzereinstellungen.php">
+				<button type="submit">zur&uuml;ck</button>
+			</form>					
 		{% else %}
 			<div>
 			
@@ -38,6 +41,7 @@
 				<form method="post" action="../php/benutzerloeschen.php">
    		    		<input type="hidden" name="{{ uid }}">
    		    		<input type="hidden" name="bestaetigt">
+   		    		<input type="hidden" name="geklickt">
 					<button type="submit">Benutzer l&ouml;schen</button>
 				</form>
 			</div>

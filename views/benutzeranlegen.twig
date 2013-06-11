@@ -8,24 +8,18 @@
 		{{ parent() }}
 		
 		<table>
-		
 			{# Wenn der Benutzer angelegt wurde: #}
 			{% if angelegt %}
 			
-				<tr>
-					<td>
 						<div class="note">Der Benutzer wurde angelegt.</div>
-					</td>
-					
-					<td>
+						<form action="../php/benutzereinstellungen.php">
+							<button type="submit">zur&uuml;ck</button>
+						</form>					
 						<form method="post" action="../php/benutzeranlegen.php">
 	   		    			<input type="hidden" name="first">
 	   		    			<input type="hidden" name="geklickt">
 							<input type="submit" value="Benutzer anlegen">
 						</form>
-					</td>
-				</tr>
-			
 			{# Wenn Recht für änderung des Benutzers vorhanden ist #}
 			{% elseif benutzerrecht == 1 %}
 	    
@@ -223,6 +217,8 @@
 							<button type="submit"> Speichern </button>
 						</td>
 					</tr>
+					
+					<input type="hidden" name="geklickt">
 					
 				</form> 
 					

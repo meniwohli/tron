@@ -7,11 +7,13 @@
 	{% block body %}
 		{{ parent() }}
 	
-				<form method="post" action="../php/platzloeschen.php">
 				
 					{% if geloescht %}
-				
+						
 						<div class="important">Platz wurde aus der Datenbank gel&ouml;scht.</div>
+						<form action="../php/plaetze.php">
+							<button type="submit">zur&uuml;ck</button>
+						</form> 
 						
 					{% else %}
 				
@@ -35,7 +37,8 @@
 						</br>
 		 				<h3>Sind Sie sicher?</h3>
 						</br>
-						
+				
+				<form method="post" action="../php/platzloeschen.php">		
 						{% if geloescht == false %}
 							<input type="hidden" name="{{ pid }}">
 					   		<input type="hidden" name="bestaetigt">

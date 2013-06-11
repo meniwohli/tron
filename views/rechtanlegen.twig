@@ -8,15 +8,15 @@
 		{# Wenn der Benutzer angelegt wurde: #}
 		{% if angelegt %}
 		
-			<div>
-				Das Recht wurde angelegt.
-				</br>
-				</br>
+				<div class="note">Das Recht wurde angelegt.</div>
+				<form action="../php/rechte.php">
+					<button type="submit">zur&uuml;ck</button>
+				</form> 
 				<form method="post" action="../php/rechtanlegen.php">
    		    		<input type="hidden" name="first">
    		    		<button type="submit">Recht anlegen</button>
 				</form>
-			</div>
+
 		
 		{# Wenn Recht für änderung des Benutzers vorhanden ist #}
 		{% elseif rechtrecht == 1 %}

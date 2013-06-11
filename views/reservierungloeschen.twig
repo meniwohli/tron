@@ -8,11 +8,14 @@
 		{{ parent() }}
 
 		
-			<form method="post" action="../php/reservierungloeschen.php">
+			
 				
 				{% if geloescht %}
 
 					<div class="important">Reservierung wurde aus der Datenbank gel&ouml;scht.</div>
+					<form action="../php/meinereservierungen.php">
+						<button type="submit">zur&uuml;ck</button>
+					</form> 
 							
 				{% else %}
 					
@@ -33,8 +36,9 @@
 					</br>
 					</br>
 					<h3>Sind Sie sicher?</h3>
-					</br>	
-					
+					</br>
+						
+			<form method="post" action="../php/reservierungloeschen.php">		
 					<input type="hidden" name="res" value="{{ reservierung.Reservierung_ID }}">
 				  	<input type="hidden" name="geklickt">
 				   	<input type="hidden" name="bestaetigt">

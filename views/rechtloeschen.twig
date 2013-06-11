@@ -11,12 +11,13 @@
 		{% if rechtrecht == 1 %}
 		
 			<table>
-				<form method="post" action="../php/rechtloeschen.php">
-				
 						
 					{% if geloescht %}
 						
 						<div class="important">{{ rechtname }}-Recht wurde aus der Datenbank gel&ouml;scht.</div>
+						<form action="../php/rechte.php">
+							<button type="submit">zur&uuml;ck</button>
+						</form> 
 						
 					{% else %}
 						
@@ -33,11 +34,13 @@
 								</p>
 							</div>
 						</div>
-							
+						
+						</br>	
 						<h3>Sind Sie sicher?</h3>
 						
 						</br>
 						
+				<form method="post" action="../php/rechtloeschen.php">		
 						<input type="hidden" name="{{ rid }}">
 				   		<input type="hidden" name="bestaetigt">
 						<button type="submit">Recht l&ouml;schen</button>
