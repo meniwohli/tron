@@ -61,8 +61,43 @@
 		    		buttonImageOnly: true,
 			    	}).show();
 		 	});
-			
 
+		 	// Einstellungen Minikallender Platzsperren von
+		 	 $(document).ready(function() {
+		    	$( "#dp-lock-from" ).datepicker({
+		    		altField: '#dp-lock-from-fill',
+		    		dateFormat : "dd.mm.yy",
+		    		firstDay: 1,
+		    		maxDate: "{% if tiv == 99 %}{% else %}{{ tiv }}{% endif %}",
+		    		minDate: "-0d",
+		    		dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+		    		monthNamesShort: [ "Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez" ],
+		    		monthNames: [ "Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+		    		showAnim: "slideDown",
+		    		duration: "slow",
+		    		hideIfNoPrevNext: true,
+		    		buttonImageOnly: true,
+			    	}).show();
+		 	});
+
+
+		 	// Einstellungen Minikallender Platzsperren bis
+		 	 $(document).ready(function() {
+		    	$( ".dp-lock-to" ).datepicker({
+		    		altField: '#dp-lock-to-fill',
+		    		dateFormat : "dd.mm.yy",
+		    		firstDay: 1,
+		    		maxDate: "{% if tiv == 99 %}{% else %}{{ tiv }}{% endif %}",
+		    		minDate: "-0d",
+		    		dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+		    		monthNamesShort: [ "Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez" ],
+		    		monthNames: [ "Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+		    		showAnim: "slideDown",
+		    		duration: "slow",
+		    		hideIfNoPrevNext: true,
+		    		buttonImageOnly: true,
+			    	}).show();
+		 	});
 			 	
 
 		 	// Einstellungen Minikallender für allgemeines
