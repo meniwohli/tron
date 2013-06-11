@@ -4,6 +4,7 @@
 	include "includeup.php";
 	
 	$var = 0;
+	$diff = 0;
 	
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") { 
@@ -45,6 +46,12 @@
 					}
 				}
 				
+				$diff = $resbis - $resvon;
+				
+				if($diff > $recht->anzahlStunden) {
+					$var = 2;
+				}
+				
 				
 				if($var == 0) {
 					if($resvon < $resbis) {
@@ -54,8 +61,10 @@
 						header('Location: meinereservierungen.php');
 						
 					} else {
-						$daten["fehler"]=true;
+						$daten["resfehler"]=true;
 					}
+				} elseif($var == 2) {
+					$daten["stundenfehler"]=true;
 				}
 				
 				
@@ -83,6 +92,7 @@
 			$daten["res"]=$reservierung;
 			$daten["mitglieder"]=$mitglieder;
 			$daten['art']=$art;
+			$daten['stunden']=$recht->anzahlStunden;
 			
 			
 			

@@ -11,7 +11,7 @@
 			  
 					
 			
-			{% if fehler %}
+			{% if resfehler %}
 			
 				<div class="ui-widget logfehler">
 					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
@@ -30,6 +30,26 @@
 			<br />
 			
 			{% endif %} 
+			
+			{% if stundenfehler %}
+			
+				<div class="ui-widget logfehler">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; text-align: center">
+						<p>
+							<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+							</span>
+								
+							<strong>Achtung: </strong>
+								
+							Anzahl der Stunden &uuml;berschritten! Sie d&uuml;rfen h&ouml;stens {{ stunden }} Stunden reservieren!
+								
+						</p>
+					</div>
+				</div>
+			
+			<br />
+			
+			{% endif %}
 			
 			{% if doppelt %}
 			
