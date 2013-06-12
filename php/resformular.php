@@ -11,14 +11,32 @@
 			$date = $_SESSION["datum"];
 			$formatdate = $_SESSION["formatdate"];
 			
-			
+			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 				
 			if (isset($_POST["reserviert"])) {
+				
 				
 				$bis = $_POST["resbis"];
 				$von = $_POST["zeit"];
 				$pid = $_POST["pid"];
 				$resart = $_POST["art"];
+				
+				foreach($art as $a) {	
+					if($a["Reservierungsart"] == $resart) {
+						$reserveArt = $a["Reservierungsart"];
+					}		
+				}
+				
+				
+				
+				if(isset($_POST["datumSerie"]) && $reserveArt == "Serie"){
+					$datumSerie = $_POST["datumSerie"];
+				} else {
+					$datumSerie = 'keine Serie';
+				}
+				
+				
+				
 					
 				if (isset($_POST["kommentar"])) {
 					$comment = $_POST["kommentar"];
@@ -78,8 +96,6 @@
 				$rechtID = $mitglied->fk_Recht_ID;
 			
 				$mitglieder = $sql->arrayCall("SELECT * FROM tb_mitglied");
-					
-				$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
 				
 				$platz = $sql->call("SELECT * FROM tb_platz WHERE Platz_ID = '$pid'");
 			
