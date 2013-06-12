@@ -6,23 +6,17 @@
 	//Wenn eingeloggt, weiter..
 	if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok") {
 
-		if(isset($_POST["geklickt"])) {
+		
 		
 			$date = $_SESSION["datum"];
 			$formatdate = $_SESSION["formatdate"];
 			
-			if(isset($_POST["zeit"])){
-				$time = $_POST["zeit"];
-			}
 			
-			if(isset($_POST["pid"])) {
-				$pid = $_POST["pid"];
-			}
 				
 			if (isset($_POST["reserviert"])) {
 				
 				$bis = $_POST["resbis"];
-				$von = $_POST["resvon"];
+				$von = $_POST["zeit"];
 				$pid = $_POST["pid"];
 				$resart = $_POST["art"];
 					
@@ -62,12 +56,24 @@
 				
 				$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
 					
-	
+				$_SESSION["reserviert"]=true;
 				
 				
 				
 				
 			}
+			
+			
+			if(isset($_POST["geklickt"])) {
+				
+				if(isset($_POST["zeit"])){
+					$time = $_POST["zeit"];
+				}
+					
+				if(isset($_POST["pid"])) {
+					$pid = $_POST["pid"];
+				}
+			
 			
 				$rechtID = $mitglied->fk_Recht_ID;
 			

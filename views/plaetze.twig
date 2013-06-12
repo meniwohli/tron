@@ -16,35 +16,41 @@
 						<td>Platz-Nr</td>
 						<td>Offen/Gesperrt</td>
 						<td>Kommentar</td>
+						<td>Gesperrt von</td>
+						<td>Gesperrt bis</td>
 						<td></td>
 						<td></td>
 					</tr>
 				{% for pla in plaetze %}
             		<tr>
-            			<td>{{ pla.platzNr }}</td>
-            			{% if pla.gesperrt == 0 %}
+            			<td>{{ pla.PlatzNr }}</td>
+            			{% if pla.Gesperrt == 0 %}
             				<td 
             				{% for key, value in farben %}
 								{% if key == "frei" %} style="background-color:{{ value }}" {% endif %}
 							{% endfor %} >
 							Ge&ouml;ffnet</td>
             				<td></td>
+            				<td></td>
+            				<td></td>
             				<td>
 							 	<form id= "sperren" method="post" action="../php/platzsperren.php">
-									<input type="hidden" name="{{ pla.platz_ID }}">
+									<input type="hidden" name="{{ pla.Platz_ID }}">
 									<button type="submit">Sperren</button>
 								</form>
 							</td>
-            			{% elseif pla.gesperrt == 1 %}
+            			{% elseif pla.Gesperrt == 1 %}
             				<td
             				{% for key, value in farben %}
 								{% if key == "zu" %} style="background-color:{{ value }}" {% endif %}
 							{% endfor %} >
             				Gesperrt</td>
-            				<td>{{ pla.kommentar }}</td>
+            				<td>{{ pla.Kommentar }}</td>
+            				<td>{{ pla.GesperrtVon }}</td>
+            				<td>{{ pla.GesperrtBis }}</td>
             				<td>
 							 	<form id= "oeffnen" method="post" action="../php/platzfreigeben.php">
-									<input type="hidden" name="{{ pla.platz_ID }}">
+									<input type="hidden" name="{{ pla.Platz_ID }}">
 									<button type="submit">Freigeben</button>
 								</form>
 							</td>
@@ -56,7 +62,7 @@
             			 
 						<td>
 							 <form id= "loeschen" method="post" action="../php/platzloeschen.php">
-								<input type="hidden" name="{{ pla.platz_ID }}">
+								<input type="hidden" name="{{ pla.Platz_ID }}">
 								<button type="submit">L&ouml;schen</button>
 							</form>
 						</td> 

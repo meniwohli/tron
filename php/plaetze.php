@@ -27,14 +27,7 @@
 			}
 			
 			
-			$call = "Select * From tb_platz ORDER BY PlatzNr";
-			$ergebnis = $sql->arrayCall($call);
-			
-			foreach($ergebnis as $id)
-			{
-				$platz = new Platz($id['Platz_ID']);
-				$plaetze[] = $platz;
-			}
+			$plaetze = $sql->arrayCall("Select * From tb_platz ORDER BY PlatzNr");
 			
 			$farbzuweisung = $sql->arrayCall("SELECT * FROM tb_farbzuweisung");
 			
