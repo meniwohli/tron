@@ -11,7 +11,15 @@
 			$date = $_SESSION["datum"];
 			$formatdate = $_SESSION["formatdate"];
 			
-			$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
+			if($serienrecht){
+			
+				$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart");
+				
+			} else {
+				
+				$art = $sql->arrayCall("SELECT * FROM tb_reservierungsart WHERE Reservierungsart != 'Serie'");
+				
+			}
 				
 			if (isset($_POST["reserviert"])) {
 				
@@ -21,23 +29,6 @@
 				$pid = $_POST["pid"];
 				$resart = $_POST["art"];
 				
-				foreach($art as $a) {	
-					if($a["Reservierungsart"] == $resart) {
-						$reserveArt = $a["Reservierungsart"];
-					}		
-				}
-				
-				
-				
-				if(isset($_POST["datumSerie"]) && $reserveArt == "Serie"){
-					$datumSerie = $_POST["datumSerie"];
-				} else {
-					$datumSerie = 'keine Serie';
-				}
-				
-				
-				
-					
 				if (isset($_POST["kommentar"])) {
 					$comment = $_POST["kommentar"];
 				} else {
@@ -71,9 +62,35 @@
 				} else {
 					$fuer = $mitglied->mitglied_ID;
 				}
+							
 				
-				$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
+				foreach($art as $a) {	
+					if($a["Reservierungsart_ID"] == $resart) {
+						$reserveArt = $a["Reservierungsart"];
+					}		
+				}
+				
+				$nextWeek =7 * 24 * 60 * 60;
+				
+				if(isset($_POST["datumSerie"]) && $reserveArt == "Serie"){
+					$datumSerie = $_POST["datumSerie"];
+					$d = $date;
 					
+					while($d <= $datumSerie){
+						
+						$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$d', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
+						$d = date("Y-m-d", strtotime($d)+$nextWeek);
+					}
+					
+					/*for($d = $date; $d <= $datumSerie; date("Y-m-d", strtotime("Y-m-d", $d)+$nextWeek)) {
+						$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$d', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
+					}*/
+				} else {
+				
+					$sql->change("INSERT INTO tb_reservierung (fk_Mitglied_ID, fk_Platz_ID, Datum, ReservierungVon, ReservierungBis, fk_Reservierungsart_ID, Kommentar, S1, S2, S3, S4) VALUES ('$fuer', '$pid', '$date', '$von', '$bis', '$resart', '$comment', '$m1', '$m2', '$m3', '$m4')");
+					
+				}
+				
 				$_SESSION["reserviert"]=true;
 				
 				
