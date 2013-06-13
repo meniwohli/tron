@@ -42,6 +42,8 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	$daten["farbrecht"] = $farbrecht;
 	$allgemeinrecht = $recht->getSaisonFestlegen();
 	$daten["allgemeinrecht"] = $allgemeinrecht;
+	$serienrecht = $recht->getSerienReservieren();
+	$daten["serienrecht"]=$serienrecht;
 	
 	//Tage im Voraus dem Kallender übergeben
 	$daten["tiv"] = $recht->getTageVoraus();
