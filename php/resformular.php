@@ -31,8 +31,12 @@
 				
 				if(isset($_POST["datumSerie"]) && $reserveArt == "Serie"){
 					$datumSerie = $_POST["datumSerie"];
-				} else {
-					$datumSerie = 'keine Serie';
+					
+					
+					
+					
+					
+					
 				}
 				
 				
