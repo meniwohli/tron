@@ -1,6 +1,6 @@
 <?php
 
-	require_once "sql_class.php";
+require_once "sql_class.php";
 
 class Farben
 {
@@ -30,7 +30,8 @@ class Farben
 	*/
 	public function sqlString($zeile, $daten)
 	{
-		$return = "UPDATE tb_farben SET " .$zeile . "= '" . $daten ."' WHERE Farbe_ID = " . $this->farbe_ID;
+		$return = "UPDATE tb_farben SET " .$zeile . "= '" . 
+		$daten ."' WHERE Farbe_ID = " . $this->farbe_ID;
 		return $return;
 	}
 	

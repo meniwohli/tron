@@ -14,9 +14,9 @@ class Sql
 	
 	public $mysqli;
 	
-	/**
+	/*
 	 * login in db
-	*/
+	 */
 	public function logIn()
 	{
 		
@@ -40,11 +40,8 @@ class Sql
 	}
 	
 	
-	/**
+	/*
 	 * Überprüft, ob User mit Passwort überein stimmt
-	 * @param string $user User-Email
-	 * @param string $passwort Md5 Verschlüsseltes Passwort
-	 * @return boolean True bei eingeloggt, false bei fehler
 	*/
 	public function logTest($user, $passwort)
 	{
@@ -92,7 +89,7 @@ class Sql
 		return $return;
 	}
 		
-	
+	//Macht änderungen in der Datenbank
 	public function change($change)
 	{
 		$this->logIn();
@@ -100,6 +97,7 @@ class Sql
 		$this->logOut();
 	}
 	
+	//Gibt ein Array mit allen Ergebnissen zurück
 	public function arrayCall($call)
 	{
 		$this->logIn();
@@ -115,6 +113,7 @@ class Sql
 		$this->logOut();
 	}
 	
+	//Gibt eine Reihe aus der Datenbank zurück
 	public function call($call)
 	{
 		$this->logIn();
@@ -134,7 +133,7 @@ class Sql
 		$this->logOut();
 	}
 	
-	
+	//Logt sich aus
 	public function logOut()
 	{
 		$this->mysqli->close();
