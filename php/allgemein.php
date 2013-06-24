@@ -17,14 +17,14 @@
 		
 		
 		
-		if(isset($_POST["offenvon"]) && ($_POST["offenvon"] != $speicher["OffenVon"]) )
+		if(isset($_POST["offenvon"]) && ($_POST["offenvon"] != $speicher["OffenVon"]) && ($_POST["offenvon"] <= $_POST["offenbis"]))
 		{
 			$x = $_POST["offenvon"];
 			$sql->change("UPDATE tb_zeiten SET OffenVon = $x");
 			$zeit["offenVon"] = $_POST["offenvon"];
 		}
 		
-		if(isset($_POST["offenbis"]) && ($_POST["offenbis"] != $speicher["OffenBis"]) )
+		if(isset($_POST["offenbis"]) && ($_POST["offenbis"] != $speicher["OffenBis"]) && ($_POST["offenvon"] <= $_POST["offenbis"]))
 		{
 			$x = $_POST["offenbis"];
 			$sql->change("UPDATE tb_zeiten SET OffenBis = $x");

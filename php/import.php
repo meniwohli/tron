@@ -45,7 +45,17 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == "ok")
 	$serienrecht = $recht->getSerienReservieren();
 	$daten["serienrecht"]=$serienrecht;
 	
-	//Tage im Voraus dem Kallender übergeben
+	//Tage im Voraus oder Saison-Ende dem Kallender übergeben
 	$daten["tiv"] = $recht->getTageVoraus();
+	$endsai = $sql->call("SELECT SaisonBis FROM tb_zeiten");
+	
+	$endsait = substr($endsai["SaisonBis"], 8, 2);
+	$endsaim = substr($endsai["SaisonBis"], 5, 2);
+	$endsaij = substr($endsai["SaisonBis"], 0, 4);
+	
+	$daten["endsait"] = $endsait;
+	$daten["endsaim"] = $endsaim - 1;
+	$daten["endsaij"] = $endsaij;
+	
 }
 ?>
