@@ -8,6 +8,9 @@
 		{{ parent() }}
 		
 		
+		
+		
+		
 		{% if gesperrt == 1 %}
 				
 			
@@ -26,191 +29,218 @@
 			</br>
 		{% endif %}
 		
-		
-		<div>Mitgliedsdaten:</div>
-		</br>
-		
 		<table>
-			<tr>
-				<td>
-					Geschlecht:
-				</td>
-				
-				<td>
-					{# Wenn ändern auf 1, wird Formular aktiviert #}
-					{% if aendern == 1 %}
-					
-						<form method="post" action="../php/benutzereinstellungen.php">
-						
-						 <select name="geschlecht" >
-						     <option {% if geschlecht == 'Herr' %}selected="selected"{% endif %} >Herr</option>
-						     <option {% if geschlecht == 'Frau' %}selected="selected"{% endif %} >Frau</option>
-						 </select>
-						 
-					{% else %}
-					
-						{% if geschlecht == "Herr" %}
-							Herr
-						{% elseif geschlecht == "Frau" %}
-							Frau
-						{% endif %}
 		
-					{% endif %}
-				</td>
-			</tr>			
-			
+		{% if vorname == "Administrator"%}
+		
 			<tr>
-				<td>
-					Titel:
-				</td>
-				
-				<td>
-					{% if aendern == 1 %}
-						<input type="text" name="titel" value="{{ titel }}" />
-					{% elseif titel %}
-						{{ titel }}
-					{% endif %} 
+				<td colspan = 2>
+					<div class="ui-widget">
+						<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center">
+							<p>
+									
+								<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+								</span>
+								
+								<strong>Achtung: </strong>Dies ist das Administratorkonto. Es kann nur das Passwort ver&auml;ndert werden!
+										
+							</p>
+						</div>
+					</div>
 				</td>
 			</tr>
-			
+		{% endif %}
+		
+		{% if vorname != "Administrator" %}
+		
 			<tr>
 				<td>
-			Vorname:
-				</td>
-				
-				<td> 
-					{% if aendern == 1 %}
-						<input type="text" name="vorname" value="{{ vorname }}" />
-					{% else %}
-						{{ vorname }}
-					{% endif %}
+					Mitgliedsdaten:
 				</td>
 			</tr>
 			
-			<tr>
-				<td>
-			Nachname:
-				</td>
-				
-				<td> 
-					{% if aendern == 1 %}
-						<input type="text" name="nachname" value="{{ nachname }}" />
-					{% else %}
-						{{ nachname }}
-					{% endif %}
-				</td>
-			</tr>
+				<tr>
+					<td>
+						Geschlecht:
+					</td>
+					
+					<td>
+						{# Wenn ändern auf 1, wird Formular aktiviert #}
+						{% if aendern == 1 %}
+						
+							<form method="post" action="../php/benutzereinstellungen.php">
+							
+							 <select name="geschlecht" >
+							     <option {% if geschlecht == 'Herr' %}selected="selected"{% endif %} >Herr</option>
+							     <option {% if geschlecht == 'Frau' %}selected="selected"{% endif %} >Frau</option>
+							 </select>
+							 
+						{% else %}
+						
+							{% if geschlecht == "Herr" %}
+								Herr
+							{% elseif geschlecht == "Frau" %}
+								Frau
+							{% endif %}
 			
-			<tr>
-				<td>
-					Geburtstag:
-				</td>
+						{% endif %}
+					</td>
+				</tr>			
 				
+				<tr>
+					<td>
+						Titel:
+					</td>
+					
+					<td>
+						{% if aendern == 1 %}
+							<input type="text" name="titel" value="{{ titel }}" />
+						{% elseif titel %}
+							{{ titel }}
+						{% endif %} 
+					</td>
+				</tr>
 				
+				<tr>
+					<td>
+				Vorname:
+					</td>
+					
+					<td> 
+						{% if aendern == 1 %}
+							<input type="text" name="vorname" value="{{ vorname }}" />
+						{% else %}
+							{{ vorname }}
+						{% endif %}
+					</td>
+				</tr>
 				
-			{# Geburtsdatum abfragen und formatieren #}
-			{% if aendern == 1 %}
+				<tr>
+					<td>
+				Nachname:
+					</td>
+					
+					<td> 
+						{% if aendern == 1 %}
+							<input type="text" name="nachname" value="{{ nachname }}" />
+						{% else %}
+							{{ nachname }}
+						{% endif %}
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						Geburtstag:
+					</td>
+					
+					
+					
+				{# Geburtsdatum abfragen und formatieren #}
+				{% if aendern == 1 %}
+				
+					
+					<td></td>
+				</tr>
+				<tr>
+					<td>Tag(TT)</td><td><input type="text" name="geburtstag" value="{{ geburtstag }}" /> </td>
+				</tr>
+					<td>Monat(MM)</td><td><input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" /> </td>
+				</tr>
+				<tr>
+					<td>Jahr(JJJJ)</td><td><input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" /> </td>
+				{% elseif geburtstag %}
+					<td>
+						{{ geburtstag }}.{{ geburtsmonat }}.{{ geburtsjahr }}
+					</td>
+				{% endif %} 
+				</tr>
+				
+				<tr>
+					<td>
+						Plz:
+					</td>
+					
+					<td> 
+						{% if aendern == 1 %}
+							<input type="text" name="plz" value="{{ plz }}" />
+						{% else %}
+							{{ plz }}
+						{% endif %}
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						Ort: 
+					</td>
+					
+					<td>
+						{% if aendern == 1 %}
+							<input type="text" name="ort" value="{{ ort }}" />
+						{% else %}
+							{{ ort }}
+						{% endif %}
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						Stra&szlig;e:
+					</td>
+					
+					<td> 
+						{% if aendern == 1 %}
+							<input type="text" name="strasse" value="{{ strasse }}" />
+						{% else %}
+							{{ strasse }}
+						{% endif %}
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						Hausnummer:
+					</td>
+					
+					<td>
+						{% if aendern == 1 %}
+							<input type="text" name="hausnummer" value="{{ hausnummer }}" />
+						{% else %}
+							{{ hausnummer }}
+						{% endif %}
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						E-Mail:
+					</td>
+					
+					<td>
+						{% if aendern == 1 %}
+							<input type="text" name="useremail" value="{{ emailuser }}" />
+						{% else %}
+							{{ emailuser }}
+						{% endif %}
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						Telefon:
+					</td>
+					
+					<td>
+						{% if aendern == 1 %}
+							<input type="text" name="telefon" value="{{ telefon }}" />
+						{% elseif telefon %}
+							{{ telefon }}
+						{% endif %} 
+					</td>
+				</tr>
 			
-				
-				<td></td>
-			</tr>
-			<tr>
-				<td>Tag(TT)</td><td><input type="text" name="geburtstag" value="{{ geburtstag }}" /> </td>
-			</tr>
-				<td>Monat(MM)</td><td><input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" /> </td>
-			</tr>
-			<tr>
-				<td>Jahr(JJJJ)</td><td><input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" /> </td>
-			{% elseif geburtstag %}
-				<td>
-					{{ geburtstag }}.{{ geburtsmonat }}.{{ geburtsjahr }}
-				</td>
-			{% endif %} 
-			</tr>
-			
-			<tr>
-				<td>
-					Plz:
-				</td>
-				
-				<td> 
-					{% if aendern == 1 %}
-						<input type="text" name="plz" value="{{ plz }}" />
-					{% else %}
-						{{ plz }}
-					{% endif %}
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					Ort: 
-				</td>
-				
-				<td>
-					{% if aendern == 1 %}
-						<input type="text" name="ort" value="{{ ort }}" />
-					{% else %}
-						{{ ort }}
-					{% endif %}
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					Stra&szlig;e:
-				</td>
-				
-				<td> 
-					{% if aendern == 1 %}
-						<input type="text" name="strasse" value="{{ strasse }}" />
-					{% else %}
-						{{ strasse }}
-					{% endif %}
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					Hausnummer:
-				</td>
-				
-				<td>
-					{% if aendern == 1 %}
-						<input type="text" name="hausnummer" value="{{ hausnummer }}" />
-					{% else %}
-						{{ hausnummer }}
-					{% endif %}
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					E-Mail:
-				</td>
-				
-				<td>
-					{% if aendern == 1 %}
-						<input type="text" name="useremail" value="{{ emailuser }}" />
-					{% else %}
-						{{ emailuser }}
-					{% endif %}
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					Telefon:
-				</td>
-				
-				<td>
-					{% if aendern == 1 %}
-						<input type="text" name="telefon" value="{{ telefon }}" />
-					{% elseif telefon %}
-						{{ telefon }}
-					{% endif %} 
-				</td>
-			</tr>
+			{% endif %}
 			
 			{% if aendern == 1 %}
 				<tr>
@@ -252,53 +282,55 @@
 			{% endif %}
 			
 			
-			{# Benutzer sperren #}
-			{% if benutzerrecht == 1 and aendern == 1 %}
+			{% if vorname != "Administrator" %}
+				{# Benutzer sperren #}
+				{% if benutzerrecht == 1 and aendern == 1 %}
+					
+					<tr>
+						<td>
+					 		Benutzer sperren:
+					 	</td>
+					 	
+					 	<td> 
+							 <select name="gesperrt" >
+							     <option {% if gesperrt == 1 %}selected="selected"{% endif %} >JA</option>
+							     <option {% if gesperrt == 0 %}selected="selected"{% endif %} >NEIN</option>
+							 </select>
+					 	</td>
+					 </tr>
+					 
 				
+				{% endif %}
+			
+			
+					 
+				
+				{# Drop Down für Rechte bei Administratoren#}
 				<tr>
 					<td>
-				 		Benutzer sperren:
-				 	</td>
-				 	
-				 	<td> 
-						 <select name="gesperrt" >
-						     <option {% if gesperrt == 1 %}selected="selected"{% endif %} >JA</option>
-						     <option {% if gesperrt == 0 %}selected="selected"{% endif %} >NEIN</option>
-						 </select>
-				 	</td>
-				 </tr>
-				 
+						Recht:
+					</td>
+					
+				{% if aendern == 1 and benutzerrecht == 1 %}
+					
+					<td>
+						<select name="rechtuser" value='{{ rechtuser }}' >			
+							{% for item in rechtliste %}
+								<option {% if rechtuser == item %}selected="selected"{% endif %}>
+									{{ item }}
+								</option>
+							{% endfor %}
+						</select>
+					 </td>
+					 
+				{% else %}
+					<td>
+						{{ rechtuser }}
+					</td>
+				{% endif %}
+				</tr>
 			
 			{% endif %}
-			
-			
-				 
-			
-			{# Drop Down für Rechte bei Administratoren#}
-			<tr>
-				<td>
-					Recht:
-				</td>
-				
-			{% if aendern == 1 and benutzerrecht == 1 %}
-				
-				<td>
-					<select name="rechtuser" value='{{ rechtuser }}' >			
-						{% for item in rechtliste %}
-							<option {% if rechtuser == item %}selected="selected"{% endif %}>
-								{{ item }}
-							</option>
-						{% endfor %}
-					</select>
-				 </td>
-				 
-			{% else %}
-				<td>
-					{{ rechtuser }}
-				</td>
-			{% endif %}
-			</tr>
-			
 		
 		
 		
@@ -355,7 +387,7 @@
 			
 			
 			{# Benutzer löschen Button #}
-			{% if benutzerrecht == 1 and aendern == 1 %}
+			{% if benutzerrecht == 1 and aendern == 1 and vorname != "Administrator" %}
 	    
 	   		    <form id= "loeschen" method="post" action="../php/benutzerloeschen.php">
 	   		    	<tr>

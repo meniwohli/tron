@@ -50,392 +50,411 @@
 					 	 
 					 </tr>
 					 
+					 {% if gewaehltesrecht.rechtName == "Administrator" %}
 					 
+						 <tr>
+						 	<td colspan=2>
+							 	<div class="ui-widget">
+									<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center">
+										<p>
+												
+											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+											</span>
+											
+											<strong>Achtung: </strong>Dies ist das Administratorrecht. Es kann weder ver&auml;ndert noch gel&ouml;scht werden!
+													
+										</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+					 
+					 {% else %}
 					 				 
-					 {# Stunden auswählen/anzeigen #}
-					 <tr>
-					 
-					 	<td>
-					 		Anzahl Stunden: 
-					 	</td>
-							
-						<td>	 	
-							 {% if aendern == 1 %}
-					
-								 <select name="anzh" >
-									 
-							 {% for x in 1..4 %}
-									 	
-								     <option {% if gewaehltesrecht.anzahlStunden == x %}selected="selected"{% endif %} >{{ x }}</option>
-									 
-							 {% endfor %}
-									 
-								 <option {% if gewaehltesrecht.anzahlStunden == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
-								 </select>
+						 {# Stunden auswählen/anzeigen #}
+						 <tr>
+						 
+						 	<td>
+						 		Anzahl Stunden: 
+						 	</td>
 								
-								 
-							{% elseif gewaehltesrecht.anzahlStunden == 99 %}
+							<td>	 	
+								 {% if aendern == 1 %}
+						
+									 <select name="anzh" >
+										 
+								 {% for x in 1..4 %}
+										 	
+									     <option {% if gewaehltesrecht.anzahlStunden == x %}selected="selected"{% endif %} >{{ x }}</option>
+										 
+								 {% endfor %}
+										 
+									 <option {% if gewaehltesrecht.anzahlStunden == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+									 </select>
+									
+									 
+								{% elseif gewaehltesrecht.anzahlStunden == 99 %}
+									
+										unbegrenzt
+									
+								{% else %}
+								
+										{{ gewaehltesrecht.anzahlStunden }}
+								
+								{% endif %}
+							</td>
+							
+						</tr>
+						
+						
+						
+						{# Plaetze auswählen/anzeigen #}
+						<tr>
+							<td>
+								Anzahl Pl&auml;tze:
+							</td>
+							
+							<td> 
+								 {% if aendern == 1 %}
+						
+									 <select name="anzp" >
+									 
+									 {% for x in 1..4 %}
+									 	
+									     <option {% if gewaehltesrecht.anzahlPlaetze == x %}selected="selected"{% endif %} >{{ x }}</option>
+									 
+									 {% endfor %}
+									 
+									 <option {% if gewaehltesrecht.anzahlPlaetze == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+									 </select>
+									 
+								{% elseif gewaehltesrecht.anzahlPlaetze == 99 %}
 								
 									unbegrenzt
+									
+								{% else %}
 								
-							{% else %}
-							
-									{{ gewaehltesrecht.anzahlStunden }}
-							
-							{% endif %}
-						</td>
-						
-					</tr>
-					
-					
-					
-					{# Plaetze auswählen/anzeigen #}
-					<tr>
-						<td>
-							Anzahl Pl&auml;tze:
-						</td>
-						
-						<td> 
-							 {% if aendern == 1 %}
-					
-								 <select name="anzp" >
-								 
-								 {% for x in 1..4 %}
-								 	
-								     <option {% if gewaehltesrecht.anzahlPlaetze == x %}selected="selected"{% endif %} >{{ x }}</option>
-								 
-								 {% endfor %}
-								 
-								 <option {% if gewaehltesrecht.anzahlPlaetze == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
-								 </select>
-								 
-							{% elseif gewaehltesrecht.anzahlPlaetze == 99 %}
-							
-								unbegrenzt
-								
-							{% else %}
-							
-								{{ gewaehltesrecht.anzahlPlaetze }}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					
-					
-					{# Anzahl Reservierungen auswählen/anzeigen #}
-					<tr>
-						<td>
-					 		Anzahl Reservierungen:
-					 	</td>
-					 	
-					 	<td> 
-							 {% if aendern == 1 %}
-					
-								 <select name="anzr" >
-								 
-								 {% for x in 1..4 %}
-								 	
-								     <option {% if gewaehltesrecht.anzahlReservierungen == x %}selected="selected"{% endif %} >{{ x }}</option>
-								 
-								 {% endfor %}
-								 
-								 <option {% if gewaehltesrecht.anzahlReservierungen == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
-								 </select>
-								 
-							{% elseif gewaehltesrecht.anzahlReservierungen == 99 %}
-							
-								unbegrenzt
-								
-							{% else %}
-							
-								{{ gewaehltesrecht.anzahlReservierungen }}
-								
-							{% endif %}	
-						</td>
-					</tr>
-					
-					
-					{# Anzahl der Tage, die man im Voraus reservieren kann auswählen/anzeigen #}
-					<tr>
-						<td>
-					 		Anzahl Tage im Voraus:
-					 	</td>
-					 	
-					 	<td> 
-							 {% if aendern == 1 %}
-					
-								 <select name="tage" >
-								 
-								 {% for x in 1..7 %}
-								 	
-								     <option {% if gewaehltesrecht.tageVoraus == x %}selected="selected"{% endif %} >{{ x }}</option>
-								 
-								 {% endfor %}
-								 <option {% if gewaehltesrecht.tageVoraus == 14 %}selected="selected"{% endif %} value="14" >2 Wochen</option>
-								 <option {% if gewaehltesrecht.tageVoraus == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
-								 </select>
-								 
-							{% elseif gewaehltesrecht.tageVoraus == 99 %}
-							
-								unbegrenzt
-								
-							{% elseif gewaehltesrecht.tageVoraus == 14 %}
-							
-								2 Wochen
-								
-							{% else %}
-							
-								{{ gewaehltesrecht.tageVoraus }}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					{# Können Reservierungen gelöscht werden? #}
-					<tr>
-						<td>
-					 		Reservierungen L&ouml;schen: 
-						</td>
-						
-						<td> 
-							{% if aendern == 1 %}
-					
-								 <select name="resloeschen" >
-								 
-								     <option {% if gewaehltesrecht.reservierungLoeschen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.reservierungLoeschen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.reservierungLoeschen == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.reservierungLoeschen == 1 %}
-									Ja
+									{{ gewaehltesrecht.anzahlPlaetze }}
+									
 								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					
-					{# Können Reservierungen verschoben werden? #}
-					<tr>
-						<td>
-					 		Reservierungen verschieben:
-					 	</td>
-					 	
-					 	<td> 
-							 {% if aendern == 1 %}
-					
-								 <select name="resverschieben" >
-								 
-								     <option {% if gewaehltesrecht.reservierungVerschieben == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.reservierungVerschieben == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.reservierungVerschieben == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.reservierungVerschieben == 1 %}
-									Ja
-								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					
-					{# Können Benutzer verwaltet werden? #}
-					<tr>
-						<td>
-					 		Benutzer verwalten: 
-						</td>
+							</td>
+						</tr>
 						
-						<td> 
-							{% if aendern == 1 %}
-					
-								 <select name="benverwalten" >
-								 
-								     <option {% if gewaehltesrecht.benutzerVerwalten == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.benutzerVerwalten == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.benutzerVerwalten == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.benutzerVerwalten == 1 %}
-									Ja
-								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					
-					{# Können Benutzer Rechte verwalten? #}
-					<tr>
-						<td>
-					 		Rechte verwalten: 
-						</td>
 						
-						<td> 
-							{% if aendern == 1 %}
-					
-								 <select name="rechteverteilen" >
-								 
-								     <option {% if gewaehltesrecht.rechteVerteilen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.rechteVerteilen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.rechteVerteilen == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.rechteVerteilen == 1 %}
-									Ja
-								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					
-					
-					{# Können Benutzer Plätze verwalten? #}
-					<tr>
-						<td>
-					 		Pl&auml;tze verwalten: 
-						</td>
 						
-						<td> 
-							{% if aendern == 1 %}
-					
-								 <select name="platzverwalten" >
-								 
-								     <option {% if gewaehltesrecht.platzVerwalten == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.platzVerwalten == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.platzVerwalten == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.platzVerwalten == 1 %}
-									Ja
-								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					{# Kann Saison/Öffnungszeiten festgelegt werden? #}
-					<tr>
-						<td>
-					 		Zeiten verwalten: 
-						</td>
 						
-						<td>
-							 {% if aendern == 1 %}
-					
-								 <select name="saisonfestlegen" >
-								 
-								     <option {% if gewaehltesrecht.saisonFestlegen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.saisonFestlegen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.saisonFestlegen == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.saisonFestlegen == 1 %}
-									Ja
-								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					{# Können Serien reserviert werden? #}
-					<tr>
-						<td>
-					 		Serien reservieren:
-					 	</td>
-					 	
-					 	<td> 
-							 {% if aendern == 1 %}
-					
-								 <select name="serienreservieren" >
-								 
-								     <option {% if gewaehltesrecht.serienReservieren == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.serienReservieren == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.serienReservieren == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.serienReservieren == 1 %}
-									Ja
-								{% endif %}
-								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
-					{# Können Farben ausgewählt werden? #}
-					<tr>
-						<td>
-					 		Design &auml;ndern: 
-						</td>
+						{# Anzahl Reservierungen auswählen/anzeigen #}
+						<tr>
+							<td>
+						 		Anzahl Reservierungen:
+						 	</td>
+						 	
+						 	<td> 
+								 {% if aendern == 1 %}
 						
-						<td> 
-							{% if aendern == 1 %}
-					
-								 <select name="farbefestlegen" >
-								 
-								     <option {% if gewaehltesrecht.farbeFestlegen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
-								     <option {% if gewaehltesrecht.farbeFestlegen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
-								 
-								 </select>
-								 
-							{% else %}
-							
-								{% if gewaehltesrecht.farbeFestlegen == 0 %}
-									Nein
-								{% elseif gewaehltesrecht.farbeFestlegen == 1 %}
-									Ja
-								{% endif %}
+									 <select name="anzr" >
+									 
+									 {% for x in 1..4 %}
+									 	
+									     <option {% if gewaehltesrecht.anzahlReservierungen == x %}selected="selected"{% endif %} >{{ x }}</option>
+									 
+									 {% endfor %}
+									 
+									 <option {% if gewaehltesrecht.anzahlReservierungen == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+									 </select>
+									 
+								{% elseif gewaehltesrecht.anzahlReservierungen == 99 %}
 								
-							{% endif %}
-						</td>
-					</tr>
-					
-					
+									unbegrenzt
+									
+								{% else %}
+								
+									{{ gewaehltesrecht.anzahlReservierungen }}
+									
+								{% endif %}	
+							</td>
+						</tr>
+						
+						
+						{# Anzahl der Tage, die man im Voraus reservieren kann auswählen/anzeigen #}
+						<tr>
+							<td>
+						 		Anzahl Tage im Voraus:
+						 	</td>
+						 	
+						 	<td> 
+								 {% if aendern == 1 %}
+						
+									 <select name="tage" >
+									 
+									 {% for x in 1..7 %}
+									 	
+									     <option {% if gewaehltesrecht.tageVoraus == x %}selected="selected"{% endif %} >{{ x }}</option>
+									 
+									 {% endfor %}
+									 <option {% if gewaehltesrecht.tageVoraus == 14 %}selected="selected"{% endif %} value="14" >2 Wochen</option>
+									 <option {% if gewaehltesrecht.tageVoraus == 99 %}selected="selected"{% endif %} >unbegrenzt</option>
+									 </select>
+									 
+								{% elseif gewaehltesrecht.tageVoraus == 99 %}
+								
+									unbegrenzt
+									
+								{% elseif gewaehltesrecht.tageVoraus == 14 %}
+								
+									2 Wochen
+									
+								{% else %}
+								
+									{{ gewaehltesrecht.tageVoraus }}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						{# Können Reservierungen gelöscht werden? #}
+						<tr>
+							<td>
+						 		Reservierungen L&ouml;schen: 
+							</td>
+							
+							<td> 
+								{% if aendern == 1 %}
+						
+									 <select name="resloeschen" >
+									 
+									     <option {% if gewaehltesrecht.reservierungLoeschen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.reservierungLoeschen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.reservierungLoeschen == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.reservierungLoeschen == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						
+						{# Können Reservierungen verschoben werden? #}
+						<tr>
+							<td>
+						 		Reservierungen verschieben:
+						 	</td>
+						 	
+						 	<td> 
+								 {% if aendern == 1 %}
+						
+									 <select name="resverschieben" >
+									 
+									     <option {% if gewaehltesrecht.reservierungVerschieben == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.reservierungVerschieben == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.reservierungVerschieben == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.reservierungVerschieben == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						
+						{# Können Benutzer verwaltet werden? #}
+						<tr>
+							<td>
+						 		Benutzer verwalten: 
+							</td>
+							
+							<td> 
+								{% if aendern == 1 %}
+						
+									 <select name="benverwalten" >
+									 
+									     <option {% if gewaehltesrecht.benutzerVerwalten == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.benutzerVerwalten == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.benutzerVerwalten == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.benutzerVerwalten == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						
+						{# Können Benutzer Rechte verwalten? #}
+						<tr>
+							<td>
+						 		Rechte verwalten: 
+							</td>
+							
+							<td> 
+								{% if aendern == 1 %}
+						
+									 <select name="rechteverteilen" >
+									 
+									     <option {% if gewaehltesrecht.rechteVerteilen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.rechteVerteilen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.rechteVerteilen == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.rechteVerteilen == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						
+						
+						{# Können Benutzer Plätze verwalten? #}
+						<tr>
+							<td>
+						 		Pl&auml;tze verwalten: 
+							</td>
+							
+							<td> 
+								{% if aendern == 1 %}
+						
+									 <select name="platzverwalten" >
+									 
+									     <option {% if gewaehltesrecht.platzVerwalten == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.platzVerwalten == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.platzVerwalten == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.platzVerwalten == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						{# Kann Saison/Öffnungszeiten festgelegt werden? #}
+						<tr>
+							<td>
+						 		Zeiten verwalten: 
+							</td>
+							
+							<td>
+								 {% if aendern == 1 %}
+						
+									 <select name="saisonfestlegen" >
+									 
+									     <option {% if gewaehltesrecht.saisonFestlegen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.saisonFestlegen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.saisonFestlegen == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.saisonFestlegen == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						{# Können Serien reserviert werden? #}
+						<tr>
+							<td>
+						 		Serien reservieren:
+						 	</td>
+						 	
+						 	<td> 
+								 {% if aendern == 1 %}
+						
+									 <select name="serienreservieren" >
+									 
+									     <option {% if gewaehltesrecht.serienReservieren == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.serienReservieren == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.serienReservieren == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.serienReservieren == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						
+						{# Können Farben ausgewählt werden? #}
+						<tr>
+							<td>
+						 		Design &auml;ndern: 
+							</td>
+							
+							<td> 
+								{% if aendern == 1 %}
+						
+									 <select name="farbefestlegen" >
+									 
+									     <option {% if gewaehltesrecht.farbeFestlegen == 0 %}selected="selected"{% endif %} value="0" >Nein</option>
+									     <option {% if gewaehltesrecht.farbeFestlegen == 1 %}selected="selected"{% endif %} value="1" >Ja</option>
+									 
+									 </select>
+									 
+								{% else %}
+								
+									{% if gewaehltesrecht.farbeFestlegen == 0 %}
+										Nein
+									{% elseif gewaehltesrecht.farbeFestlegen == 1 %}
+										Ja
+									{% endif %}
+									
+								{% endif %}
+							</td>
+						</tr>
+						
+						{% endif %}
 					
 					<tr>
 						<td>
 						</td>
-						
+							
 						<td>
 							{# Änderungen bestätigen Button #}	
 							{% if aendern == 1 %}
@@ -452,30 +471,36 @@
 						</td>
 					</tr>	
 				 </form>
-			  
-			<tr>
-				<td>
-					{# Recht löschen Button #}
-					{% if aendern == 1 %}
-			    
-			   		    <form id= "loeschen" method="post" action="../php/rechtloeschen.php">
-			   		    	<input type="hidden" name="{{ gewaehltesrecht.recht_ID }}">
-							<button type="submit">Recht l&ouml;schen</button>
-						</form> 
-			
-					{% endif %}	
-				</td>
+				 
+				 <tr>
+				 {% if gewaehltesrecht.rechtName != "Administrator" %}
+				  
+						<td>
+							{# Recht löschen Button #}
+							{% if aendern == 1 %}
+					    
+					   		    <form id= "loeschen" method="post" action="../php/rechtloeschen.php">
+					   		    	<input type="hidden" name="{{ gewaehltesrecht.recht_ID }}">
+									<button type="submit">Recht l&ouml;schen</button>
+								</form> 
+					
+							{% endif %}	
+						</td>
+					
+				{% endif %}
 				
-				<td>
-					{# Recht anlegen Button #}
-					{% if benutzerrecht == 1 %}
-			    
-			   		    <form method="post" action="../php/rechtanlegen.php">
-							<button type="submit">Recht anlegen</button>
-						</form> 
 				
-					{% endif %}	
-				</td>
+					<td>
+						{# Recht anlegen Button #}
+						{% if benutzerrecht == 1 %}
+				    
+				   		    <form method="post" action="../php/rechtanlegen.php">
+								<button type="submit">Recht anlegen</button>
+							</form> 
+					
+						{% endif %}	
+					</td>
+				</tr>
 			
 			
 			</table>
