@@ -11,8 +11,10 @@
 	
 	
 	table.tables {
-		margin: 0 auto;
-		width: 600px;
+		/*margin: 0 auto;*/
+		width: 500px;
+		margin-left: 60px;
+		margin-top: 0px;
 	}
 	
 	/* Buttonbreite */
