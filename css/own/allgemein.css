@@ -26,6 +26,10 @@
 		min-width:200px;
 	}
 	
+	/* Geburtstagseingabe-Breite */
+	form input[type="text"].gebtag{
+		width: 30px;
+	}
 	
 	/* Einheitliche Formatierung Eingaben */
 	input[type="text"],
@@ -63,6 +67,8 @@
 		margin-top: 10px;
 		margin-right: 10px;
 	}
+	
+	
 }
 
 
