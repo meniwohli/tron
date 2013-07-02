@@ -9,7 +9,6 @@
 
 
 @import url(jquery/jquery-ui-1.10.3.custom.css);
-@import url(own/allgemein.css);
 @import url(own/login.css);
 @import url(core/base.css);
 @import url("forms/gray-theme.css");
@@ -19,5 +18,6 @@
 @import url(screen/vlist.css);
 @import url(screen/typography.css);
 @import url(print/print.css);
+@import url(own/allgemein.css);
 
 

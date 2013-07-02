@@ -7,45 +7,68 @@
 	{% block body %}
 		{{ parent() }}
 		
-		{# Aufforderung löschen bestätigen #}
-		{% if benutzerrecht == 1 %}
 		
-		{% if geloescht %}
-			<div class="note"><b>{{ name }}</b> wurde aus der Datenbank gel&ouml;scht. </div>
-			<form action="../php/benutzereinstellungen.php">
-				<button type="submit">zur&uuml;ck</button>
-			</form>					
-		{% else %}
-			<div>
+		<table class="tables">
+			{# Aufforderung löschen bestätigen #}
+			{% if benutzerrecht == 1 %}
 			
-				<div class="ui-widget">
-					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center;">
-						<p>
-							
-							<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
-							</span>
-						
-							<strong>Achtung: </strong>
-							
-							Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Benutzer <b>({{ name }})</b> unwiederruflich gel&ouml;scht!
-										
-						</p>
-					</div>
-				</div>
-			
+			{% if geloescht %}
+				<tr>
+					<td colspan = 2>
+						<div class="note"><b>{{ name }}</b> wurde aus der Datenbank gel&ouml;scht. </div>
+					</td>
+				</tr>
 				
-				</br>
-				</br>
- 				<h3>Sind Sie sicher?</h3>
-				</br>
-				<form method="post" action="../php/benutzerloeschen.php">
-   		    		<input type="hidden" name="{{ uid }}">
-   		    		<input type="hidden" name="bestaetigt">
-   		    		<input type="hidden" name="geklickt">
-					<button type="submit">Benutzer l&ouml;schen</button>
-				</form>
-			</div>
-		{% endif %}
-	
-		{% endif %}	
+				<tr>
+					<td>
+					</td>
+					
+					<td>
+						<form action="../php/benutzereinstellungen.php">
+							<button type="submit">zur&uuml;ck</button>
+						</form>
+					</td>
+				</tr>
+									
+			{% else %}
+				
+				<tr>
+					<td colspan=2>
+						
+							<div class="ui-widget">
+								<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center;">
+									<p>
+										
+										<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+										</span>
+									
+										<strong>Achtung: </strong>
+										
+										Wenn Sie mit l&ouml;schen best&auml;tigen, wird der Benutzer <b>({{ name }})</b> unwiederruflich gel&ouml;scht!
+													
+									</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+				
+					<tr>
+						<td>
+	 						<h3>Sind Sie sicher?</h3>
+	 					</td>
+	 					
+	 					<td>
+							<form method="post" action="../php/benutzerloeschen.php">
+			   		    		<input type="hidden" name="{{ uid }}">
+			   		    		<input type="hidden" name="bestaetigt">
+			   		    		<input type="hidden" name="geklickt">
+								<button type="submit">Benutzer l&ouml;schen</button>
+							</form>
+						</td>
+					</tr>
+			{% endif %}
+		
+			{% endif %}
+		
+		</table>
 	{% endblock %}

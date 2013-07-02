@@ -7,7 +7,7 @@
 	{% block body %}
 		{{ parent() }}
 		
-		<table>
+		<table class="tables">
 			{# Wenn der Benutzer angelegt wurde: #}
 			{% if angelegt %}
 			
@@ -25,35 +25,47 @@
 	    
 	   		    {% if fehler %}
 	   		    	<tr>
-	   		    		<td>
-	   		    			
-	   		    		</td>
+	   		    		<td colspan = 2>
 	   		    		
-	   		    		<td>
-				   		    <p class="box error">
-				   		    	{% if fehlermail %}
-				   		    		E-Mail Adresse existiert bereits!</br>
-				   		    	{% endif %}
+	   		    		
+	   		    			<div class="ui-widget">
+								<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; width: 400px; text-align: center">
+									<p>
+											
+										<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;">
+										</span>
+										
+										<strong>Achtung: </strong>
+										
+										{% if fehlermail %}
+						   		    		E-Mail Adresse existiert bereits!</br>
+						   		    	{% endif %}
+						   		    	
+						   		    	{% if fehlerpas %}
+						   		    		Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</br>
+						   		    	{% endif %}
+						   		    	
+						   		    	{% if fehleruser %}
+						   		    		Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</br>
+						   		    	{% endif %}
+						   		    		
+						   		    	Bitte f&uuml;llen Sie alle Felder die mit einem * markiert sind!</br>
 				   		    	
-				   		    	{% if fehlerpas %}
-				   		    		Passwort nicht gleich oder zu kurz! (Min. 6 Zeichen)</br>
-				   		    	{% endif %}
+												
+									</p>
+								</div>
+							</div>
+	   		    						   		   
 				   		    	
-				   		    	{% if fehleruser %}
-				   		    		Der von Ihnen angegebene Benutzer existiert bereits. Bitte &auml;ndern Sie den Vor- oder Nachnamen.</br>
-				   		    	{% endif %}
-				   		    		
-				   		    	Bitte f&uuml;llen Sie alle Felder die mit einem * markiert sind!</br>
-				   		    	
-				   		    </p>
 		   		    	</td>
 		   		    </tr>
 	   		    {% endif %}
 	   		    
-	   		    </br>
-				Benutzer anlegen:
-				</br>
-				</br>
+	   		   <tr>
+	   		   		<td colspan = 2>
+						<h2>Benutzer anlegen</h2>
+					</td>
+				</tr>
 	   		    
 				<form method="post" action="../php/benutzeranlegen.php">
 					
@@ -106,13 +118,32 @@
 						<td>
 							Geburtsdatum:
 						</td>
-						
+					</tr>
+					
+					<tr>
 						<td>
-							(TT)<input size="20px;" type="text" name="geburtstag" value="{{ geburtstag }}" />
-						
-							(MM)<input class="gebtag" type="text" name="geburtsmonat" value="{{ geburtsmonat }}" />
-											
-							(JJJJ)<input class="gebtag" type="text" name="geburtsjahr" value="{{ geburtsjahr }}" />
+							Tag(TT)
+						</td>
+						<td>
+							<input type="text" name="geburtstag" value="{{ geburtstag }}" />
+						</td>
+					</tr>
+					
+					<tr>	
+						<td>
+							Monat(MM)
+						</td>
+						<td>
+							<input type="text" name="geburtsmonat" value="{{ geburtsmonat }}" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>				
+							Jahr(JJJJ)
+						</td>
+						<td>
+							<input type="text" name="geburtsjahr" value="{{ geburtsjahr }}" />
 						</td>
 					</tr>
 					

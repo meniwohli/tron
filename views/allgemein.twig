@@ -7,13 +7,16 @@
         {% block body %}
 			  {{ parent() }}
 			
-			<p> &Ouml;ffnungszeiten:</p>
-			</br>
-			</br>
-			
 			
 			<form method="post" action="../php/allgemein.php">
-			<table>
+			<table class="tables">
+			
+			
+				<tr>
+					<td colspan = 2>
+						<h2>&Ouml;ffnungszeiten</h2>
+					</td>
+				</tr>
 			
 				<tr>
 			    	<td>
@@ -84,8 +87,14 @@
 			    	</td>
 			  	</tr>
 			  	
+			  	<tr>
+			  		<td>
+			  		</td>
+			  		<td>
+			  			<button type="submit">Speichern</button>
+			  		</td>
+			  	</tr>
 			</table>
-			<button type="submit">Speichern</button>
 			</form>
 			
 	
