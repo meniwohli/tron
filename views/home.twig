@@ -89,15 +89,15 @@
 											{% for key, value in farben %}
 												{% if key == resart %} style="background-color:{{ value }}" {% endif %}
 											{% endfor %} >
-											{% if benutzerrecht or online.mitglied_ID == res.fk_Mitglied_ID %}
+											{# {% if benutzerrecht or online.mitglied_ID == res.fk_Mitglied_ID %} #}
 												 {% for m in mitglieder %}
 													{% if res.fk_Mitglied_ID == m.Mitglied_ID %}
 													 	{{ m.Vorname }} {{ m.Nachname }}
 													{% endif %}
 												 {% endfor %}
-											{% else %}	
+												 {# {% else %}	
 												reserviert
-											{% endif %}
+											{% endif %} #}
 											{% set voll = 1 %}
 										{% endif %}
 									{% endfor %}
